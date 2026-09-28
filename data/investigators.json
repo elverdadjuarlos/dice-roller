@@ -1,0 +1,35 @@
+[
+    {
+        "name": "Test Investigator 1",
+        "expansion": "Base Game",
+        "stats": {
+            "lore": 4,
+            "influence": 3,
+            "observation": 2,
+            "strength": 1,
+            "will": 5
+        }
+    },
+    {
+        "name": "Test Investigator 2",
+        "expansion": "Base Game",
+        "stats": {
+            "lore": 2,
+            "influence": 4,
+            "observation": 3,
+            "strength": 5,
+            "will": 1
+        }
+    },
+    {
+        "name": "Test Investigator 3",
+        "expansion": "Base Game",
+        "stats": {
+            "lore": 3,
+            "influence": 1,
+            "observation": 5,
+            "strength": 4,
+            "will": 2
+        }
+    }
+]
