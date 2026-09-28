@@ -378,10 +378,15 @@ function createHistoryItem(roll) {
             ? "success"
             : "successes";
 
-    const thresholdText =
-        roll.threshold === 6
-            ? "6"
-            : `${roll.threshold}+`;
+    let thresholdText;
+
+        if (roll.threshold === 4) {
+            thresholdText = "Blessed";
+        } else if (roll.threshold === 6) {
+            thresholdText = "Cursed";
+        } else {
+            thresholdText = "Reset";
+        }
 
     item.innerHTML =
         `${roll.diceCount}d6 (${thresholdText})
@@ -444,3 +449,27 @@ rollArea.addEventListener(
 ------------------------- */
 
 renderHistory();
+
+
+/* -------------------------
+   SERVICE WORKER
+------------------------- */
+
+if ("serviceWorker" in navigator) {
+
+    window.addEventListener("load", () => {
+
+        navigator.serviceWorker.register("./service-worker.js")
+            .then(() => {
+                console.log("Service Worker registered");
+            })
+            .catch(error => {
+                console.error(
+                    "Service Worker registration failed:",
+                    error
+                );
+            });
+
+    });
+
+}
