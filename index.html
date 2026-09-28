@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dice Roller</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="app">
+
+        <section>
+            <h2>Number of Dice</h2>
+
+            <div class="button-group" id="dice-count">
+                <button data-count="1" class="selected">1</button>
+                <button data-count="2">2</button>
+                <button data-count="3">3</button>
+                <button data-count="4">4</button>
+                <button data-count="5">5</button>
+                <button data-count="6">6</button>
+                <button data-count="7">7</button>
+                <button data-count="8">8</button>
+            </div>
+        </section>
+
+
+        <section id="roll-area" class="roll-area">
+
+            <p class="tap-text">Tap here to roll</p>
+
+            <div id="dice-results" class="dice-results">
+                <div class="die-result pip-die"></div>
+            </div>
+
+            <div class="total">
+                Total
+                <span id="total">—</span>
+            </div>
+
+        </section>
+
+
+        <button id="roll-button" class="roll-button">
+            ROLL
+        </button>
+
+
+        <section class="history-section">
+
+            <div class="history-header">
+                <h2>History</h2>
+                <button id="clear-history">Clear</button>
+            </div>
+
+            <div id="history"></div>
+
+            <button id="view-history" class="view-history">
+                View All History
+            </button>
+
+        </section>
+
+
+        <div id="history-panel" class="history-panel">
+
+            <div class="history-panel-content">
+
+                <div class="history-panel-header">
+                    <h2>History</h2>
+                    <button id="close-history">Close</button>
+                </div>
+
+                <div id="full-history"></div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
