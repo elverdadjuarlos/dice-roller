@@ -2,11 +2,19 @@ let selectedDiceCount = 1;
 let successThreshold = 5;
 let isRolling = false;
 
+
+/* -------------------------
+   ELEMENTS
+------------------------- */
+
 const countButtons =
     document.querySelectorAll("#dice-count button");
 
-const thresholdButtons =
-    document.querySelectorAll("#success-threshold button");
+const blessedButton =
+    document.getElementById("blessed-button");
+
+const cursedButton =
+    document.getElementById("cursed-button");
 
 const rollArea =
     document.getElementById("roll-area");
@@ -38,6 +46,7 @@ const historyPanel =
 const closeHistory =
     document.getElementById("close-history");
 
+
 let rollHistory = [];
 
 
@@ -62,26 +71,62 @@ countButtons.forEach(button => {
 
 });
 
+
 /* -------------------------
-   SELECT SUCCESS THRESHOLD
+   MODIFIERS
 ------------------------- */
 
-thresholdButtons.forEach(button => {
+blessedButton.addEventListener("click", () => {
 
-    button.addEventListener("click", () => {
+    if (blessedButton.classList.contains("selected")) {
 
-        thresholdButtons.forEach(btn => {
-            btn.classList.remove("selected");
-        });
+        // Turn Blessed off
+        // Return to normal 5+
+        blessedButton.classList.remove("selected");
 
-        button.classList.add("selected");
+        successThreshold = 5;
 
-        successThreshold =
-            Number(button.dataset.threshold);
+    } else {
 
-    });
+        // Turn Blessed on
+        blessedButton.classList.add("selected");
+
+        // Blessed and Cursed cannot
+        // be active at the same time
+        cursedButton.classList.remove("selected");
+
+        successThreshold = 4;
+
+    }
 
 });
+
+
+cursedButton.addEventListener("click", () => {
+
+    if (cursedButton.classList.contains("selected")) {
+
+        // Turn Cursed off
+        // Return to normal 5+
+        cursedButton.classList.remove("selected");
+
+        successThreshold = 5;
+
+    } else {
+
+        // Turn Cursed on
+        cursedButton.classList.add("selected");
+
+        // Blessed and Cursed cannot
+        // be active at the same time
+        blessedButton.classList.remove("selected");
+
+        successThreshold = 6;
+
+    }
+
+});
+
 
 /* -------------------------
    CREATE RANDOMNESS
@@ -211,17 +256,23 @@ function displayResults(results) {
 
         createPips(die, result);
 
-        // Dice that meet or surpass the success threshold are successes
+
+        // Dice that meet or surpass
+        // the current threshold are successes
         if (result >= successThreshold) {
+
             die.classList.add("success-die");
+
         }
+
 
         diceResults.appendChild(die);
 
     });
 
 
-    // Count the number that meet or surpass the success threshold
+    // Count successes using
+    // the current threshold
     const successes =
         results.filter(
             result => result >= successThreshold
@@ -305,10 +356,12 @@ function addToHistory(results) {
 
     };
 
+
     rollHistory.unshift(roll);
 
     renderHistory();
 }
+
 
 /* -------------------------
    RENDER HISTORY
@@ -373,25 +426,35 @@ function createHistoryItem(roll) {
 
     item.classList.add("history-item");
 
+
     const successText =
         roll.successes === 1
             ? "success"
             : "successes";
 
+
     let thresholdText;
 
-        if (roll.threshold === 4) {
-            thresholdText = "Blessed";
-        } else if (roll.threshold === 6) {
-            thresholdText = "Cursed";
-        } else {
-            thresholdText = "Reset";
-        }
+    if (roll.threshold === 4) {
+
+        thresholdText = "Blessed";
+
+    } else if (roll.threshold === 6) {
+
+        thresholdText = "Cursed";
+
+    } else {
+
+        thresholdText = "Normal";
+
+    }
+
 
     item.innerHTML =
         `${roll.diceCount}d6 (${thresholdText})
         → [${roll.results.join(", ")}]
         → <strong>${roll.successes} ${successText}</strong>`;
+
 
     return item;
 }
@@ -461,13 +524,19 @@ if ("serviceWorker" in navigator) {
 
         navigator.serviceWorker.register("./service-worker.js")
             .then(() => {
-                console.log("Service Worker registered");
+
+                console.log(
+                    "Service Worker registered"
+                );
+
             })
             .catch(error => {
+
                 console.error(
                     "Service Worker registration failed:",
                     error
                 );
+
             });
 
     });

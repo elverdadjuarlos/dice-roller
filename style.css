@@ -135,8 +135,8 @@ section {
     margin: 20px auto;
 }
 
-.success-options {
-    grid-template-columns: repeat(3, 1fr);
+.modifier-options {
+    grid-template-columns: repeat(2, 1fr);
 }
 
 
