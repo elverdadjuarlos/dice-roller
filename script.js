@@ -2,6 +2,15 @@ let selectedDiceCount = 1;
 let successThreshold = 5;
 let isRolling = false;
 
+let currentMode = "manual";
+
+let investigators = [];
+let selectedInvestigator = null;
+
+let currentRollInfo = null;
+
+let rollHistory = [];
+
 
 /* -------------------------
    ELEMENTS
@@ -15,6 +24,24 @@ const blessedButton =
 
 const cursedButton =
     document.getElementById("cursed-button");
+
+const manualTab =
+    document.getElementById("manual-tab");
+
+const investigatorTab =
+    document.getElementById("investigator-tab");
+
+const manualMode =
+    document.getElementById("manual-mode");
+
+const investigatorMode =
+    document.getElementById("investigator-mode");
+
+const investigatorSelect =
+    document.getElementById("investigator-select");
+
+const investigatorStats =
+    document.getElementById("investigator-stats");
 
 const rollArea =
     document.getElementById("roll-area");
@@ -47,7 +74,43 @@ const closeHistory =
     document.getElementById("close-history");
 
 
-let rollHistory = [];
+/* -------------------------
+   MODE TABS
+------------------------- */
+
+manualTab.addEventListener("click", () => {
+
+    currentMode = "manual";
+
+    manualTab.classList.add("selected");
+    investigatorTab.classList.remove("selected");
+
+    manualMode.classList.remove("hidden");
+    investigatorMode.classList.add("hidden");
+
+    rollButton.style.display = "block";
+
+});
+
+
+investigatorTab.addEventListener("click", () => {
+
+    currentMode = "investigator";
+
+    investigatorTab.classList.add("selected");
+    manualTab.classList.remove("selected");
+
+    investigatorMode.classList.remove("hidden");
+    manualMode.classList.add("hidden");
+
+    /*
+       Investigator stats roll immediately,
+       so the large manual ROLL button
+       isn't necessary.
+    */
+    rollButton.style.display = "none";
+
+});
 
 
 /* -------------------------
@@ -80,19 +143,14 @@ blessedButton.addEventListener("click", () => {
 
     if (blessedButton.classList.contains("selected")) {
 
-        // Turn Blessed off
-        // Return to normal 5+
         blessedButton.classList.remove("selected");
 
         successThreshold = 5;
 
     } else {
 
-        // Turn Blessed on
         blessedButton.classList.add("selected");
 
-        // Blessed and Cursed cannot
-        // be active at the same time
         cursedButton.classList.remove("selected");
 
         successThreshold = 4;
@@ -106,19 +164,14 @@ cursedButton.addEventListener("click", () => {
 
     if (cursedButton.classList.contains("selected")) {
 
-        // Turn Cursed off
-        // Return to normal 5+
         cursedButton.classList.remove("selected");
 
         successThreshold = 5;
 
     } else {
 
-        // Turn Cursed on
         cursedButton.classList.add("selected");
 
-        // Blessed and Cursed cannot
-        // be active at the same time
         blessedButton.classList.remove("selected");
 
         successThreshold = 6;
@@ -129,27 +182,247 @@ cursedButton.addEventListener("click", () => {
 
 
 /* -------------------------
+   LOAD INVESTIGATORS
+------------------------- */
+
+async function loadInvestigators() {
+
+    try {
+
+        const response =
+            await fetch("./data/investigators.json");
+
+        if (!response.ok) {
+
+            throw new Error(
+                `HTTP error: ${response.status}`
+            );
+
+        }
+
+        investigators =
+            await response.json();
+
+        populateInvestigatorSelect();
+
+    } catch (error) {
+
+        console.error(
+            "Failed to load investigators:",
+            error
+        );
+
+        investigatorSelect.innerHTML =
+            `<option value="">
+                Failed to load investigators
+            </option>`;
+
+    }
+
+}
+
+
+/* -------------------------
+   INVESTIGATOR DROPDOWN
+------------------------- */
+
+function populateInvestigatorSelect() {
+
+    investigatorSelect.innerHTML =
+        `<option value="">
+            Select Investigator
+        </option>`;
+
+    investigators.forEach((investigator, index) => {
+
+        const option =
+            document.createElement("option");
+
+        option.value = index;
+
+        option.textContent =
+            investigator.name;
+
+        investigatorSelect.appendChild(option);
+
+    });
+
+}
+
+
+/* -------------------------
+   SELECT INVESTIGATOR
+------------------------- */
+
+investigatorSelect.addEventListener(
+    "change",
+    () => {
+
+        const selectedIndex =
+            investigatorSelect.value;
+
+        if (selectedIndex === "") {
+
+            selectedInvestigator = null;
+
+            investigatorStats.innerHTML = "";
+
+            return;
+        }
+
+        selectedInvestigator =
+            investigators[
+                Number(selectedIndex)
+            ];
+
+        displayInvestigatorStats();
+
+    }
+);
+
+
+/* -------------------------
+   DISPLAY INVESTIGATOR STATS
+------------------------- */
+
+function displayInvestigatorStats() {
+
+    investigatorStats.innerHTML = "";
+
+    if (!selectedInvestigator) {
+        return;
+    }
+
+
+    Object.entries(
+        selectedInvestigator.stats
+    ).forEach(([statName, statValue]) => {
+
+        const button =
+            document.createElement("button");
+
+        button.classList.add("stat-button");
+
+
+        const name =
+            document.createElement("span");
+
+        name.classList.add("stat-name");
+
+        name.textContent =
+            formatStatName(statName);
+
+
+        const value =
+            document.createElement("span");
+
+        value.classList.add("stat-value");
+
+        value.textContent =
+            statValue;
+
+
+        button.appendChild(name);
+
+        button.appendChild(value);
+
+
+        button.addEventListener("click", () => {
+
+            rollInvestigatorStat(
+                statName,
+                statValue
+            );
+
+        });
+
+
+        investigatorStats.appendChild(button);
+
+    });
+
+}
+
+
+/* -------------------------
+   FORMAT STAT NAME
+------------------------- */
+
+function formatStatName(statName) {
+
+    return (
+        statName.charAt(0).toUpperCase()
+        +
+        statName.slice(1)
+    );
+
+}
+
+
+/* -------------------------
+   ROLL INVESTIGATOR STAT
+------------------------- */
+
+function rollInvestigatorStat(
+    statName,
+    statValue
+) {
+
+    if (!selectedInvestigator) {
+        return;
+    }
+
+    selectedDiceCount =
+        Number(statValue);
+
+    currentRollInfo = {
+
+        investigator:
+            selectedInvestigator.name,
+
+        stat:
+            formatStatName(statName)
+
+    };
+
+    rollDice();
+
+}
+
+
+/* -------------------------
    CREATE RANDOMNESS
 ------------------------- */
 
 function rollDie() {
 
     const range = 0x100000000;
-    const limit = range - (range % 6);
 
-    const array = new Uint32Array(1);
+    const limit =
+        range - (range % 6);
+
+    const array =
+        new Uint32Array(1);
 
     let randomNumber;
+
 
     do {
 
         crypto.getRandomValues(array);
 
-        randomNumber = array[0];
+        randomNumber =
+            array[0];
 
-    } while (randomNumber >= limit);
+    } while (
+        randomNumber >= limit
+    );
 
-    return (randomNumber % 6) + 1;
+
+    return (
+        randomNumber % 6
+    ) + 1;
+
 }
 
 
@@ -159,29 +432,56 @@ function rollDie() {
 
 function rollDice() {
 
-    // Don't allow another roll while
-    // the current roll is animating
     if (isRolling) {
         return;
     }
 
-    isRolling = true;
 
-    const finalResults = [];
+    /*
+       If we're manually rolling,
+       remove any previous investigator
+       information.
+    */
 
-    for (let i = 0; i < selectedDiceCount; i++) {
+    if (currentMode === "manual") {
 
-        finalResults.push(rollDie());
+        currentRollInfo = null;
 
     }
 
 
-    // Clear old dice
+    isRolling = true;
+
+
+    const finalResults = [];
+
+
+    for (
+        let i = 0;
+        i < selectedDiceCount;
+        i++
+    ) {
+
+        finalResults.push(
+            rollDie()
+        );
+
+    }
+
+
     diceResults.innerHTML = "";
 
 
-    // Create blank dice
-    for (let i = 0; i < selectedDiceCount; i++) {
+    /*
+       Create blank dice while
+       the animation plays.
+    */
+
+    for (
+        let i = 0;
+        i < selectedDiceCount;
+        i++
+    ) {
 
         const die =
             document.createElement("div");
@@ -203,11 +503,17 @@ function rollDice() {
 
     setTimeout(() => {
 
-        rollArea.classList.remove("rolling");
+        rollArea.classList.remove(
+            "rolling"
+        );
 
-        displayResults(finalResults);
+        displayResults(
+            finalResults
+        );
 
-        addToHistory(finalResults);
+        addToHistory(
+            finalResults
+        );
 
 
         const diceElements =
@@ -215,13 +521,18 @@ function rollDice() {
                 ".die-result"
             );
 
+
         diceElements.forEach(die => {
 
-            die.classList.add("landed");
+            die.classList.add(
+                "landed"
+            );
 
             setTimeout(() => {
 
-                die.classList.remove("landed");
+                die.classList.remove(
+                    "landed"
+                );
 
             }, 200);
 
@@ -233,6 +544,7 @@ function rollDice() {
         isRolling = false;
 
     }, 350);
+
 }
 
 
@@ -244,6 +556,7 @@ function displayResults(results) {
 
     diceResults.innerHTML = "";
 
+
     results.forEach(result => {
 
         const die =
@@ -254,14 +567,20 @@ function displayResults(results) {
             "pip-die"
         );
 
-        createPips(die, result);
+
+        createPips(
+            die,
+            result
+        );
 
 
-        // Dice that meet or surpass
-        // the current threshold are successes
-        if (result >= successThreshold) {
+        if (
+            result >= successThreshold
+        ) {
 
-            die.classList.add("success-die");
+            die.classList.add(
+                "success-die"
+            );
 
         }
 
@@ -271,14 +590,16 @@ function displayResults(results) {
     });
 
 
-    // Count successes using
-    // the current threshold
     const successes =
         results.filter(
-            result => result >= successThreshold
+            result =>
+                result >= successThreshold
         ).length;
 
-    successesDisplay.textContent = successes;
+
+    successesDisplay.textContent =
+        successes;
+
 }
 
 
@@ -286,16 +607,24 @@ function displayResults(results) {
    CREATE DICE PIPS
 ------------------------- */
 
-function createPips(die, value) {
+function createPips(
+    die,
+    value
+) {
 
-    for (let position = 1; position <= 9; position++) {
+    for (
+        let position = 1;
+        position <= 9;
+        position++
+    ) {
 
         const pip =
             document.createElement("span");
 
         pip.classList.add("pip");
 
-        pip.dataset.position = position;
+        pip.dataset.position =
+            position;
 
         die.appendChild(pip);
 
@@ -319,16 +648,19 @@ function createPips(die, value) {
     };
 
 
-    pipPositions[value].forEach(position => {
+    pipPositions[value]
+        .forEach(position => {
 
-        const pip =
-            die.querySelector(
-                `[data-position="${position}"]`
+            const pip =
+                die.querySelector(
+                    `[data-position="${position}"]`
+                );
+
+            pip.classList.add(
+                "visible"
             );
 
-        pip.classList.add("visible");
-
-    });
+        });
 
 }
 
@@ -341,18 +673,34 @@ function addToHistory(results) {
 
     const successes =
         results.filter(
-            result => result >= successThreshold
+            result =>
+                result >= successThreshold
         ).length;
+
 
     const roll = {
 
-        diceCount: selectedDiceCount,
+        diceCount:
+            selectedDiceCount,
 
-        results: [...results],
+        results:
+            [...results],
 
-        successes: successes,
+        successes:
+            successes,
 
-        threshold: successThreshold
+        threshold:
+            successThreshold,
+
+        investigator:
+            currentRollInfo
+                ? currentRollInfo.investigator
+                : null,
+
+        stat:
+            currentRollInfo
+                ? currentRollInfo.stat
+                : null
 
     };
 
@@ -360,6 +708,7 @@ function addToHistory(results) {
     rollHistory.unshift(roll);
 
     renderHistory();
+
 }
 
 
@@ -374,8 +723,6 @@ function renderHistory() {
     fullHistory.innerHTML = "";
 
 
-    // Main screen:
-    // latest 5 rolls only
     const recentRolls =
         rollHistory.slice(0, 5);
 
@@ -390,7 +737,6 @@ function renderHistory() {
     });
 
 
-    // Full history panel
     rollHistory.forEach(roll => {
 
         const item =
@@ -401,14 +747,17 @@ function renderHistory() {
     });
 
 
-    // Only show View All if needed
-    if (rollHistory.length > 5) {
+    if (
+        rollHistory.length > 5
+    ) {
 
-        viewHistory.style.display = "block";
+        viewHistory.style.display =
+            "block";
 
     } else {
 
-        viewHistory.style.display = "none";
+        viewHistory.style.display =
+            "none";
 
     }
 
@@ -424,7 +773,9 @@ function createHistoryItem(roll) {
     const item =
         document.createElement("div");
 
-    item.classList.add("history-item");
+    item.classList.add(
+        "history-item"
+    );
 
 
     const successText =
@@ -435,28 +786,54 @@ function createHistoryItem(roll) {
 
     let thresholdText;
 
+
     if (roll.threshold === 4) {
 
-        thresholdText = "Blessed";
+        thresholdText =
+            "Blessed";
 
-    } else if (roll.threshold === 6) {
+    } else if (
+        roll.threshold === 6
+    ) {
 
-        thresholdText = "Cursed";
+        thresholdText =
+            "Cursed";
 
     } else {
 
-        thresholdText = "Normal";
+        thresholdText =
+            "Normal";
+
+    }
+
+
+    let rollLabel;
+
+
+    if (
+        roll.investigator &&
+        roll.stat
+    ) {
+
+        rollLabel =
+            `${roll.investigator} — ${roll.stat}`;
+
+    } else {
+
+        rollLabel =
+            `${roll.diceCount}d6`;
 
     }
 
 
     item.innerHTML =
-        `${roll.diceCount}d6 (${thresholdText})
+        `${rollLabel} (${thresholdText})
         → [${roll.results.join(", ")}]
         → <strong>${roll.successes} ${successText}</strong>`;
 
 
     return item;
+
 }
 
 
@@ -464,31 +841,44 @@ function createHistoryItem(roll) {
    CLEAR HISTORY
 ------------------------- */
 
-clearHistory.addEventListener("click", () => {
+clearHistory.addEventListener(
+    "click",
+    () => {
 
-    rollHistory = [];
+        rollHistory = [];
 
-    renderHistory();
+        renderHistory();
 
-});
+    }
+);
 
 
 /* -------------------------
    HISTORY PANEL
 ------------------------- */
 
-viewHistory.addEventListener("click", () => {
+viewHistory.addEventListener(
+    "click",
+    () => {
 
-    historyPanel.classList.add("open");
+        historyPanel.classList.add(
+            "open"
+        );
 
-});
+    }
+);
 
 
-closeHistory.addEventListener("click", () => {
+closeHistory.addEventListener(
+    "click",
+    () => {
 
-    historyPanel.classList.remove("open");
+        historyPanel.classList.remove(
+            "open"
+        );
 
-});
+    }
+);
 
 
 /* -------------------------
@@ -501,9 +891,27 @@ rollButton.addEventListener(
 );
 
 
+/*
+   Only allow tapping the roll area
+   to roll while in Manual mode.
+
+   Investigator rolls should happen
+   by tapping a stat.
+*/
+
 rollArea.addEventListener(
     "click",
-    rollDice
+    () => {
+
+        if (
+            currentMode === "manual"
+        ) {
+
+            rollDice();
+
+        }
+
+    }
 );
 
 
@@ -513,32 +921,42 @@ rollArea.addEventListener(
 
 renderHistory();
 
+loadInvestigators();
+
 
 /* -------------------------
    SERVICE WORKER
 ------------------------- */
 
-if ("serviceWorker" in navigator) {
+if (
+    "serviceWorker" in navigator
+) {
 
-    window.addEventListener("load", () => {
+    window.addEventListener(
+        "load",
+        () => {
 
-        navigator.serviceWorker.register("./service-worker.js")
-            .then(() => {
+            navigator.serviceWorker
+                .register(
+                    "./service-worker.js"
+                )
+                .then(() => {
 
-                console.log(
-                    "Service Worker registered"
-                );
+                    console.log(
+                        "Service Worker registered"
+                    );
 
-            })
-            .catch(error => {
+                })
+                .catch(error => {
 
-                console.error(
-                    "Service Worker registration failed:",
-                    error
-                );
+                    console.error(
+                        "Service Worker registration failed:",
+                        error
+                    );
 
-            });
+                });
 
-    });
+        }
+    );
 
 }
