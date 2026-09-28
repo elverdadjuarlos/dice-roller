@@ -1,4 +1,4 @@
-const CACHE_NAME = "dice-roller-v1";
+const CACHE_NAME = "dice-roller-v2";
 
 const FILES_TO_CACHE = [
     "./",
