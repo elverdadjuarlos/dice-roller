@@ -120,21 +120,23 @@ section {
 ------------------------- */
 
 .dice-results {
-    display: grid;
+    display: flex;
 
-    grid-template-columns: repeat(4, 65px);
+    flex-wrap: wrap;
 
-    grid-template-rows: repeat(2, 65px);
+    justify-content: center;
+    align-content: center;
 
     gap: 12px;
 
-    justify-content: center;
-
-    align-content: center;
-
-    margin: 20px 0;
-
+    width: 296px;
     min-height: 142px;
+
+    margin: 20px auto;
+}
+
+.success-options {
+    grid-template-columns: repeat(3, 1fr);
 }
 
 
@@ -156,6 +158,9 @@ section {
     -webkit-user-select: none;
 }
 
+.success-die {
+    background: #22c55e;
+}
 
 /* -------------------------
    DICE PIPS

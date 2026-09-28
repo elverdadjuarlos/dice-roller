@@ -1,8 +1,12 @@
 let selectedDiceCount = 1;
+let successThreshold = 5;
 let isRolling = false;
 
 const countButtons =
     document.querySelectorAll("#dice-count button");
+
+const thresholdButtons =
+    document.querySelectorAll("#success-threshold button");
 
 const rollArea =
     document.getElementById("roll-area");
@@ -13,8 +17,8 @@ const rollButton =
 const diceResults =
     document.getElementById("dice-results");
 
-const totalDisplay =
-    document.getElementById("total");
+const successesDisplay =
+    document.getElementById("successes");
 
 const history =
     document.getElementById("history");
@@ -58,6 +62,26 @@ countButtons.forEach(button => {
 
 });
 
+/* -------------------------
+   SELECT SUCCESS THRESHOLD
+------------------------- */
+
+thresholdButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        thresholdButtons.forEach(btn => {
+            btn.classList.remove("selected");
+        });
+
+        button.classList.add("selected");
+
+        successThreshold =
+            Number(button.dataset.threshold);
+
+    });
+
+});
 
 /* -------------------------
    CREATE RANDOMNESS
@@ -187,18 +211,23 @@ function displayResults(results) {
 
         createPips(die, result);
 
+        // Dice that meet or surpass the success threshold are successes
+        if (result >= successThreshold) {
+            die.classList.add("success-die");
+        }
+
         diceResults.appendChild(die);
 
     });
 
 
-    const total =
-        results.reduce(
-            (sum, roll) => sum + roll,
-            0
-        );
+    // Count the number that meet or surpass the success threshold
+    const successes =
+        results.filter(
+            result => result >= successThreshold
+        ).length;
 
-    totalDisplay.textContent = total;
+    successesDisplay.textContent = successes;
 }
 
 
@@ -259,12 +288,10 @@ function createPips(die, value) {
 
 function addToHistory(results) {
 
-    const total =
-        results.reduce(
-            (sum, roll) => sum + roll,
-            0
-        );
-
+    const successes =
+        results.filter(
+            result => result >= successThreshold
+        ).length;
 
     const roll = {
 
@@ -272,16 +299,16 @@ function addToHistory(results) {
 
         results: [...results],
 
-        total: total
+        successes: successes,
+
+        threshold: successThreshold
 
     };
-
 
     rollHistory.unshift(roll);
 
     renderHistory();
 }
-
 
 /* -------------------------
    RENDER HISTORY
@@ -346,12 +373,20 @@ function createHistoryItem(roll) {
 
     item.classList.add("history-item");
 
+    const successText =
+        roll.successes === 1
+            ? "success"
+            : "successes";
+
+    const thresholdText =
+        roll.threshold === 6
+            ? "6"
+            : `${roll.threshold}+`;
 
     item.innerHTML =
-        `${roll.diceCount}d6
+        `${roll.diceCount}d6 (${thresholdText})
         → [${roll.results.join(", ")}]
-        → <strong>${roll.total}</strong>`;
-
+        → <strong>${roll.successes} ${successText}</strong>`;
 
     return item;
 }
