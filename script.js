@@ -2,6 +2,8 @@ let selectedDiceCount = 1;
 let successThreshold = 5;
 let isRolling = false;
 
+let testModifier = 0;
+
 let currentMode = "manual";
 
 let investigators = [];
@@ -42,6 +44,15 @@ const investigatorSelect =
 
 const investigatorStats =
     document.getElementById("investigator-stats");
+
+const modifierMinus =
+    document.getElementById("modifier-minus");
+
+const modifierPlus =
+    document.getElementById("modifier-plus");
+
+const testModifierValue =
+    document.getElementById("test-modifier-value");
 
 const rollArea =
     document.getElementById("roll-area");
@@ -302,6 +313,7 @@ function displayInvestigatorStats() {
             document.createElement("button");
 
         button.classList.add("stat-button");
+        button.dataset.stat = statName;
 
 
         const name =
@@ -358,6 +370,52 @@ function formatStatName(statName) {
 
 }
 
+/* -------------------------
+   TEST MODIFIER
+------------------------- */
+
+modifierMinus.addEventListener("click", () => {
+
+    testModifier--;
+
+    updateTestModifierDisplay();
+
+});
+
+
+modifierPlus.addEventListener("click", () => {
+
+    testModifier++;
+
+    updateTestModifierDisplay();
+
+});
+
+
+function updateTestModifierDisplay() {
+
+    if (testModifier > 0) {
+
+        testModifierValue.textContent =
+            `+${testModifier}`;
+
+    } else {
+
+        testModifierValue.textContent =
+            testModifier;
+
+    }
+
+}
+
+
+function resetTestModifier() {
+
+    testModifier = 0;
+
+    updateTestModifierDisplay();
+
+}
 
 /* -------------------------
    ROLL INVESTIGATOR STAT
@@ -372,8 +430,20 @@ function rollInvestigatorStat(
         return;
     }
 
-    selectedDiceCount =
+
+    const baseStat =
         Number(statValue);
+
+    const modifier =
+        testModifier;
+
+
+    selectedDiceCount =
+        Math.max(
+            1,
+            baseStat + modifier
+        );
+
 
     currentRollInfo = {
 
@@ -381,11 +451,20 @@ function rollInvestigatorStat(
             selectedInvestigator.name,
 
         stat:
-            formatStatName(statName)
+            formatStatName(statName),
+
+        baseStat:
+            baseStat,
+
+        modifier:
+            modifier
 
     };
 
+
     rollDice();
+
+    resetTestModifier();
 
 }
 
@@ -700,6 +779,11 @@ function addToHistory(results) {
         stat:
             currentRollInfo
                 ? currentRollInfo.stat
+                : null,
+
+        modifier:
+            currentRollInfo
+                ? currentRollInfo.modifier
                 : null
 
     };
@@ -815,8 +899,24 @@ function createHistoryItem(roll) {
         roll.stat
     ) {
 
+        let modifierText = "";
+
+        if (roll.modifier > 0) {
+
+            modifierText =
+                ` (+${roll.modifier})`;
+
+        } else if (roll.modifier < 0) {
+
+            modifierText =
+                ` (${roll.modifier})`;
+
+        }
+
+
         rollLabel =
-            `${roll.investigator} — ${roll.stat}`;
+            `${roll.investigator} — ${roll.stat}${modifierText} — 
+            ${roll.diceCount}d6`;
 
     } else {
 
