@@ -1,19 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Dice Roller</title>
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#111111">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <link
+        rel="manifest"
+        href="manifest.json"
+    >
+
+    <meta
+        name="theme-color"
+        content="#111111"
+    >
+
 </head>
+
 
 <body>
 
     <main class="app">
+
 
         <!-- MODE TABS -->
 
@@ -21,69 +41,143 @@
 
             <button
                 id="manual-tab"
-                class="mode-tab selected">
+                class="mode-tab selected"
+            >
                 Manual
             </button>
 
             <button
                 id="investigator-tab"
-                class="mode-tab">
+                class="mode-tab"
+            >
                 Investigator
             </button>
 
         </div>
 
 
+
         <!-- MANUAL MODE -->
 
         <section
             id="manual-mode"
-            class="mode-content">
+            class="mode-content"
+        >
 
-            <h2>Number of Dice</h2>
+            <h2>
+                Number of Dice
+            </h2>
 
             <div
                 class="button-group"
-                id="dice-count">
+                id="dice-count"
+            >
 
-                <button data-count="1" class="selected">1</button>
-                <button data-count="2">2</button>
-                <button data-count="3">3</button>
-                <button data-count="4">4</button>
-                <button data-count="5">5</button>
-                <button data-count="6">6</button>
-                <button data-count="7">7</button>
-                <button data-count="8">8</button>
+                <button
+                    data-count="1"
+                    class="selected"
+                >
+                    1
+                </button>
+
+                <button data-count="2">
+                    2
+                </button>
+
+                <button data-count="3">
+                    3
+                </button>
+
+                <button data-count="4">
+                    4
+                </button>
+
+                <button data-count="5">
+                    5
+                </button>
+
+                <button data-count="6">
+                    6
+                </button>
+
+                <button data-count="7">
+                    7
+                </button>
+
+                <button data-count="8">
+                    8
+                </button>
 
             </div>
 
         </section>
 
 
+
         <!-- INVESTIGATOR MODE -->
 
         <section
             id="investigator-mode"
-            class="mode-content hidden">
+            class="mode-content hidden"
+        >
 
-            <h2>Investigator</h2>
 
-            <select id="investigator-select">
+            <!-- INVESTIGATOR HEADER -->
 
-                <option value="">
+            <div class="investigator-header">
+
+                <h1 id="investigator-name">
                     Select Investigator
-                </option>
+                </h1>
 
-            </select>
+                <button
+                    id="change-investigator"
+                    class="change-investigator"
+                >
+                    Change
+                </button>
+
+            </div>
+
+
+
+            <!-- INVESTIGATOR SELECTOR -->
+
+            <div
+                id="investigator-selector"
+                class="investigator-selector"
+            >
+
+                <select id="investigator-select">
+
+                    <option value="">
+                        Select Investigator
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- INVESTIGATOR STATS -->
 
             <div
                 id="investigator-stats"
-                class="investigator-stats">
+                class="investigator-stats"
+            >
             </div>
+
+
+
+            <!-- TEST MODIFIER -->
 
             <div class="test-modifier">
 
-                <h2>Test Modifier</h2>
+                <span class="small-label">
+                    Test Modifier
+                </span>
+
 
                 <div class="modifier-control">
 
@@ -91,9 +185,15 @@
                         −
                     </button>
 
+
                     <div class="modifier-display">
-                        <span id="test-modifier-value">0</span>
+
+                        <span id="test-modifier-value">
+                            0
+                        </span>
+
                     </div>
+
 
                     <button id="modifier-plus">
                         +
@@ -106,13 +206,18 @@
         </section>
 
 
-        <!-- MODIFIERS -->
 
-        <section>
+        <!-- SUCCESS MODIFIERS -->
 
-            <h2>Modifiers</h2>
+        <section class="success-modifiers">
 
-            <div class="button-group modifier-options">
+            <h2>
+                Modifiers
+            </h2>
+
+            <div
+                class="button-group modifier-options"
+            >
 
                 <button id="blessed-button">
                     Blessed
@@ -127,23 +232,31 @@
         </section>
 
 
+
         <!-- ROLL AREA -->
 
         <section
             id="roll-area"
-            class="roll-area">
+            class="roll-area"
+        >
 
             <p class="tap-text">
                 Tap here to roll
             </p>
 
+
             <div
                 id="dice-results"
-                class="dice-results">
+                class="dice-results"
+            >
 
-                <div class="die-result pip-die"></div>
+                <div
+                    class="die-result pip-die"
+                >
+                </div>
 
             </div>
+
 
             <div class="total">
 
@@ -158,15 +271,16 @@
         </section>
 
 
+
         <!-- MANUAL ROLL BUTTON -->
 
         <button
             id="roll-button"
-            class="roll-button">
-
+            class="roll-button"
+        >
             ROLL
-
         </button>
+
 
 
         <!-- HISTORY -->
@@ -175,7 +289,9 @@
 
             <div class="history-header">
 
-                <h2>History</h2>
+                <h2>
+                    History
+                </h2>
 
                 <button id="clear-history">
                     Clear
@@ -183,30 +299,36 @@
 
             </div>
 
-            <div id="history"></div>
+
+            <div id="history">
+            </div>
+
 
             <button
                 id="view-history"
-                class="view-history">
-
+                class="view-history"
+            >
                 View All History
-
             </button>
 
         </section>
+
 
 
         <!-- FULL HISTORY PANEL -->
 
         <div
             id="history-panel"
-            class="history-panel">
+            class="history-panel"
+        >
 
             <div class="history-panel-content">
 
                 <div class="history-panel-header">
 
-                    <h2>History</h2>
+                    <h2>
+                        History
+                    </h2>
 
                     <button id="close-history">
                         Close
@@ -214,15 +336,20 @@
 
                 </div>
 
-                <div id="full-history"></div>
+
+                <div id="full-history">
+                </div>
 
             </div>
 
         </div>
 
+
     </main>
+
 
     <script src="script.js"></script>
 
 </body>
+
 </html>

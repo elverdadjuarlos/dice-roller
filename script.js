@@ -45,6 +45,15 @@ const investigatorSelect =
 const investigatorStats =
     document.getElementById("investigator-stats");
 
+const investigatorName =
+    document.getElementById("investigator-name");
+
+const investigatorSelector =
+    document.getElementById("investigator-selector");
+
+const changeInvestigator =
+    document.getElementById("change-investigator");
+
 const modifierMinus =
     document.getElementById("modifier-minus");
 
@@ -276,6 +285,9 @@ investigatorSelect.addEventListener(
 
             selectedInvestigator = null;
 
+            investigatorName.textContent =
+                "Select Investigator";
+
             investigatorStats.innerHTML = "";
 
             return;
@@ -286,7 +298,32 @@ investigatorSelect.addEventListener(
                 Number(selectedIndex)
             ];
 
+        investigatorName.textContent =
+            selectedInvestigator.name;
+
+        investigatorSelector.classList.add(
+            "hidden"
+        );
+
         displayInvestigatorStats();
+
+    }
+);
+
+
+/* -------------------------
+   CHANGE INVESTIGATOR
+------------------------- */
+
+changeInvestigator.addEventListener(
+    "click",
+    () => {
+
+        investigatorSelector.classList.remove(
+            "hidden"
+        );
+
+        investigatorSelect.focus();
 
     }
 );
@@ -362,10 +399,18 @@ function displayInvestigatorStats() {
 
 function formatStatName(statName) {
 
+    const statNames = {
+        lore: "Lore",
+        influence: "Infl",
+        observation: "Obs",
+        strength: "Str",
+        will: "Will"
+    };
+
     return (
-        statName.charAt(0).toUpperCase()
-        +
-        statName.slice(1)
+        statNames[statName]
+        ||
+        statName
     );
 
 }
