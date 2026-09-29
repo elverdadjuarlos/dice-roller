@@ -2,12 +2,15 @@
     box-sizing: border-box;
 }
 
+html,
+body {
+    min-height: 100%;
+}
+
 body {
     margin: 0;
-
     background: #111;
     color: white;
-
     font-family: Arial, sans-serif;
 }
 
@@ -18,175 +21,71 @@ select {
 
 button {
     touch-action: manipulation;
+    border: 1px solid #444;
+    background: #222;
+    color: white;
+    cursor: pointer;
+}
+
+button.selected {
+    background: white;
+    color: black;
+    border-color: white;
 }
 
 .app {
     width: 100%;
-    max-width: 500px;
-
+    max-width: 920px;
     margin: auto;
-
-    padding: 24px 18px 40px;
-}
-
-h2 {
-    font-size: 14px;
-
-    color: #999;
-
-    text-transform: uppercase;
-
-    letter-spacing: 1px;
-
-    margin-bottom: 10px;
-}
-
-section {
-    margin-bottom: 25px;
+    padding: 10px 14px 14px;
 }
 
 
-/* -------------------------
-   MODE TABS
-------------------------- */
-
-.mode-tabs {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 8px;
-
-    margin-bottom: 25px;
-}
-
-.mode-tab {
-    min-height: 48px;
-
-    border: 1px solid #444;
-    border-radius: 10px;
-
-    background: #222;
-    color: #999;
-
-    font-size: 15px;
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-.mode-tab.selected {
-    background: white;
-    color: black;
-
-    border-color: white;
-}
-
-
-/* -------------------------
-   MODES
-------------------------- */
-
-.mode-content.hidden {
-    display: none;
-}
-
-
-/* -------------------------
-   NUMBER OF DICE
-------------------------- */
-
-.button-group {
-    display: grid;
-
-    gap: 8px;
-}
-
-#dice-count {
-    grid-template-columns: repeat(8, 1fr);
-}
-
-.button-group button {
-    min-height: 48px;
-
-    border: 1px solid #444;
-    border-radius: 10px;
-
-    background: #222;
-    color: white;
-
-    font-size: 16px;
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-.button-group button.selected {
-    background: white;
-    color: black;
-
-    border-color: white;
-}
-
-
-/* -------------------------
-   INVESTIGATOR HEADER
-------------------------- */
+/* =========================================================
+   HEADER
+========================================================= */
 
 .investigator-header {
     display: flex;
-
     justify-content: space-between;
     align-items: center;
-
-    gap: 12px;
-
-    margin-bottom: 12px;
+    gap: 10px;
+    margin-bottom: 8px;
 }
 
 .investigator-header h1 {
     min-width: 0;
-
     margin: 0;
-
-    font-size: 20px;
-    font-weight: bold;
-
-    text-transform: uppercase;
-
-    white-space: nowrap;
     overflow: hidden;
+    font-size: 18px;
+    line-height: 1.1;
     text-overflow: ellipsis;
-}
-
-.change-investigator {
-    flex-shrink: 0;
-
-    min-height: 40px;
-
-    padding: 0 14px;
-
-    border: 1px solid #444;
-    border-radius: 8px;
-
-    background: #222;
-    color: white;
-
-    font-size: 11px;
-    font-weight: bold;
-
     text-transform: uppercase;
+    white-space: nowrap;
+}
 
-    cursor: pointer;
+.header-actions {
+    display: flex;
+    flex-shrink: 0;
+    gap: 5px;
+}
+
+.header-button {
+    height: 30px;
+    padding: 0 9px;
+    border-radius: 6px;
+    font-size: 9px;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 
-/* -------------------------
+/* =========================================================
    INVESTIGATOR SELECTOR
-------------------------- */
+========================================================= */
 
 .investigator-selector {
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 
 .investigator-selector.hidden {
@@ -195,297 +94,325 @@ section {
 
 #investigator-select {
     width: 100%;
-    min-height: 48px;
-
-    margin: 0;
-
-    padding: 0 12px;
-
+    height: 38px;
+    padding: 0 9px;
     border: 1px solid #444;
-    border-radius: 8px;
-
+    border-radius: 7px;
     background: #222;
     color: white;
-
-    font-size: 16px;
 }
 
 
-/* -------------------------
-   INVESTIGATOR STATS
-------------------------- */
+/* =========================================================
+   MAIN DASHBOARD
+========================================================= */
+
+.investigator-dashboard {
+    display: grid;
+    grid-template-columns: 180px minmax(0, 1fr);
+    gap: 14px;
+    align-items: stretch;
+}
+
+.investigator-controls,
+.investigator-roll-panel {
+    min-width: 0;
+}
+
+
+/* =========================================================
+   HEALTH / SANITY
+========================================================= */
+
+.vitals {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    margin-bottom: 7px;
+}
+
+.vital {
+    padding: 5px;
+    border: 1px solid #333;
+    border-radius: 7px;
+    background: #181818;
+    text-align: center;
+}
+
+.small-label {
+    display: block;
+    margin-bottom: 3px;
+    color: #888;
+    font-size: 8px;
+    font-weight: bold;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+}
+
+.vital-value {
+    margin-bottom: 4px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.vital-divider {
+    color: #666;
+}
+
+.mini-counter {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+}
+
+.mini-counter button {
+    height: 23px;
+    padding: 0;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
 
 .investigator-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 7px;
+}
+
+.stat-row {
     display: grid;
-
-    grid-template-columns:
-        repeat(5, minmax(0, 1fr));
-
-    gap: 6px;
-
+    grid-template-columns: minmax(0, 1fr) 29px;
+    gap: 4px;
     width: 100%;
-
-    margin-bottom: 16px;
 }
 
 .stat-button {
-    min-width: 0;
-    height: 55px;
-
+    width: 100%;
+    height: 30px;
     display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-
-    padding: 3px 1px;
-
+    padding: 0 9px;
     border: none;
-    border-radius: 8px;
-
-    color: white;
-
-    cursor: pointer;
-
-    user-select: none;
-    -webkit-user-select: none;
+    border-radius: 6px;
 }
 
 .stat-name {
-    max-width: 100%;
-
     font-size: 9px;
     font-weight: bold;
-
     text-transform: uppercase;
-
-    white-space: nowrap;
-    overflow: hidden;
 }
 
 .stat-value {
-    margin-top: 3px;
-
-    font-size: 21px;
+    font-size: 15px;
     font-weight: bold;
-
-    line-height: 1;
 }
-
-
-/* LORE */
 
 .stat-button[data-stat="lore"] {
     background: #7e22ce;
 }
 
-
-/* INFLUENCE */
-
 .stat-button[data-stat="influence"] {
     background: #ea580c;
 }
-
-
-/* OBSERVATION */
 
 .stat-button[data-stat="observation"] {
     background: #16a34a;
 }
 
-
-/* STRENGTH */
-
 .stat-button[data-stat="strength"] {
     background: #dc2626;
 }
-
-
-/* WILL */
 
 .stat-button[data-stat="will"] {
     background: #2563eb;
 }
 
-
 .stat-button:active {
-    transform: scale(0.95);
+    transform: scale(0.97);
 }
 
 
-/* -------------------------
+/* =========================================================
+   FOCUS BUTTON
+========================================================= */
+
+.focus-button {
+    width: 29px;
+    height: 30px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #444;
+    border-radius: 6px;
+    background: #181818;
+    color: #777;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.focus-button.active {
+    border-color: white;
+    background: white;
+    color: black;
+}
+
+.focus-button:active {
+    transform: scale(0.94);
+}
+
+
+/* =========================================================
    TEST MODIFIER
-------------------------- */
+========================================================= */
 
-.test-modifier {
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-.small-label {
-    display: block;
-
-    margin-bottom: 7px;
-
-    color: #999;
-
-    font-size: 11px;
-    font-weight: bold;
-
-    text-transform: uppercase;
-
-    letter-spacing: 1px;
-}
-
-.modifier-control {
+.compact-counter-row {
     display: grid;
+    grid-template-columns: 1fr 25px 34px 25px;
+    align-items: center;
+    gap: 3px;
+    margin-top: 4px;
+}
 
-    grid-template-columns: 50px 80px 50px;
+.compact-counter-label {
+    color: #999;
+    font-size: 8px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
 
+.compact-counter-row button {
+    width: 25px;
+    height: 23px;
+    padding: 0;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.compact-counter-value {
+    height: 23px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background: #181818;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   INVENTORY BUTTON
+========================================================= */
+
+.inventory-open-button {
+    width: 100%;
+    height: 30px;
+    margin-top: 8px;
+    border-radius: 6px;
+    font-size: 9px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   RIGHT / ROLL PANEL
+========================================================= */
+
+.investigator-roll-panel {
+    display: flex;
+    flex-direction: column;
     gap: 6px;
 }
 
-.modifier-control button {
-    height: 42px;
+.investigator-modifiers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+}
 
-    border: 1px solid #444;
-    border-radius: 8px;
-
-    background: #222;
-    color: white;
-
-    font-size: 21px;
+.investigator-modifiers button {
+    height: 30px;
+    border-radius: 6px;
+    font-size: 10px;
     font-weight: bold;
-
-    cursor: pointer;
+    text-transform: uppercase;
 }
 
-.modifier-display {
-    height: 42px;
 
+/*
+   This is deliberately the dominant part
+   of the right-hand side without becoming
+   a huge empty box.
+*/
+
+.investigator-roll-area {
+    flex: 1;
+    min-height: 205px;
     display: flex;
-
-    justify-content: center;
-    align-items: center;
-
-    border: 1px solid #444;
-    border-radius: 8px;
-
-    background: #181818;
-
-    font-size: 18px;
-    font-weight: bold;
-}
-
-
-/* -------------------------
-   BLESSED / CURSED
-------------------------- */
-
-.modifier-options {
-    grid-template-columns: repeat(2, 1fr);
-}
-
-
-/* -------------------------
-   ROLL AREA
-------------------------- */
-
-.roll-area {
-    min-height: 240px;
-
-    display: flex;
-
     flex-direction: column;
-
     justify-content: center;
-    align-items: center;
-
+    align-items: stretch;
+    padding: 10px;
     border: 1px solid #333;
-    border-radius: 18px;
-
-    cursor: pointer;
-
-    user-select: none;
-    -webkit-user-select: none;
+    border-radius: 10px;
+    background: #141414;
 }
 
-.tap-text {
-    color: #777;
-
-    font-size: 13px;
-}
-
-
-/* -------------------------
-   DICE GRID
-------------------------- */
-
-.dice-results {
+.investigator-dice-results {
+    width: 100%;
+    flex: 1;
+    min-height: 125px;
     display: flex;
-
     flex-wrap: wrap;
-
     justify-content: center;
     align-content: center;
-
-    gap: 12px;
-
-    width: 296px;
-    max-width: 100%;
-
-    min-height: 142px;
-
-    margin: 20px auto;
+    align-items: center;
+    gap: 7px;
 }
 
 
-/* -------------------------
-   DIE
-------------------------- */
+/* =========================================================
+   DICE
+========================================================= */
 
 .die-result {
-    width: 65px;
-    height: 65px;
-
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
     background: white;
-
-    border-radius: 12px;
-
-    user-select: none;
-    -webkit-user-select: none;
+    border-radius: 8px;
 }
 
 .success-die {
     background: #22c55e;
 }
 
-
-/* -------------------------
-   DICE PIPS
-------------------------- */
-
 .pip-die {
     display: grid;
-
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-
-    padding: 10px;
+    padding: 6px;
 }
 
 .pip {
-    width: 10px;
-    height: 10px;
-
-    background: black;
-
-    border-radius: 50%;
-
+    width: 6px;
+    height: 6px;
     justify-self: center;
     align-self: center;
-
+    border-radius: 50%;
+    background: black;
     opacity: 0;
 }
 
@@ -494,39 +421,99 @@ section {
 }
 
 
-/* -------------------------
-   SHAKE ANIMATION
-------------------------- */
+/* =========================================================
+   RESULT FOOTER
+========================================================= */
 
-.roll-area.rolling .die-result {
-    animation:
-        diceShake 0.1s infinite alternate;
+.investigator-result-footer {
+    min-height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.investigator-total {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+}
+
+#investigator-successes {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.success-label {
+    color: #888;
+    font-size: 8px;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   FOCUS REROLL
+========================================================= */
+
+.focus-reroll-button {
+    display: none;
+    height: 27px;
+    padding: 0 10px;
+    border-radius: 5px;
+    font-size: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.focus-reroll-button.visible {
+    display: block;
+}
+
+.investigator-dice-results.selecting-reroll
+.die-result {
+    cursor: pointer;
+    outline: 2px solid #888;
+    outline-offset: 2px;
+}
+
+.investigator-dice-results.selecting-reroll
+.die-result:active {
+    transform: scale(0.9);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+.investigator-roll-area.rolling .die-result,
+.manual-result-area.rolling .die-result {
+    animation: diceShake 0.1s infinite alternate;
+}
+
+.die-result.rerolling {
+    animation: diceShake 0.1s infinite alternate;
 }
 
 @keyframes diceShake {
 
     from {
         transform:
-            translateY(-3px)
+            translateY(-2px)
             rotate(-2deg);
     }
 
     to {
         transform:
-            translateY(3px)
+            translateY(2px)
             rotate(2deg);
     }
 
 }
 
-
-/* -------------------------
-   LANDING ANIMATION
-------------------------- */
-
 .die-result.landed {
-    animation:
-        diceLand 0.2s ease;
+    animation: diceLand 0.2s ease;
 }
 
 @keyframes diceLand {
@@ -546,213 +533,240 @@ section {
 }
 
 
-/* -------------------------
-   TOTAL
-------------------------- */
+/* =========================================================
+   OVERLAYS
+========================================================= */
 
-.total {
-    color: #999;
-
-    font-size: 14px;
+.overlay-panel {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.85);
 }
 
-.total span {
-    display: block;
+.overlay-panel.open {
+    display: flex;
+}
 
-    margin-top: 4px;
+.overlay-content {
+    width: 100%;
+    max-width: 560px;
+    max-height: calc(100vh - 24px);
+    overflow-y: auto;
+    padding: 14px;
+    border: 1px solid #333;
+    border-radius: 12px;
+    background: #111;
+}
 
-    color: white;
+.overlay-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
 
-    text-align: center;
+.overlay-header h2 {
+    margin: 0;
+    font-size: 16px;
+    text-transform: uppercase;
+}
 
-    font-size: 38px;
+.overlay-header button {
+    height: 30px;
+    padding: 0 9px;
+    border-radius: 6px;
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   MANUAL ROLL
+========================================================= */
+
+.manual-dice-count {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 4px;
+}
+
+.manual-dice-count button {
+    height: 32px;
+    padding: 0;
+    border-radius: 6px;
+    font-size: 12px;
     font-weight: bold;
 }
 
-
-/* -------------------------
-   ROLL BUTTON
-------------------------- */
-
-.roll-button {
-    width: 100%;
-    height: 65px;
-
-    margin-bottom: 30px;
-
-    border: none;
-    border-radius: 15px;
-
+.manual-dice-count button.selected {
     background: white;
     color: black;
-
-    font-size: 22px;
-    font-weight: bold;
-
-    cursor: pointer;
 }
 
-.roll-button:active {
-    transform: scale(0.98);
-}
-
-.roll-button:disabled {
-    cursor: default;
-}
-
-
-/* -------------------------
-   HISTORY
-------------------------- */
-
-.history-header {
-    display: flex;
-
-    justify-content: space-between;
-    align-items: center;
-}
-
-.history-header h2 {
-    margin: 0;
-}
-
-#clear-history {
-    background: none;
-
-    border: none;
-
+.manual-status {
+    margin: 9px 0;
     color: #888;
-
-    cursor: pointer;
+    font-size: 11px;
 }
 
-.history-item {
-    padding: 12px 0;
-
-    border-bottom: 1px solid #222;
-
-    color: #bbb;
-}
-
-.history-item strong {
+.manual-status strong {
     color: white;
 }
 
-
-/* -------------------------
-   VIEW HISTORY
-------------------------- */
-
-.view-history {
+.manual-roll-button {
     width: 100%;
-
-    min-height: 48px;
-
-    margin-top: 15px;
-
-    border: 1px solid #333;
-    border-radius: 10px;
-
-    background: #222;
-    color: white;
-
-    font-size: 14px;
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-
-/* -------------------------
-   FULL HISTORY PANEL
-------------------------- */
-
-.history-panel {
-    display: none;
-
-    position: fixed;
-
-    inset: 0;
-
-    background: #111;
-
-    overflow-y: auto;
-
-    z-index: 100;
-}
-
-.history-panel.open {
-    display: block;
-}
-
-.history-panel-content {
-    width: 100%;
-    max-width: 500px;
-
-    margin: auto;
-
-    padding: 24px 18px 40px;
-}
-
-.history-panel-header {
-    display: flex;
-
-    justify-content: space-between;
-    align-items: center;
-
-    margin-bottom: 20px;
-}
-
-.history-panel-header h2 {
-    margin: 0;
-
-    color: white;
-
-    font-size: 20px;
-}
-
-#close-history {
-    min-width: 60px;
-    height: 44px;
-
+    height: 36px;
     border: none;
-    border-radius: 10px;
+    border-radius: 7px;
+    background: white;
+    color: black;
+    font-weight: bold;
+    text-transform: uppercase;
+}
 
-    background: #222;
+.manual-result-area {
+    min-height: 100px;
+    margin-top: 9px;
+    padding: 8px;
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+.manual-dice-results {
+    min-height: 58px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 6px;
+}
+
+.manual-total {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 5px;
+    color: #888;
+    font-size: 8px;
+    text-transform: uppercase;
+}
+
+#manual-successes {
     color: white;
-
-    font-size: 14px;
-
-    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 
-/* -------------------------
-   LANDSCAPE
-------------------------- */
+/* =========================================================
+   INVENTORY
+========================================================= */
 
-@media (orientation: landscape) and (min-width: 600px) {
+.inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.inventory-item {
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    background: #181818;
+    text-align: center;
+}
+
+.inventory-label {
+    display: block;
+    color: #999;
+    font-size: 9px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.inventory-value {
+    display: block;
+    margin: 7px 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.inventory-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+}
+
+.inventory-buttons button {
+    height: 28px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   PORTRAIT
+========================================================= */
+
+@media (orientation: portrait) {
 
     .app {
-        max-width: 900px;
-
-        padding-top: 16px;
+        max-width: 520px;
     }
 
-    .mode-tabs {
-        margin-bottom: 16px;
+    .investigator-dashboard {
+        grid-template-columns: 150px minmax(0, 1fr);
+        gap: 8px;
     }
 
-    #investigator-mode {
-        margin-bottom: 16px;
+    .investigator-header h1 {
+        font-size: 15px;
     }
 
-    .investigator-header {
-        margin-bottom: 10px;
+    .header-button {
+        padding: 0 6px;
+        font-size: 8px;
     }
 
-    .investigator-stats {
-        margin-bottom: 12px;
+    .investigator-roll-area {
+        min-height: 220px;
+    }
+
+    .die-result {
+        width: 38px;
+        height: 38px;
+        flex-basis: 38px;
+    }
+
+    .pip {
+        width: 5px;
+        height: 5px;
+    }
+
+}
+
+
+/* =========================================================
+   LANDSCAPE
+========================================================= */
+
+@media (orientation: landscape) {
+
+    .app {
+        max-width: 920px;
+    }
+
+    .investigator-dashboard {
+        grid-template-columns: 180px minmax(0, 1fr);
+        gap: 14px;
+    }
+
+    .investigator-roll-area {
+        min-height: 205px;
     }
 
 }

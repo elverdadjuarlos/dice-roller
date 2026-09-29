@@ -2,6 +2,8 @@
     {
         "name": "Test Investigator 1",
         "expansion": "Base Game",
+        "health": 7,
+        "sanity": 5,
         "stats": {
             "lore": 4,
             "influence": 3,
@@ -13,6 +15,8 @@
     {
         "name": "Test Investigator 2",
         "expansion": "Base Game",
+        "health": 6,
+        "sanity": 6,
         "stats": {
             "lore": 2,
             "influence": 4,
@@ -24,6 +28,8 @@
     {
         "name": "Test Investigator 3",
         "expansion": "Base Game",
+        "health": 5,
+        "sanity": 7,
         "stats": {
             "lore": 3,
             "influence": 1,

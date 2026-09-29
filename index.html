@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta
@@ -10,7 +9,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Dice Roller</title>
+    <title>Arkham Dice Roller</title>
 
     <link
         rel="stylesheet"
@@ -26,141 +25,150 @@
         name="theme-color"
         content="#111111"
     >
-
 </head>
-
 
 <body>
 
-    <main class="app">
+<main class="app">
 
+    <!-- HEADER -->
 
-        <!-- MODE TABS -->
+    <header class="investigator-header">
 
-        <div class="mode-tabs">
+        <h1 id="investigator-name">
+            Select Investigator
+        </h1>
+
+        <div class="header-actions">
 
             <button
-                id="manual-tab"
-                class="mode-tab selected"
+                id="manual-roll-open"
+                class="header-button"
             >
-                Manual
+                Manual Roll
             </button>
 
             <button
-                id="investigator-tab"
-                class="mode-tab"
+                id="change-investigator"
+                class="header-button"
             >
-                Investigator
+                Change
             </button>
 
         </div>
 
+    </header>
 
 
-        <!-- MANUAL MODE -->
+    <!-- INVESTIGATOR SELECTOR -->
 
-        <section
-            id="manual-mode"
-            class="mode-content"
-        >
+    <div
+        id="investigator-selector"
+        class="investigator-selector"
+    >
 
-            <h2>
-                Number of Dice
-            </h2>
+        <select id="investigator-select">
 
-            <div
-                class="button-group"
-                id="dice-count"
-            >
+            <option value="">
+                Select Investigator
+            </option>
 
-                <button
-                    data-count="1"
-                    class="selected"
-                >
-                    1
-                </button>
+        </select>
 
-                <button data-count="2">
-                    2
-                </button>
+    </div>
 
-                <button data-count="3">
-                    3
-                </button>
 
-                <button data-count="4">
-                    4
-                </button>
+    <!-- MAIN DASHBOARD -->
 
-                <button data-count="5">
-                    5
-                </button>
+    <section class="investigator-dashboard">
 
-                <button data-count="6">
-                    6
-                </button>
 
-                <button data-count="7">
-                    7
-                </button>
+        <!-- LEFT SIDE -->
 
-                <button data-count="8">
-                    8
-                </button>
+        <div class="investigator-controls">
+
+
+            <!-- HEALTH / SANITY -->
+
+            <div class="vitals">
+
+                <div class="vital">
+
+                    <span class="small-label">
+                        Health
+                    </span>
+
+                    <div class="vital-value">
+
+                        <span id="health-current">
+                            —
+                        </span>
+
+                        <span class="vital-divider">
+                            /
+                        </span>
+
+                        <span id="health-max">
+                            —
+                        </span>
+
+                    </div>
+
+                    <div class="mini-counter">
+
+                        <button id="health-minus">
+                            −
+                        </button>
+
+                        <button id="health-plus">
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="vital">
+
+                    <span class="small-label">
+                        Sanity
+                    </span>
+
+                    <div class="vital-value">
+
+                        <span id="sanity-current">
+                            —
+                        </span>
+
+                        <span class="vital-divider">
+                            /
+                        </span>
+
+                        <span id="sanity-max">
+                            —
+                        </span>
+
+                    </div>
+
+                    <div class="mini-counter">
+
+                        <button id="sanity-minus">
+                            −
+                        </button>
+
+                        <button id="sanity-plus">
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
 
             </div>
 
-        </section>
 
-
-
-        <!-- INVESTIGATOR MODE -->
-
-        <section
-            id="investigator-mode"
-            class="mode-content hidden"
-        >
-
-
-            <!-- INVESTIGATOR HEADER -->
-
-            <div class="investigator-header">
-
-                <h1 id="investigator-name">
-                    Select Investigator
-                </h1>
-
-                <button
-                    id="change-investigator"
-                    class="change-investigator"
-                >
-                    Change
-                </button>
-
-            </div>
-
-
-
-            <!-- INVESTIGATOR SELECTOR -->
-
-            <div
-                id="investigator-selector"
-                class="investigator-selector"
-            >
-
-                <select id="investigator-select">
-
-                    <option value="">
-                        Select Investigator
-                    </option>
-
-                </select>
-
-            </div>
-
-
-
-            <!-- INVESTIGATOR STATS -->
+            <!-- STATS + PER-STAT FOCUS -->
 
             <div
                 id="investigator-stats"
@@ -169,55 +177,52 @@
             </div>
 
 
-
             <!-- TEST MODIFIER -->
 
-            <div class="test-modifier">
+            <div class="compact-counter-row">
 
-                <span class="small-label">
-                    Test Modifier
+                <span class="compact-counter-label">
+                    Test Mod
                 </span>
 
+                <button id="modifier-minus">
+                    −
+                </button>
 
-                <div class="modifier-control">
+                <span
+                    id="test-modifier-value"
+                    class="compact-counter-value"
+                >
+                    0
+                </span>
 
-                    <button id="modifier-minus">
-                        −
-                    </button>
-
-
-                    <div class="modifier-display">
-
-                        <span id="test-modifier-value">
-                            0
-                        </span>
-
-                    </div>
-
-
-                    <button id="modifier-plus">
-                        +
-                    </button>
-
-                </div>
+                <button id="modifier-plus">
+                    +
+                </button>
 
             </div>
 
-        </section>
 
+            <!-- INVENTORY -->
 
-
-        <!-- SUCCESS MODIFIERS -->
-
-        <section class="success-modifiers">
-
-            <h2>
-                Modifiers
-            </h2>
-
-            <div
-                class="button-group modifier-options"
+            <button
+                id="inventory-open"
+                class="inventory-open-button"
             >
+                Inventory
+            </button>
+
+        </div>
+
+
+        <!-- RIGHT SIDE / MAIN DICE AREA -->
+
+        <div class="investigator-roll-panel">
+
+
+            <!-- BLESSED / CURSED -->
+
+            <div class="investigator-modifiers">
 
                 <button id="blessed-button">
                     Blessed
@@ -229,126 +234,264 @@
 
             </div>
 
-        </section>
 
-
-
-        <!-- ROLL AREA -->
-
-        <section
-            id="roll-area"
-            class="roll-area"
-        >
-
-            <p class="tap-text">
-                Tap here to roll
-            </p>
-
+            <!-- DICE -->
 
             <div
-                id="dice-results"
-                class="dice-results"
+                id="investigator-roll-area"
+                class="investigator-roll-area"
             >
 
                 <div
-                    class="die-result pip-die"
+                    id="investigator-dice-results"
+                    class="investigator-dice-results"
                 >
                 </div>
 
-            </div>
+
+                <div class="investigator-result-footer">
+
+                    <div class="investigator-total">
+
+                        <span id="investigator-successes">
+                            —
+                        </span>
+
+                        <span class="success-label">
+                            Successes
+                        </span>
+
+                    </div>
 
 
-            <div class="total">
-
-                Successes
-
-                <span id="successes">
-                    —
-                </span>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- MANUAL ROLL BUTTON -->
-
-        <button
-            id="roll-button"
-            class="roll-button"
-        >
-            ROLL
-        </button>
-
-
-
-        <!-- HISTORY -->
-
-        <section class="history-section">
-
-            <div class="history-header">
-
-                <h2>
-                    History
-                </h2>
-
-                <button id="clear-history">
-                    Clear
-                </button>
-
-            </div>
-
-
-            <div id="history">
-            </div>
-
-
-            <button
-                id="view-history"
-                class="view-history"
-            >
-                View All History
-            </button>
-
-        </section>
-
-
-
-        <!-- FULL HISTORY PANEL -->
-
-        <div
-            id="history-panel"
-            class="history-panel"
-        >
-
-            <div class="history-panel-content">
-
-                <div class="history-panel-header">
-
-                    <h2>
-                        History
-                    </h2>
-
-                    <button id="close-history">
-                        Close
+                    <button
+                        id="focus-reroll-button"
+                        class="focus-reroll-button"
+                    >
+                        Reroll One Die
                     </button>
 
-                </div>
-
-
-                <div id="full-history">
                 </div>
 
             </div>
 
         </div>
 
+    </section>
 
-    </main>
+
+    <!-- MANUAL ROLL PANEL -->
+
+    <div
+        id="manual-roll-panel"
+        class="overlay-panel"
+    >
+
+        <div class="overlay-content manual-roll-content">
+
+            <div class="overlay-header">
+
+                <h2>
+                    Manual Roll
+                </h2>
+
+                <button id="manual-roll-close">
+                    Close
+                </button>
+
+            </div>
 
 
-    <script src="script.js"></script>
+            <span class="small-label">
+                Number of Dice
+            </span>
+
+
+            <div
+                id="dice-count"
+                class="manual-dice-count"
+            >
+
+                <button data-count="1" class="selected">1</button>
+                <button data-count="2">2</button>
+                <button data-count="3">3</button>
+                <button data-count="4">4</button>
+                <button data-count="5">5</button>
+                <button data-count="6">6</button>
+                <button data-count="7">7</button>
+                <button data-count="8">8</button>
+
+            </div>
+
+
+            <div class="manual-status">
+
+                Current status:
+
+                <strong id="manual-status-text">
+                    Normal
+                </strong>
+
+            </div>
+
+
+            <button
+                id="manual-roll-button"
+                class="manual-roll-button"
+            >
+                Roll
+            </button>
+
+
+            <div
+                id="manual-roll-area"
+                class="manual-result-area"
+            >
+
+                <div
+                    id="manual-dice-results"
+                    class="manual-dice-results"
+                >
+                </div>
+
+
+                <div class="manual-total">
+
+                    <span id="manual-successes">
+                        —
+                    </span>
+
+                    <span>
+                        Successes
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- INVENTORY PANEL -->
+
+    <div
+        id="inventory-panel"
+        class="overlay-panel"
+    >
+
+        <div class="overlay-content inventory-content">
+
+            <div class="overlay-header">
+
+                <h2>
+                    Inventory
+                </h2>
+
+                <button id="inventory-close">
+                    Close
+                </button>
+
+            </div>
+
+
+            <div class="inventory-grid">
+
+
+                <div class="inventory-item">
+
+                    <span class="inventory-label">
+                        Money
+                    </span>
+
+                    <span
+                        id="money-value"
+                        class="inventory-value"
+                    >
+                        0
+                    </span>
+
+                    <div class="inventory-buttons">
+
+                        <button id="money-minus">
+                            −
+                        </button>
+
+                        <button id="money-plus">
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="inventory-item">
+
+                    <span class="inventory-label">
+                        Remnants
+                    </span>
+
+                    <span
+                        id="remnants-value"
+                        class="inventory-value"
+                    >
+                        0
+                    </span>
+
+                    <div class="inventory-buttons">
+
+                        <button id="remnants-minus">
+                            −
+                        </button>
+
+                        <button id="remnants-plus">
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="inventory-item">
+
+                    <span class="inventory-label">
+                        Clues
+                    </span>
+
+                    <span
+                        id="clues-value"
+                        class="inventory-value"
+                    >
+                        0
+                    </span>
+
+                    <div class="inventory-buttons">
+
+                        <button id="clues-minus">
+                            −
+                        </button>
+
+                        <button id="clues-plus">
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script src="script.js"></script>
 
 </body>
 
