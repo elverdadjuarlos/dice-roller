@@ -27,17 +27,69 @@
     >
 </head>
 
+
 <body>
 
-<main class="app">
+
+<!-- =====================================================
+     INVESTIGATOR SELECTION SCREEN
+===================================================== -->
+
+<section
+    id="selection-screen"
+    class="selection-screen"
+>
+
+    <div class="selection-content">
+
+        <div class="selection-heading">
+
+            <span class="selection-eyebrow">
+                Arkham Companion
+            </span>
+
+            <h1>
+                Choose Your Investigator
+            </h1>
+
+        </div>
+
+
+        <div
+            id="investigator-list"
+            class="investigator-list"
+        >
+
+            <div class="selection-loading">
+                Loading investigators...
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     INVESTIGATOR GAME SCREEN
+===================================================== -->
+
+<main
+    id="game-screen"
+    class="app game-screen hidden"
+>
+
 
     <!-- HEADER -->
 
     <header class="investigator-header">
 
         <h1 id="investigator-name">
-            Select Investigator
+            Investigator
         </h1>
+
 
         <div class="header-actions">
 
@@ -47,6 +99,7 @@
             >
                 Manual Roll
             </button>
+
 
             <button
                 id="change-investigator"
@@ -59,23 +112,6 @@
 
     </header>
 
-
-    <!-- INVESTIGATOR SELECTOR -->
-
-    <div
-        id="investigator-selector"
-        class="investigator-selector"
-    >
-
-        <select id="investigator-select">
-
-            <option value="">
-                Select Investigator
-            </option>
-
-        </select>
-
-    </div>
 
 
     <!-- MAIN DASHBOARD -->
@@ -92,11 +128,13 @@
 
             <div class="vitals">
 
+
                 <div class="vital">
 
                     <span class="small-label">
                         Health
                     </span>
+
 
                     <div class="vital-value">
 
@@ -114,6 +152,7 @@
 
                     </div>
 
+
                     <div class="mini-counter">
 
                         <button id="health-minus">
@@ -129,11 +168,13 @@
                 </div>
 
 
+
                 <div class="vital">
 
                     <span class="small-label">
                         Sanity
                     </span>
+
 
                     <div class="vital-value">
 
@@ -151,6 +192,7 @@
 
                     </div>
 
+
                     <div class="mini-counter">
 
                         <button id="sanity-minus">
@@ -165,16 +207,19 @@
 
                 </div>
 
+
             </div>
 
 
-            <!-- STATS + PER-STAT FOCUS -->
+
+            <!-- STATS -->
 
             <div
                 id="investigator-stats"
                 class="investigator-stats"
             >
             </div>
+
 
 
             <!-- TEST MODIFIER -->
@@ -185,9 +230,11 @@
                     Test Mod
                 </span>
 
+
                 <button id="modifier-minus">
                     −
                 </button>
+
 
                 <span
                     id="test-modifier-value"
@@ -196,11 +243,13 @@
                     0
                 </span>
 
+
                 <button id="modifier-plus">
                     +
                 </button>
 
             </div>
+
 
 
             <!-- INVENTORY -->
@@ -212,10 +261,12 @@
                 Inventory
             </button>
 
+
         </div>
 
 
-        <!-- RIGHT SIDE / MAIN DICE AREA -->
+
+        <!-- RIGHT SIDE -->
 
         <div class="investigator-roll-panel">
 
@@ -235,12 +286,14 @@
             </div>
 
 
-            <!-- DICE -->
+
+            <!-- DICE AREA -->
 
             <div
                 id="investigator-roll-area"
                 class="investigator-roll-area"
             >
+
 
                 <div
                     id="investigator-dice-results"
@@ -249,7 +302,9 @@
                 </div>
 
 
+
                 <div class="investigator-result-footer">
+
 
                     <div class="investigator-total">
 
@@ -264,6 +319,7 @@
                     </div>
 
 
+
                     <button
                         id="focus-reroll-button"
                         class="focus-reroll-button"
@@ -271,13 +327,34 @@
                         Reroll One Die
                     </button>
 
+
                 </div>
 
+
             </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- FUTURE CARD AREA -->
+
+    <section class="card-area">
+
+        <div class="card-area-placeholder">
+
+            <span>
+                Investigator Cards & Items
+            </span>
 
         </div>
 
     </section>
+
 
 
     <!-- MANUAL ROLL PANEL -->
@@ -288,6 +365,7 @@
     >
 
         <div class="overlay-content manual-roll-content">
+
 
             <div class="overlay-header">
 
@@ -302,9 +380,11 @@
             </div>
 
 
+
             <span class="small-label">
                 Number of Dice
             </span>
+
 
 
             <div
@@ -324,6 +404,7 @@
             </div>
 
 
+
             <div class="manual-status">
 
                 Current status:
@@ -335,6 +416,7 @@
             </div>
 
 
+
             <button
                 id="manual-roll-button"
                 class="manual-roll-button"
@@ -343,16 +425,19 @@
             </button>
 
 
+
             <div
                 id="manual-roll-area"
                 class="manual-result-area"
             >
+
 
                 <div
                     id="manual-dice-results"
                     class="manual-dice-results"
                 >
                 </div>
+
 
 
                 <div class="manual-total">
@@ -367,11 +452,14 @@
 
                 </div>
 
+
             </div>
+
 
         </div>
 
     </div>
+
 
 
     <!-- INVENTORY PANEL -->
@@ -382,6 +470,7 @@
     >
 
         <div class="overlay-content inventory-content">
+
 
             <div class="overlay-header">
 
@@ -394,6 +483,7 @@
                 </button>
 
             </div>
+
 
 
             <div class="inventory-grid">
@@ -427,6 +517,7 @@
                 </div>
 
 
+
                 <div class="inventory-item">
 
                     <span class="inventory-label">
@@ -453,6 +544,7 @@
                     </div>
 
                 </div>
+
 
 
                 <div class="inventory-item">
@@ -482,11 +574,14 @@
 
                 </div>
 
+
             </div>
+
 
         </div>
 
     </div>
+
 
 </main>
 
