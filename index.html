@@ -29,6 +29,7 @@
 
 <body>
 
+
 <!-- =====================================================
      INVESTIGATOR SELECTION
 ===================================================== -->
@@ -37,6 +38,7 @@
     id="selection-screen"
     class="selection-screen"
 >
+
     <div class="selection-content">
 
         <div class="selection-heading">
@@ -51,16 +53,20 @@
 
         </div>
 
+
         <div
             id="investigator-list"
             class="investigator-list"
         >
+
             <div class="selection-loading">
                 Loading investigators...
             </div>
+
         </div>
 
     </div>
+
 </section>
 
 
@@ -73,7 +79,10 @@
     class="app game-screen hidden"
 >
 
-    <!-- HEADER -->
+
+    <!-- =================================================
+         HEADER
+    ================================================= -->
 
     <header class="investigator-header">
 
@@ -125,6 +134,9 @@
 
             <div class="vitals">
 
+
+                <!-- HEALTH -->
+
                 <div class="vital health-vital">
 
                     <span class="small-label">
@@ -167,6 +179,8 @@
 
                 </div>
 
+
+                <!-- SANITY -->
 
                 <div class="vital sanity-vital">
 
@@ -255,18 +269,24 @@
         </div>
 
 
-        <!-- RIGHT SIDE -->
+        <!-- =============================================
+             RIGHT COLUMN
+        ============================================== -->
 
         <div class="investigator-right-column">
 
+
             <!-- =========================================
-                ROLL SIDE
+                 ROLL SIDE
             ========================================== -->
 
             <div
                 id="investigator-roll-side"
                 class="investigator-side active"
             >
+
+
+                <!-- FLIP TO INFO -->
 
                 <button
                     id="show-investigator-info"
@@ -293,7 +313,7 @@
                 </div>
 
 
-                <!-- DICE -->
+                <!-- DICE AREA -->
 
                 <div
                     id="investigator-roll-area"
@@ -338,6 +358,7 @@
                 <div class="inventory-bar">
 
                     <div class="inventory-summary">
+
 
                         <!-- MONEY -->
 
@@ -420,13 +441,16 @@
 
 
             <!-- =========================================
-                INVESTIGATOR INFO SIDE
+                 INVESTIGATOR INFO SIDE
             ========================================== -->
 
             <div
                 id="investigator-info-side"
                 class="investigator-side"
             >
+
+
+                <!-- INFO HEADER -->
 
                 <div class="info-side-header">
 
@@ -468,6 +492,9 @@
 
                 <div class="info-role-grid">
 
+
+                    <!-- PRIMARY ROLE -->
+
                     <div class="info-field">
 
                         <span class="info-label">
@@ -483,6 +510,8 @@
 
                     </div>
 
+
+                    <!-- SECONDARY ROLE -->
 
                     <div class="info-field">
 
@@ -506,6 +535,9 @@
 
                 <div class="info-starting-grid">
 
+
+                    <!-- FOCUS LIMIT -->
+
                     <div class="info-field">
 
                         <span class="info-label">
@@ -522,6 +554,8 @@
                     </div>
 
 
+                    <!-- STARTING MONEY -->
+
                     <div class="info-field">
 
                         <span class="info-label">
@@ -537,6 +571,8 @@
 
                     </div>
 
+
+                    <!-- STARTING REMNANTS -->
 
                     <div class="info-field">
 
@@ -559,215 +595,7 @@
 
         </div>
 
-
-            <!-- =========================================
-                 INVENTORY SUMMARY
-            ========================================== -->
-
-            <div class="inventory-bar">
-
-                <div class="inventory-summary">
-
-                    <!-- MONEY -->
-
-                    <div
-                        id="money-marker"
-                        class="inventory-marker empty"
-                        title="Money"
-                    >
-
-                        <span
-                            class="resource-dot money-dot"
-                        ></span>
-
-                        <span
-                            id="money-summary"
-                            class="resource-count"
-                        >
-                            0
-                        </span>
-
-                    </div>
-
-
-                    <!-- REMNANTS -->
-
-                    <div
-                        id="remnants-marker"
-                        class="inventory-marker empty"
-                        title="Remnants"
-                    >
-
-                        <span
-                            class="resource-dot remnant-dot"
-                        ></span>
-
-                        <span
-                            id="remnants-summary"
-                            class="resource-count"
-                        >
-                            0
-                        </span>
-
-                    </div>
-
-
-                    <!-- CLUES -->
-
-                    <div
-                        id="clues-marker"
-                        class="inventory-marker empty"
-                        title="Clues"
-                    >
-
-                        <span
-                            class="resource-dot clue-dot"
-                        ></span>
-
-                        <span
-                            id="clues-summary"
-                            class="resource-count"
-                        >
-                            0
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <button
-                    id="inventory-open"
-                    class="inventory-open-button"
-                >
-                    Inventory
-                </button>
-
-            </div>
-
-        </div>
-
     </section>
-
-
-    <!-- =================================================
-         FUTURE CARDS / ITEMS
-    ================================================= -->
-
-    <section class="investigator-info">
-
-            <div class="info-section-heading">
-                Investigator Information
-            </div>
-
-
-            <!-- OCCUPATION / ROLES -->
-
-            <div class="investigator-identity">
-
-                <div
-                    id="investigator-occupation"
-                    class="investigator-occupation"
-                >
-                    —
-                </div>
-
-                <div
-                    id="investigator-roles"
-                    class="investigator-roles"
-                >
-                    —
-                </div>
-
-            </div>
-
-
-            <!-- STARTING INFORMATION -->
-
-            <div class="starting-info-grid">
-
-                <div class="starting-info-item">
-
-                    <span class="starting-info-label">
-                        Focus Limit
-                    </span>
-
-                    <span
-                        id="info-focus-limit"
-                        class="starting-info-value"
-                    >
-                        —
-                    </span>
-
-                </div>
-
-
-                <div class="starting-info-item">
-
-                    <span class="starting-info-label">
-                        Starting $
-                    </span>
-
-                    <span
-                        id="info-starting-money"
-                        class="starting-info-value"
-                    >
-                        —
-                    </span>
-
-                </div>
-
-
-                <div class="starting-info-item">
-
-                    <span class="starting-info-label">
-                        Remnants
-                    </span>
-
-                    <span
-                        id="info-starting-remnants"
-                        class="starting-info-value"
-                    >
-                        —
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <!-- ABILITIES -->
-
-            <div class="investigator-info-block">
-
-                <div class="investigator-info-label">
-                    Abilities
-                </div>
-
-                <div
-                    id="investigator-abilities"
-                    class="investigator-abilities"
-                ></div>
-
-            </div>
-
-
-            <!-- STARTING ITEMS -->
-
-            <div class="investigator-info-block">
-
-                <div class="investigator-info-label">
-                    Starting Items
-                </div>
-
-                <div
-                    id="investigator-starting-items"
-                    class="starting-items"
-                ></div>
-
-            </div>
-
-        </section>
 
 
     <!-- =================================================
