@@ -78,7 +78,7 @@ const focusRerollButton =
     document.getElementById("focus-reroll-button");
 
 
-/* INVESTIGATOR PANEL SIDES */
+/* FLIP SIDES */
 
 const investigatorRollSide =
     document.getElementById("investigator-roll-side");
@@ -93,7 +93,7 @@ const showInvestigatorRoll =
     document.getElementById("show-investigator-roll");
 
 
-/* INVESTIGATOR INFORMATION */
+/* INVESTIGATOR INFO */
 
 const investigatorOccupation =
     document.getElementById("investigator-occupation");
@@ -146,7 +146,7 @@ const countButtons =
     );
 
 
-/* INVENTORY OVERLAY */
+/* INVENTORY */
 
 const inventoryOpen =
     document.getElementById("inventory-open");
@@ -156,9 +156,6 @@ const inventoryClose =
 
 const inventoryPanel =
     document.getElementById("inventory-panel");
-
-
-/* INVENTORY VALUES */
 
 const moneyValue =
     document.getElementById("money-value");
@@ -187,9 +184,6 @@ const cluesMinus =
 const cluesPlus =
     document.getElementById("clues-plus");
 
-
-/* INVENTORY SUMMARY */
-
 const moneySummary =
     document.getElementById("money-summary");
 
@@ -210,7 +204,7 @@ const cluesMarker =
 
 
 /* =========================================================
-   APP STATE
+   STATE
 ========================================================= */
 
 let investigators = [];
@@ -241,7 +235,7 @@ let selectingFocusReroll =
 
 
 /* =========================================================
-   CREATE INVESTIGATOR STATE
+   INVESTIGATOR STATE
 ========================================================= */
 
 function createInvestigatorState(
@@ -257,9 +251,9 @@ function createInvestigatorState(
             investigator.sanity,
 
         /*
-           These remain gameplay counters and intentionally
-           start at 0. The investigator's startingMoney and
-           startingRemnants fields are informational only.
+           These are gameplay values.
+           Starting values in investigators.json
+           remain informational only.
         */
 
         money:
@@ -270,11 +264,6 @@ function createInvestigatorState(
 
         clues:
             0,
-
-        /*
-           focusLimit is also informational only for now.
-           Focus is NOT restricted by that value.
-        */
 
         focus: {
 
@@ -383,7 +372,7 @@ async function loadInvestigators() {
 
 
 /* =========================================================
-   INVESTIGATOR SELECTION
+   SELECTION SCREEN
 ========================================================= */
 
 function displayInvestigatorSelection() {
@@ -525,11 +514,6 @@ function selectInvestigator(
 
     resetInvestigatorRollDisplay();
 
-    /*
-       Always start a newly selected investigator
-       on the dice-roll side.
-    */
-
     showRollSide();
 
     renderInvestigator();
@@ -597,7 +581,7 @@ function showGameScreen() {
 
 
 /* =========================================================
-   INVESTIGATOR PANEL SIDES
+   FLIP CARD
 ========================================================= */
 
 function showRollSide() {
@@ -696,14 +680,10 @@ function renderInvestigatorInfo() {
     }
 
 
-    /* OCCUPATION */
-
     investigatorOccupation.textContent =
         currentInvestigator.occupation ||
         "—";
 
-
-    /* ROLES */
 
     investigatorPrimaryRole.textContent =
         currentInvestigator.roles?.primary ||
@@ -714,8 +694,6 @@ function renderInvestigatorInfo() {
         currentInvestigator.roles?.secondary ||
         "—";
 
-
-    /* INFORMATIONAL STARTING VALUES */
 
     investigatorFocusLimit.textContent =
         currentInvestigator.focusLimit ??
@@ -763,9 +741,7 @@ healthMinus.addEventListener(
     () => {
 
         if (!state) {
-
             return;
-
         }
 
 
@@ -787,9 +763,7 @@ healthPlus.addEventListener(
     () => {
 
         if (!state) {
-
             return;
-
         }
 
 
@@ -811,9 +785,7 @@ sanityMinus.addEventListener(
     () => {
 
         if (!state) {
-
             return;
-
         }
 
 
@@ -835,9 +807,7 @@ sanityPlus.addEventListener(
     () => {
 
         if (!state) {
-
             return;
-
         }
 
 
@@ -865,13 +835,11 @@ function renderStats() {
 
 
     const stats = [
-
         "lore",
         "influence",
         "observation",
         "strength",
         "will"
-
     ];
 
 
@@ -887,8 +855,6 @@ function renderStats() {
             row.className =
                 "stat-row";
 
-
-            /* STAT BUTTON */
 
             const statButton =
                 document.createElement(
@@ -954,8 +920,6 @@ function renderStats() {
                 }
             );
 
-
-            /* FOCUS BUTTON */
 
             const focusButton =
                 document.createElement(
@@ -1034,14 +998,13 @@ function toggleFocus(
 ) {
 
     if (!state) {
-
         return;
-
     }
 
 
     /*
-       focusLimit is intentionally NOT enforced yet.
+       Focus limit is informational only.
+       It is not enforced here yet.
     */
 
     state.focus[stat] =
@@ -1299,7 +1262,7 @@ function rollInvestigatorStat(
 
 
 /* =========================================================
-   ACTIVE FOCUS REROLL
+   FOCUS REROLL
 ========================================================= */
 
 function showFocusRerollOption() {
@@ -1385,10 +1348,6 @@ focusRerollButton.addEventListener(
 );
 
 
-/* =========================================================
-   SELECT DIE FOR FOCUS REROLL
-========================================================= */
-
 investigatorDiceResults.addEventListener(
     "click",
     event => {
@@ -1453,10 +1412,6 @@ investigatorDiceResults.addEventListener(
     }
 );
 
-
-/* =========================================================
-   REROLL ONE DIE
-========================================================= */
 
 function rerollFocusedDie(
     index,
@@ -1525,15 +1480,10 @@ function rerollFocusedDie(
 
 
             displayDiceResults(
-
                 rollInfo.results,
-
                 rollInfo.threshold,
-
                 investigatorDiceResults,
-
                 investigatorSuccesses
-
             );
 
 
@@ -1598,13 +1548,9 @@ function rerollFocusedDie(
 function renderInventory() {
 
     if (!state) {
-
         return;
-
     }
 
-
-    /* OVERLAY VALUES */
 
     moneyValue.textContent =
         state.money;
@@ -1618,8 +1564,6 @@ function renderInventory() {
         state.clues;
 
 
-    /* DASHBOARD SUMMARY */
-
     moneySummary.textContent =
         state.money;
 
@@ -1631,8 +1575,6 @@ function renderInventory() {
     cluesSummary.textContent =
         state.clues;
 
-
-    /* DIM EMPTY RESOURCES */
 
     moneyMarker.classList.toggle(
         "empty",
@@ -1654,16 +1596,12 @@ function renderInventory() {
 }
 
 
-/* MONEY */
-
 moneyMinus.addEventListener(
     "click",
     () => {
 
         if (!state) {
-
             return;
-
         }
 
 
@@ -1685,9 +1623,7 @@ moneyPlus.addEventListener(
     () => {
 
         if (!state) {
-
             return;
-
         }
 
 
@@ -1700,16 +1636,12 @@ moneyPlus.addEventListener(
 );
 
 
-/* REMNANTS */
-
 remnantsMinus.addEventListener(
     "click",
     () => {
 
         if (!state) {
-
             return;
-
         }
 
 
@@ -1731,9 +1663,7 @@ remnantsPlus.addEventListener(
     () => {
 
         if (!state) {
-
             return;
-
         }
 
 
@@ -1746,16 +1676,12 @@ remnantsPlus.addEventListener(
 );
 
 
-/* CLUES */
-
 cluesMinus.addEventListener(
     "click",
     () => {
 
         if (!state) {
-
             return;
-
         }
 
 
@@ -1777,9 +1703,7 @@ cluesPlus.addEventListener(
     () => {
 
         if (!state) {
-
             return;
-
         }
 
 
@@ -1944,12 +1868,6 @@ manualRollButton.addEventListener(
         }
 
 
-        /*
-           Starting another roll clears
-           an unused Focus reroll without
-           consuming the Focus.
-        */
-
         clearActiveInvestigatorRoll();
 
 
@@ -2072,15 +1990,10 @@ function rollDice({
 
 
             displayDiceResults(
-
                 results,
-
                 threshold,
-
                 diceContainer,
-
                 successDisplay
-
             );
 
 
@@ -2141,12 +2054,10 @@ function rollDice({
 ========================================================= */
 
 function displayDiceResults(
-
     results,
     threshold,
     diceContainer,
     successDisplay
-
 ) {
 
     diceContainer.innerHTML =
@@ -2207,7 +2118,7 @@ function displayDiceResults(
 
 
 /* =========================================================
-   CREATE PIPS
+   PIPS
 ========================================================= */
 
 function createPips(
@@ -2320,7 +2231,7 @@ function rollDie() {
 
 
 /* =========================================================
-   RESET INVESTIGATOR ROLL
+   RESET ROLL DISPLAY
 ========================================================= */
 
 function resetInvestigatorRollDisplay() {
@@ -2358,9 +2269,7 @@ function openPanel(
 ) {
 
     if (!panel) {
-
         return;
-
     }
 
 
@@ -2376,9 +2285,7 @@ function closePanel(
 ) {
 
     if (!panel) {
-
         return;
-
     }
 
 

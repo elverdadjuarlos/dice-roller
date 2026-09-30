@@ -39,7 +39,7 @@ button.selected {
 
 
 /* =========================================================
-   INVESTIGATOR SELECTION
+   SELECTION SCREEN
 ========================================================= */
 
 .selection-screen {
@@ -244,15 +244,9 @@ button.selected {
     min-width: 0;
 }
 
-.investigator-right-column {
-    position: relative;
-    min-width: 0;
-    min-height: 0;
-}
-
 
 /* =========================================================
-   VITALS
+   LEFT COLUMN - VITALS
 ========================================================= */
 
 .vitals {
@@ -386,11 +380,6 @@ button.selected {
     transform: scale(0.97);
 }
 
-
-/* =========================================================
-   FOCUS
-========================================================= */
-
 .focus-button {
     width: 29px;
     height: 30px;
@@ -464,29 +453,120 @@ button.selected {
 
 
 /* =========================================================
-   BLESSED / CURSED
+   RIGHT COLUMN
 ========================================================= */
 
-.investigator-modifiers {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.investigator-right-column {
+    min-width: 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
     gap: 6px;
-}
-
-.investigator-modifiers button {
-    height: 30px;
-    border-radius: 6px;
-    font-size: 10px;
-    font-weight: bold;
-    text-transform: uppercase;
 }
 
 
 /* =========================================================
-   DICE AREA
+   DICE CARD HEADER
 ========================================================= */
 
+.roll-card-header {
+    flex: 0 0 auto;
+    min-height: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+
+/* =========================================================
+   BLESSED / CURSED
+========================================================= */
+
+.investigator-modifiers {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.investigator-modifiers button {
+    width: auto;
+    height: 21px;
+    padding: 0 7px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background: #181818;
+    color: #777;
+    font-size: 7px;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+.investigator-modifiers button.selected {
+    border-color: #888;
+    background: #333;
+    color: white;
+}
+
+
+/* =========================================================
+   CARD FLIP BUTTON
+========================================================= */
+
+.side-flip-button {
+    width: 25px;
+    height: 25px;
+    flex: 0 0 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    border: 1px solid #3a3a3a;
+    border-radius: 50%;
+    background: #181818;
+    color: #888;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.side-flip-button:active {
+    transform: scale(0.9);
+}
+
+
+/* =========================================================
+   FLIPPABLE CARD
+========================================================= */
+
+.investigator-flip-area {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+}
+
+.investigator-side {
+    display: none;
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+}
+
+.investigator-side.active {
+    display: flex;
+}
+
+
+/* =========================================================
+   DICE SIDE
+========================================================= */
+
+#investigator-roll-side {
+    flex-direction: column;
+}
+
 .investigator-roll-area {
+    position: relative;
     flex: 1;
     min-height: 115px;
     display: flex;
@@ -498,6 +578,37 @@ button.selected {
     border-radius: 10px;
     background: #141414;
 }
+
+
+/* =========================================================
+   CARD FLIP BUTTON
+========================================================= */
+
+.side-flip-button {
+    width: 25px;
+    height: 25px;
+    flex: 0 0 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    border: 1px solid #3a3a3a;
+    border-radius: 50%;
+    background: #181818;
+    color: #888;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.side-flip-button:active {
+    transform: scale(0.9);
+}
+
+
+
+/* =========================================================
+   DICE
+========================================================= */
 
 .investigator-dice-results {
     width: 100%;
@@ -543,11 +654,6 @@ button.selected {
 .pip.visible {
     opacity: 1;
 }
-
-
-/* =========================================================
-   DICE RESULT
-========================================================= */
 
 .investigator-result-footer {
     min-height: 28px;
@@ -602,10 +708,116 @@ button.selected {
 
 
 /* =========================================================
-   INVENTORY SUMMARY
+   INFO SIDE
+========================================================= */
+
+#investigator-info-side {
+    flex-direction: column;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    background: #141414;
+}
+
+.info-side-header {
+    min-height: 27px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #292929;
+}
+
+.info-side-title {
+    color: #888;
+    font-size: 8px;
+    font-weight: bold;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+}
+
+.info-label {
+    display: block;
+    margin-bottom: 4px;
+    color: #777;
+    font-size: 7px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.info-occupation-block {
+    padding: 10px 2px;
+    border-bottom: 1px solid #292929;
+}
+
+.info-occupation {
+    display: block;
+    overflow: hidden;
+    font-size: 14px;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.info-role-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    padding: 9px 0;
+    border-bottom: 1px solid #292929;
+}
+
+.info-field {
+    min-width: 0;
+}
+
+.info-value {
+    display: block;
+    overflow: hidden;
+    color: #ddd;
+    font-size: 10px;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.info-starting-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    margin-top: auto;
+    padding-top: 9px;
+}
+
+.info-starting-grid .info-field {
+    padding: 6px 2px;
+    border: 1px solid #292929;
+    border-radius: 6px;
+    background: #181818;
+    text-align: center;
+}
+
+.info-starting-grid .info-label {
+    min-height: 16px;
+    margin-bottom: 2px;
+}
+
+.info-number {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   PERSISTENT INVENTORY
 ========================================================= */
 
 .inventory-bar {
+    flex: 0 0 auto;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -671,7 +883,7 @@ button.selected {
 
 
 /* =========================================================
-   INVENTORY OVERLAY
+   INVENTORY OVERLAY CONTENT
 ========================================================= */
 
 .inventory-list {
@@ -770,375 +982,6 @@ button.selected {
     }
 }
 
-
-/* =========================================================
-   INVESTIGATOR INFORMATION
-========================================================= */
-
-.investigator-info {
-    margin-top: 14px;
-    padding: 12px;
-    border: 1px solid #2d2d2d;
-    border-radius: 10px;
-    background: #141414;
-}
-
-.info-section-heading {
-    margin-bottom: 10px;
-    color: #777;
-    font-size: 9px;
-    font-weight: bold;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-}
-
-/* =========================================================
-   TWO-SIDED INVESTIGATOR PANEL
-========================================================= */
-
-.investigator-side {
-    display: none;
-    width: 100%;
-    height: 100%;
-    min-width: 0;
-}
-
-.investigator-side.active {
-    display: flex;
-}
-
-
-/* =========================================================
-   ROLL SIDE
-========================================================= */
-
-#investigator-roll-side {
-    position: relative;
-    flex-direction: column;
-    gap: 6px;
-}
-
-
-/* =========================================================
-   FLIP BUTTON
-========================================================= */
-
-.side-flip-button {
-    width: 25px;
-    height: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    border: 1px solid #444;
-    border-radius: 50%;
-    background: #181818;
-    color: #999;
-    font-size: 15px;
-    line-height: 1;
-}
-
-.side-flip-button:active {
-    transform: scale(0.9);
-}
-
-
-/*
-   On the roll side, float the button in the
-   upper-right corner without consuming height.
-*/
-
-#investigator-roll-side >
-.side-flip-button {
-    position: absolute;
-    top: 2px;
-    right: 2px;
-    z-index: 5;
-}
-
-
-/*
-   Give Cursed enough room so the flip button
-   doesn't cover it.
-*/
-
-#investigator-roll-side
-.investigator-modifiers {
-    padding-right: 31px;
-}
-
-
-/* =========================================================
-   INFO SIDE
-========================================================= */
-
-#investigator-info-side {
-    flex-direction: column;
-    padding: 10px;
-    border: 1px solid #333;
-    border-radius: 10px;
-    background: #141414;
-}
-
-
-/* =========================================================
-   INFO HEADER
-========================================================= */
-
-.info-side-header {
-    min-height: 27px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-    padding-bottom: 7px;
-    border-bottom: 1px solid #292929;
-}
-
-.info-side-title {
-    color: #888;
-    font-size: 8px;
-    font-weight: bold;
-    letter-spacing: 0.7px;
-    text-transform: uppercase;
-}
-
-.info-flip-button {
-    flex: 0 0 25px;
-}
-
-
-/* =========================================================
-   INFO LABELS
-========================================================= */
-
-.info-label {
-    display: block;
-    margin-bottom: 4px;
-    color: #777;
-    font-size: 7px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-}
-
-
-/* =========================================================
-   OCCUPATION
-========================================================= */
-
-.info-occupation-block {
-    padding: 10px 2px;
-    border-bottom: 1px solid #292929;
-}
-
-.info-occupation {
-    display: block;
-    overflow: hidden;
-    font-size: 14px;
-    font-weight: bold;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-
-/* =========================================================
-   ROLES
-========================================================= */
-
-.info-role-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6px;
-    padding: 9px 0;
-    border-bottom: 1px solid #292929;
-}
-
-.info-field {
-    min-width: 0;
-}
-
-.info-value {
-    display: block;
-    overflow: hidden;
-    color: #ddd;
-    font-size: 10px;
-    font-weight: bold;
-    text-overflow: ellipsis;
-    text-transform: uppercase;
-    white-space: nowrap;
-}
-
-
-/* =========================================================
-   STARTING INFORMATION
-========================================================= */
-
-.info-starting-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 5px;
-    margin-top: auto;
-    padding-top: 9px;
-}
-
-.info-starting-grid .info-field {
-    padding: 6px 2px;
-    border: 1px solid #292929;
-    border-radius: 6px;
-    background: #181818;
-    text-align: center;
-}
-
-.info-starting-grid .info-label {
-    min-height: 16px;
-    margin-bottom: 2px;
-}
-
-.info-number {
-    display: block;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-
-/* =========================================================
-   IDENTITY
-========================================================= */
-
-.investigator-identity {
-    padding-bottom: 10px;
-    border-bottom: 1px solid #292929;
-}
-
-.investigator-occupation {
-    margin-bottom: 3px;
-    font-size: 15px;
-    font-weight: bold;
-}
-
-.investigator-roles {
-    color: #888;
-    font-size: 9px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-}
-
-
-/* =========================================================
-   STARTING INFORMATION
-========================================================= */
-
-.starting-info-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
-    padding: 10px 0;
-    border-bottom: 1px solid #292929;
-}
-
-.starting-info-item {
-    padding: 7px 4px;
-    border: 1px solid #292929;
-    border-radius: 7px;
-    background: #181818;
-    text-align: center;
-}
-
-.starting-info-label {
-    display: block;
-    margin-bottom: 4px;
-    color: #777;
-    font-size: 7px;
-    font-weight: bold;
-    letter-spacing: 0.4px;
-    text-transform: uppercase;
-}
-
-.starting-info-value {
-    font-size: 16px;
-    font-weight: bold;
-}
-
-
-/* =========================================================
-   INFO BLOCKS
-========================================================= */
-
-.investigator-info-block {
-    padding-top: 10px;
-}
-
-.investigator-info-block +
-.investigator-info-block {
-    margin-top: 10px;
-    border-top: 1px solid #292929;
-}
-
-.investigator-info-label {
-    margin-bottom: 7px;
-    color: #777;
-    font-size: 8px;
-    font-weight: bold;
-    letter-spacing: 0.6px;
-    text-transform: uppercase;
-}
-
-
-/* =========================================================
-   ABILITIES
-========================================================= */
-
-.investigator-abilities {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.investigator-ability {
-    line-height: 1.4;
-}
-
-.ability-name {
-    display: block;
-    margin-bottom: 2px;
-    font-size: 11px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.ability-text {
-    color: #bbb;
-    font-size: 10px;
-    line-height: 1.45;
-}
-
-
-/* =========================================================
-   STARTING ITEMS
-========================================================= */
-
-.starting-items {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.starting-item {
-    position: relative;
-    padding-left: 12px;
-    color: #bbb;
-    font-size: 10px;
-    line-height: 1.4;
-}
-
-.starting-item::before {
-    content: "•";
-    position: absolute;
-    left: 1px;
-    color: #666;
-}
 
 /* =========================================================
    OVERLAYS
@@ -1308,6 +1151,16 @@ button.selected {
         font-size: 18px;
     }
 
+    .investigator-modifiers {
+        gap: 4px;
+    }
+
+    .investigator-modifiers button {
+        height: 22px;
+        padding: 0 7px;
+        font-size: 7px;
+    }
+
     .inventory-summary {
         gap: 10px;
     }
@@ -1343,5 +1196,4 @@ button.selected {
             minmax(0, 1fr);
         gap: 10px;
     }
-
 }
