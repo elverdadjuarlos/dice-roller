@@ -71,7 +71,7 @@
 
 
 <!-- =====================================================
-     INVESTIGATOR GAME SCREEN
+     GAME SCREEN
 ===================================================== -->
 
 <main
@@ -115,13 +115,15 @@
 
 
     <!-- =====================================================
-         MAIN DASHBOARD
+         DASHBOARD
     ===================================================== -->
 
     <section class="investigator-dashboard">
 
 
-        <!-- LEFT SIDE -->
+        <!-- =================================================
+             INVESTIGATOR CONTROLS
+        ================================================= -->
 
         <div class="investigator-controls">
 
@@ -131,14 +133,11 @@
             <div class="vitals">
 
 
-                <!-- HEALTH -->
-
-                <div class="vital">
+                <div class="vital health-vital">
 
                     <span class="small-label">
                         Health
                     </span>
-
 
                     <div class="vital-value">
 
@@ -155,7 +154,6 @@
                         </span>
 
                     </div>
-
 
                     <div class="mini-counter">
 
@@ -178,14 +176,11 @@
                 </div>
 
 
-                <!-- SANITY -->
-
-                <div class="vital">
+                <div class="vital sanity-vital">
 
                     <span class="small-label">
                         Sanity
                     </span>
-
 
                     <div class="vital-value">
 
@@ -202,7 +197,6 @@
                         </span>
 
                     </div>
-
 
                     <div class="mini-counter">
 
@@ -267,21 +261,11 @@
 
             </div>
 
-
-            <!-- INVENTORY -->
-
-            <button
-                id="inventory-open"
-                class="inventory-open-button"
-            >
-                Inventory
-            </button>
-
         </div>
 
 
         <!-- =================================================
-             RIGHT SIDE
+             DICE
         ================================================= -->
 
         <div class="investigator-roll-panel">
@@ -302,7 +286,7 @@
             </div>
 
 
-            <!-- DICE AREA -->
+            <!-- ROLL AREA -->
 
             <div
                 id="investigator-roll-area"
@@ -344,11 +328,132 @@
 
         </div>
 
+
+        <!-- =================================================
+             INVENTORY
+        ================================================= -->
+
+        <div class="dashboard-inventory">
+
+            <span class="dashboard-inventory-title">
+                Inventory
+            </span>
+
+
+            <!-- MONEY -->
+
+            <div class="dashboard-inventory-item">
+
+                <span class="dashboard-inventory-label">
+                    Money
+                </span>
+
+                <div class="dashboard-inventory-counter">
+
+                    <button
+                        id="money-minus"
+                        aria-label="Decrease Money"
+                    >
+                        −
+                    </button>
+
+                    <span
+                        id="money-value"
+                        class="dashboard-inventory-value"
+                    >
+                        0
+                    </span>
+
+                    <button
+                        id="money-plus"
+                        aria-label="Increase Money"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- REMNANTS -->
+
+            <div class="dashboard-inventory-item">
+
+                <span class="dashboard-inventory-label">
+                    Remnants
+                </span>
+
+                <div class="dashboard-inventory-counter">
+
+                    <button
+                        id="remnants-minus"
+                        aria-label="Decrease Remnants"
+                    >
+                        −
+                    </button>
+
+                    <span
+                        id="remnants-value"
+                        class="dashboard-inventory-value"
+                    >
+                        0
+                    </span>
+
+                    <button
+                        id="remnants-plus"
+                        aria-label="Increase Remnants"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- CLUES -->
+
+            <div class="dashboard-inventory-item">
+
+                <span class="dashboard-inventory-label">
+                    Clues
+                </span>
+
+                <div class="dashboard-inventory-counter">
+
+                    <button
+                        id="clues-minus"
+                        aria-label="Decrease Clues"
+                    >
+                        −
+                    </button>
+
+                    <span
+                        id="clues-value"
+                        class="dashboard-inventory-value"
+                    >
+                        0
+                    </span>
+
+                    <button
+                        id="clues-plus"
+                        aria-label="Increase Clues"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </section>
 
 
     <!-- =====================================================
-         FUTURE CARDS / ITEMS AREA
+         FUTURE CARDS / ITEMS
     ===================================================== -->
 
     <section class="card-area">
@@ -406,33 +511,13 @@
                     1
                 </button>
 
-                <button data-count="2">
-                    2
-                </button>
-
-                <button data-count="3">
-                    3
-                </button>
-
-                <button data-count="4">
-                    4
-                </button>
-
-                <button data-count="5">
-                    5
-                </button>
-
-                <button data-count="6">
-                    6
-                </button>
-
-                <button data-count="7">
-                    7
-                </button>
-
-                <button data-count="8">
-                    8
-                </button>
+                <button data-count="2">2</button>
+                <button data-count="3">3</button>
+                <button data-count="4">4</button>
+                <button data-count="5">5</button>
+                <button data-count="6">6</button>
+                <button data-count="7">7</button>
+                <button data-count="8">8</button>
 
             </div>
 
@@ -477,148 +562,6 @@
                     <span>
                         Successes
                     </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =====================================================
-         INVENTORY PANEL
-    ===================================================== -->
-
-    <div
-        id="inventory-panel"
-        class="overlay-panel"
-    >
-
-        <div class="overlay-content inventory-content">
-
-
-            <div class="overlay-header">
-
-                <h2>
-                    Inventory
-                </h2>
-
-                <button id="inventory-close">
-                    Close
-                </button>
-
-            </div>
-
-
-            <div class="inventory-grid">
-
-
-                <!-- MONEY -->
-
-                <div class="inventory-item">
-
-                    <span class="inventory-label">
-                        Money
-                    </span>
-
-                    <span
-                        id="money-value"
-                        class="inventory-value"
-                    >
-                        0
-                    </span>
-
-                    <div class="inventory-buttons">
-
-                        <button
-                            id="money-minus"
-                            aria-label="Decrease Money"
-                        >
-                            −
-                        </button>
-
-                        <button
-                            id="money-plus"
-                            aria-label="Increase Money"
-                        >
-                            +
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-                <!-- REMNANTS -->
-
-                <div class="inventory-item">
-
-                    <span class="inventory-label">
-                        Remnants
-                    </span>
-
-                    <span
-                        id="remnants-value"
-                        class="inventory-value"
-                    >
-                        0
-                    </span>
-
-                    <div class="inventory-buttons">
-
-                        <button
-                            id="remnants-minus"
-                            aria-label="Decrease Remnants"
-                        >
-                            −
-                        </button>
-
-                        <button
-                            id="remnants-plus"
-                            aria-label="Increase Remnants"
-                        >
-                            +
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-                <!-- CLUES -->
-
-                <div class="inventory-item">
-
-                    <span class="inventory-label">
-                        Clues
-                    </span>
-
-                    <span
-                        id="clues-value"
-                        class="inventory-value"
-                    >
-                        0
-                    </span>
-
-                    <div class="inventory-buttons">
-
-                        <button
-                            id="clues-minus"
-                            aria-label="Decrease Clues"
-                        >
-                            −
-                        </button>
-
-                        <button
-                            id="clues-plus"
-                            aria-label="Increase Clues"
-                        >
-                            +
-                        </button>
-
-                    </div>
 
                 </div>
 
