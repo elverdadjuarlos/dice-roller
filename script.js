@@ -15,7 +15,6 @@ let activeInvestigatorRoll = null;
 ========================================================= */
 
 let investigatorState = {
-
     health: 0,
     maxHealth: 0,
 
@@ -33,7 +32,6 @@ let investigatorState = {
     money: 0,
     remnants: 0,
     clues: 0
-
 };
 
 
@@ -42,19 +40,13 @@ let investigatorState = {
 ========================================================= */
 
 const selectionScreen =
-    document.getElementById(
-        "selection-screen"
-    );
+    document.getElementById("selection-screen");
 
 const gameScreen =
-    document.getElementById(
-        "game-screen"
-    );
+    document.getElementById("game-screen");
 
 const investigatorList =
-    document.getElementById(
-        "investigator-list"
-    );
+    document.getElementById("investigator-list");
 
 
 /* =========================================================
@@ -62,228 +54,145 @@ const investigatorList =
 ========================================================= */
 
 const investigatorStats =
-    document.getElementById(
-        "investigator-stats"
-    );
+    document.getElementById("investigator-stats");
 
 const investigatorName =
-    document.getElementById(
-        "investigator-name"
-    );
+    document.getElementById("investigator-name");
 
 const changeInvestigator =
-    document.getElementById(
-        "change-investigator"
-    );
+    document.getElementById("change-investigator");
 
 
 /* TEST MODIFIER */
 
 const modifierMinus =
-    document.getElementById(
-        "modifier-minus"
-    );
+    document.getElementById("modifier-minus");
 
 const modifierPlus =
-    document.getElementById(
-        "modifier-plus"
-    );
+    document.getElementById("modifier-plus");
 
 const testModifierValue =
-    document.getElementById(
-        "test-modifier-value"
-    );
+    document.getElementById("test-modifier-value");
 
 
 /* BLESSED / CURSED */
 
 const blessedButton =
-    document.getElementById(
-        "blessed-button"
-    );
+    document.getElementById("blessed-button");
 
 const cursedButton =
-    document.getElementById(
-        "cursed-button"
-    );
+    document.getElementById("cursed-button");
 
 
 /* VITALS */
 
 const healthCurrent =
-    document.getElementById(
-        "health-current"
-    );
+    document.getElementById("health-current");
 
 const healthMax =
-    document.getElementById(
-        "health-max"
-    );
+    document.getElementById("health-max");
 
 const healthMinus =
-    document.getElementById(
-        "health-minus"
-    );
+    document.getElementById("health-minus");
 
 const healthPlus =
-    document.getElementById(
-        "health-plus"
-    );
-
+    document.getElementById("health-plus");
 
 const sanityCurrent =
-    document.getElementById(
-        "sanity-current"
-    );
+    document.getElementById("sanity-current");
 
 const sanityMax =
-    document.getElementById(
-        "sanity-max"
-    );
+    document.getElementById("sanity-max");
 
 const sanityMinus =
-    document.getElementById(
-        "sanity-minus"
-    );
+    document.getElementById("sanity-minus");
 
 const sanityPlus =
-    document.getElementById(
-        "sanity-plus"
-    );
+    document.getElementById("sanity-plus");
 
 
 /* INVESTIGATOR ROLL */
 
 const investigatorRollArea =
-    document.getElementById(
-        "investigator-roll-area"
-    );
+    document.getElementById("investigator-roll-area");
 
 const investigatorDiceResults =
-    document.getElementById(
-        "investigator-dice-results"
-    );
+    document.getElementById("investigator-dice-results");
 
 const investigatorSuccesses =
-    document.getElementById(
-        "investigator-successes"
-    );
+    document.getElementById("investigator-successes");
 
 const focusRerollButton =
-    document.getElementById(
-        "focus-reroll-button"
-    );
+    document.getElementById("focus-reroll-button");
 
 
-/* MANUAL */
+/* MANUAL ROLL */
 
 const countButtons =
-    document.querySelectorAll(
-        "#dice-count button"
-    );
+    document.querySelectorAll("#dice-count button");
 
 const manualRollOpen =
-    document.getElementById(
-        "manual-roll-open"
-    );
+    document.getElementById("manual-roll-open");
 
 const manualRollClose =
-    document.getElementById(
-        "manual-roll-close"
-    );
+    document.getElementById("manual-roll-close");
 
 const manualRollPanel =
-    document.getElementById(
-        "manual-roll-panel"
-    );
+    document.getElementById("manual-roll-panel");
 
 const manualRollButton =
-    document.getElementById(
-        "manual-roll-button"
-    );
+    document.getElementById("manual-roll-button");
 
 const manualRollArea =
-    document.getElementById(
-        "manual-roll-area"
-    );
+    document.getElementById("manual-roll-area");
 
 const manualDiceResults =
-    document.getElementById(
-        "manual-dice-results"
-    );
+    document.getElementById("manual-dice-results");
 
 const manualSuccesses =
-    document.getElementById(
-        "manual-successes"
-    );
+    document.getElementById("manual-successes");
 
 const manualStatusText =
-    document.getElementById(
-        "manual-status-text"
-    );
+    document.getElementById("manual-status-text");
 
 
 /* INVENTORY */
 
 const inventoryOpen =
-    document.getElementById(
-        "inventory-open"
-    );
+    document.getElementById("inventory-open");
 
 const inventoryClose =
-    document.getElementById(
-        "inventory-close"
-    );
+    document.getElementById("inventory-close");
 
 const inventoryPanel =
-    document.getElementById(
-        "inventory-panel"
-    );
+    document.getElementById("inventory-panel");
 
 const moneyValue =
-    document.getElementById(
-        "money-value"
-    );
+    document.getElementById("money-value");
 
 const moneyMinus =
-    document.getElementById(
-        "money-minus"
-    );
+    document.getElementById("money-minus");
 
 const moneyPlus =
-    document.getElementById(
-        "money-plus"
-    );
+    document.getElementById("money-plus");
 
 const remnantsValue =
-    document.getElementById(
-        "remnants-value"
-    );
+    document.getElementById("remnants-value");
 
 const remnantsMinus =
-    document.getElementById(
-        "remnants-minus"
-    );
+    document.getElementById("remnants-minus");
 
 const remnantsPlus =
-    document.getElementById(
-        "remnants-plus"
-    );
+    document.getElementById("remnants-plus");
 
 const cluesValue =
-    document.getElementById(
-        "clues-value"
-    );
+    document.getElementById("clues-value");
 
 const cluesMinus =
-    document.getElementById(
-        "clues-minus"
-    );
+    document.getElementById("clues-minus");
 
 const cluesPlus =
-    document.getElementById(
-        "clues-plus"
-    );
+    document.getElementById("clues-plus");
 
 
 /* =========================================================
@@ -292,26 +201,39 @@ const cluesPlus =
 
 async function loadInvestigators() {
 
+    investigatorList.innerHTML = `
+        <div class="selection-loading">
+            Loading investigators...
+        </div>
+    `;
+
     try {
 
-        const response =
-            await fetch(
-                "./data/investigators.json"
-            );
-
+        const response = await fetch(
+            "./data/investigators.json",
+            {
+                cache: "no-store"
+            }
+        );
 
         if (!response.ok) {
-
             throw new Error(
-                `HTTP error: ${response.status}`
+                `Could not load investigators.json (${response.status})`
             );
-
         }
 
+        const data = await response.json();
 
-        investigators =
-            await response.json();
+        if (
+            !Array.isArray(data) ||
+            data.length === 0
+        ) {
+            throw new Error(
+                "investigators.json contains no investigators"
+            );
+        }
 
+        investigators = data;
 
         displayInvestigatorSelection();
 
@@ -322,52 +244,42 @@ async function loadInvestigators() {
             error
         );
 
-
-        investigatorList.innerHTML =
-            `
+        investigatorList.innerHTML = `
             <div class="selection-error">
-                Failed to load investigators.
+                <strong>Could not load investigators.</strong>
+                <br><br>
+                ${error.message}
             </div>
-            `;
-
+        `;
     }
-
 }
 
 
 /* =========================================================
-   SELECTION SCREEN
+   INVESTIGATOR SELECTION SCREEN
 ========================================================= */
 
 function displayInvestigatorSelection() {
 
-    investigatorList.innerHTML =
-        "";
-
+    investigatorList.innerHTML = "";
 
     investigators.forEach(
         (investigator, index) => {
 
             const button =
-                document.createElement(
-                    "button"
-                );
-
+                document.createElement("button");
 
             button.classList.add(
                 "investigator-choice"
             );
 
+            button.dataset.index = index;
 
-            button.dataset.index =
-                index;
 
+            /* INVESTIGATOR INFO */
 
             const info =
-                document.createElement(
-                    "div"
-                );
-
+                document.createElement("div");
 
             info.classList.add(
                 "investigator-choice-info"
@@ -375,85 +287,56 @@ function displayInvestigatorSelection() {
 
 
             const name =
-                document.createElement(
-                    "span"
-                );
-
+                document.createElement("span");
 
             name.classList.add(
                 "investigator-choice-name"
             );
-
 
             name.textContent =
                 investigator.name;
 
 
             const expansion =
-                document.createElement(
-                    "span"
-                );
-
+                document.createElement("span");
 
             expansion.classList.add(
                 "investigator-choice-expansion"
             );
 
-
             expansion.textContent =
-                investigator.expansion
-                || "";
+                investigator.expansion || "";
 
 
-            info.appendChild(
-                name
-            );
+            info.appendChild(name);
 
-
-            if (
-                investigator.expansion
-            ) {
-
-                info.appendChild(
-                    expansion
-                );
-
+            if (investigator.expansion) {
+                info.appendChild(expansion);
             }
 
 
-            const arrow =
-                document.createElement(
-                    "span"
-                );
+            /* ARROW */
 
+            const arrow =
+                document.createElement("span");
 
             arrow.classList.add(
                 "investigator-choice-arrow"
             );
 
-
-            arrow.textContent =
-                "›";
+            arrow.textContent = "›";
 
 
-            button.appendChild(
-                info
-            );
+            /* BUILD BUTTON */
 
-
-            button.appendChild(
-                arrow
-            );
+            button.appendChild(info);
+            button.appendChild(arrow);
 
 
             button.addEventListener(
                 "click",
                 () => {
-
-                    selectInvestigator(
-                        index
-                    );
-
+                    selectInvestigator(index);
                 }
             );
 
@@ -461,10 +344,8 @@ function displayInvestigatorSelection() {
             investigatorList.appendChild(
                 button
             );
-
         }
     );
-
 }
 
 
@@ -477,15 +358,12 @@ function selectInvestigator(index) {
     selectedInvestigator =
         investigators[index];
 
-
     if (!selectedInvestigator) {
         return;
     }
 
-
     investigatorName.textContent =
         selectedInvestigator.name;
-
 
     initializeInvestigatorState();
 
@@ -495,17 +373,10 @@ function selectInvestigator(index) {
 
     clearInvestigatorDice();
 
-    closePanel(
-        manualRollPanel
-    );
-
-    closePanel(
-        inventoryPanel
-    );
-
+    closePanel(manualRollPanel);
+    closePanel(inventoryPanel);
 
     showGameScreen();
-
 }
 
 
@@ -519,17 +390,11 @@ function showGameScreen() {
         "hidden"
     );
 
-
     gameScreen.classList.remove(
         "hidden"
     );
 
-
-    window.scrollTo(
-        0,
-        0
-    );
-
+    window.scrollTo(0, 0);
 }
 
 
@@ -539,39 +404,23 @@ function showSelectionScreen() {
         "hidden"
     );
 
-
     selectionScreen.classList.remove(
         "hidden"
     );
 
-
-    closePanel(
-        manualRollPanel
-    );
-
-
-    closePanel(
-        inventoryPanel
-    );
-
+    closePanel(manualRollPanel);
+    closePanel(inventoryPanel);
 
     clearActiveInvestigatorRoll();
 
-
-    window.scrollTo(
-        0,
-        0
-    );
-
+    window.scrollTo(0, 0);
 }
 
 
 changeInvestigator.addEventListener(
     "click",
     () => {
-
         showSelectionScreen();
-
     }
 );
 
@@ -583,19 +432,12 @@ changeInvestigator.addEventListener(
 function createEmptyFocusState() {
 
     return {
-
         lore: false,
-
         influence: false,
-
         observation: false,
-
         strength: false,
-
         will: false
-
     };
-
 }
 
 
@@ -604,39 +446,26 @@ function initializeInvestigatorState() {
     investigatorState = {
 
         health:
-            Number(
-                selectedInvestigator.health
-            ),
+            Number(selectedInvestigator.health),
 
         maxHealth:
-            Number(
-                selectedInvestigator.health
-            ),
+            Number(selectedInvestigator.health),
 
         sanity:
-            Number(
-                selectedInvestigator.sanity
-            ),
+            Number(selectedInvestigator.sanity),
 
         maxSanity:
-            Number(
-                selectedInvestigator.sanity
-            ),
+            Number(selectedInvestigator.sanity),
 
         focus:
             createEmptyFocusState(),
 
         money: 0,
-
         remnants: 0,
-
         clues: 0
-
     };
 
-
     updateInvestigatorStateDisplay();
-
 }
 
 
@@ -645,30 +474,23 @@ function updateInvestigatorStateDisplay() {
     healthCurrent.textContent =
         investigatorState.health;
 
-
     healthMax.textContent =
         investigatorState.maxHealth;
-
 
     sanityCurrent.textContent =
         investigatorState.sanity;
 
-
     sanityMax.textContent =
         investigatorState.maxSanity;
-
 
     moneyValue.textContent =
         investigatorState.money;
 
-
     remnantsValue.textContent =
         investigatorState.remnants;
 
-
     cluesValue.textContent =
         investigatorState.clues;
-
 }
 
 
@@ -684,16 +506,13 @@ healthMinus.addEventListener(
             return;
         }
 
-
         investigatorState.health =
             Math.max(
                 0,
                 investigatorState.health - 1
             );
 
-
         updateInvestigatorStateDisplay();
-
     }
 );
 
@@ -706,16 +525,13 @@ healthPlus.addEventListener(
             return;
         }
 
-
         investigatorState.health =
             Math.min(
                 investigatorState.maxHealth,
                 investigatorState.health + 1
             );
 
-
         updateInvestigatorStateDisplay();
-
     }
 );
 
@@ -732,16 +548,13 @@ sanityMinus.addEventListener(
             return;
         }
 
-
         investigatorState.sanity =
             Math.max(
                 0,
                 investigatorState.sanity - 1
             );
 
-
         updateInvestigatorStateDisplay();
-
     }
 );
 
@@ -754,16 +567,13 @@ sanityPlus.addEventListener(
             return;
         }
 
-
         investigatorState.sanity =
             Math.min(
                 investigatorState.maxSanity,
                 investigatorState.sanity + 1
             );
 
-
         updateInvestigatorStateDisplay();
-
     }
 );
 
@@ -780,16 +590,13 @@ moneyMinus.addEventListener(
             return;
         }
 
-
         investigatorState.money =
             Math.max(
                 0,
                 investigatorState.money - 1
             );
 
-
         updateInvestigatorStateDisplay();
-
     }
 );
 
@@ -802,12 +609,9 @@ moneyPlus.addEventListener(
             return;
         }
 
-
         investigatorState.money++;
 
-
         updateInvestigatorStateDisplay();
-
     }
 );
 
@@ -820,16 +624,13 @@ remnantsMinus.addEventListener(
             return;
         }
 
-
         investigatorState.remnants =
             Math.max(
                 0,
                 investigatorState.remnants - 1
             );
 
-
         updateInvestigatorStateDisplay();
-
     }
 );
 
@@ -842,12 +643,9 @@ remnantsPlus.addEventListener(
             return;
         }
 
-
         investigatorState.remnants++;
 
-
         updateInvestigatorStateDisplay();
-
     }
 );
 
@@ -860,16 +658,13 @@ cluesMinus.addEventListener(
             return;
         }
 
-
         investigatorState.clues =
             Math.max(
                 0,
                 investigatorState.clues - 1
             );
 
-
         updateInvestigatorStateDisplay();
-
     }
 );
 
@@ -882,30 +677,24 @@ cluesPlus.addEventListener(
             return;
         }
 
-
         investigatorState.clues++;
 
-
         updateInvestigatorStateDisplay();
-
     }
 );
 
 
 /* =========================================================
-   DISPLAY STATS
+   DISPLAY INVESTIGATOR STATS
 ========================================================= */
 
 function displayInvestigatorStats() {
 
-    investigatorStats.innerHTML =
-        "";
-
+    investigatorStats.innerHTML = "";
 
     if (!selectedInvestigator) {
         return;
     }
-
 
     Object.entries(
         selectedInvestigator.stats
@@ -913,73 +702,50 @@ function displayInvestigatorStats() {
         ([statName, statValue]) => {
 
             const row =
-                document.createElement(
-                    "div"
-                );
-
+                document.createElement("div");
 
             row.classList.add(
                 "stat-row"
             );
 
 
-            /* STAT */
+            /* STAT BUTTON */
 
             const statButton =
-                document.createElement(
-                    "button"
-                );
-
+                document.createElement("button");
 
             statButton.classList.add(
                 "stat-button"
             );
-
 
             statButton.dataset.stat =
                 statName;
 
 
             const name =
-                document.createElement(
-                    "span"
-                );
-
+                document.createElement("span");
 
             name.classList.add(
                 "stat-name"
             );
 
-
             name.textContent =
-                formatStatName(
-                    statName
-                );
+                formatStatName(statName);
 
 
             const value =
-                document.createElement(
-                    "span"
-                );
-
+                document.createElement("span");
 
             value.classList.add(
                 "stat-value"
             );
 
-
             value.textContent =
                 statValue;
 
 
-            statButton.appendChild(
-                name
-            );
-
-
-            statButton.appendChild(
-                value
-            );
+            statButton.appendChild(name);
+            statButton.appendChild(value);
 
 
             statButton.addEventListener(
@@ -990,26 +756,26 @@ function displayInvestigatorStats() {
                         statName,
                         statValue
                     );
-
                 }
             );
 
 
-            /* FOCUS */
+            /* FOCUS BUTTON */
 
             const focusButton =
-                document.createElement(
-                    "button"
-                );
-
+                document.createElement("button");
 
             focusButton.classList.add(
                 "focus-button"
             );
 
-
             focusButton.dataset.stat =
                 statName;
+
+            focusButton.setAttribute(
+                "aria-label",
+                `Toggle focus for ${formatStatName(statName)}`
+            );
 
 
             updateFocusButton(
@@ -1026,7 +792,6 @@ function displayInvestigatorStats() {
                         return;
                     }
 
-
                     investigatorState.focus[
                         statName
                     ] =
@@ -1034,12 +799,17 @@ function displayInvestigatorStats() {
                             statName
                         ];
 
-
                     updateFocusButton(
                         focusButton,
                         statName
                     );
 
+
+                    /*
+                       If focus is manually removed
+                       after a focused test, remove
+                       that test's reroll option.
+                    */
 
                     if (
                         activeInvestigatorRoll &&
@@ -1050,32 +820,20 @@ function displayInvestigatorStats() {
                             statName
                         ]
                     ) {
-
                         clearActiveInvestigatorRoll();
-
                     }
-
                 }
             );
 
 
-            row.appendChild(
-                statButton
-            );
-
-
-            row.appendChild(
-                focusButton
-            );
-
+            row.appendChild(statButton);
+            row.appendChild(focusButton);
 
             investigatorStats.appendChild(
                 row
             );
-
         }
     );
-
 }
 
 
@@ -1089,18 +847,15 @@ function updateFocusButton(
             statName
         ];
 
-
     button.textContent =
         hasFocus
             ? "●"
             : "○";
 
-
     button.classList.toggle(
         "active",
         hasFocus
     );
-
 }
 
 
@@ -1111,7 +866,6 @@ function refreshFocusButtons() {
             ".focus-button"
         );
 
-
     buttons.forEach(
         button => {
 
@@ -1119,41 +873,25 @@ function refreshFocusButtons() {
                 button,
                 button.dataset.stat
             );
-
         }
     );
-
 }
 
 
 function formatStatName(statName) {
 
     const statNames = {
-
-        lore:
-            "Lore",
-
-        influence:
-            "Infl",
-
-        observation:
-            "Obs",
-
-        strength:
-            "Str",
-
-        will:
-            "Will"
-
+        lore: "Lore",
+        influence: "Infl",
+        observation: "Obs",
+        strength: "Str",
+        will: "Will"
     };
 
-
     return (
-        statNames[statName]
-        ||
+        statNames[statName] ||
         statName
     );
-
 }
 
 
@@ -1168,7 +906,6 @@ modifierMinus.addEventListener(
         testModifier--;
 
         updateTestModifierDisplay();
-
     }
 );
 
@@ -1180,7 +917,6 @@ modifierPlus.addEventListener(
         testModifier++;
 
         updateTestModifierDisplay();
-
     }
 );
 
@@ -1191,18 +927,14 @@ function updateTestModifierDisplay() {
         testModifier > 0
             ? `+${testModifier}`
             : testModifier;
-
 }
 
 
 function resetTestModifier() {
 
-    testModifier =
-        0;
-
+    testModifier = 0;
 
     updateTestModifierDisplay();
-
 }
 
 
@@ -1219,9 +951,7 @@ blessedButton.addEventListener(
                 ? 5
                 : 4;
 
-
         updateModifierButtons();
-
     }
 );
 
@@ -1235,9 +965,7 @@ cursedButton.addEventListener(
                 ? 5
                 : 6;
 
-
         updateModifierButtons();
-
     }
 );
 
@@ -1247,7 +975,6 @@ function updateModifierButtons() {
     const blessed =
         successThreshold === 4;
 
-
     const cursed =
         successThreshold === 6;
 
@@ -1256,7 +983,6 @@ function updateModifierButtons() {
         "selected",
         blessed
     );
-
 
     cursedButton.classList.toggle(
         "selected",
@@ -1278,14 +1004,12 @@ function updateModifierButtons() {
 
         manualStatusText.textContent =
             "Normal";
-
     }
-
 }
 
 
 /* =========================================================
-   INVESTIGATOR ROLL
+   INVESTIGATOR STAT ROLL
 ========================================================= */
 
 function rollInvestigatorStat(
@@ -1301,18 +1025,31 @@ function rollInvestigatorStat(
     }
 
 
+    /*
+       A new test removes the reroll
+       opportunity from the previous test.
+    */
+
     clearActiveInvestigatorRoll();
 
 
     const modifier =
         testModifier;
 
-
     const hasFocus =
         investigatorState.focus[
             statName
         ];
 
+    /*
+       Focus gives +1 die while it is
+       active on this stat.
+
+       IMPORTANT:
+       Focus is NOT consumed here.
+       It is only consumed if the
+       player actually rerolls a die.
+    */
 
     const focusBonus =
         hasFocus
@@ -1330,13 +1067,8 @@ function rollInvestigatorStat(
 
 
     const rollInfo = {
-
-        statKey:
-            statName,
-
-        rerollAvailable:
-            hasFocus
-
+        statKey: statName,
+        rerollAvailable: hasFocus
     };
 
 
@@ -1350,7 +1082,6 @@ function rollInvestigatorStat(
         investigatorSuccesses,
         rollInfo
     );
-
 }
 
 
@@ -1363,11 +1094,9 @@ function showFocusRerollButton() {
     focusRerollButton.textContent =
         "Reroll One Die";
 
-
     focusRerollButton.classList.add(
         "visible"
     );
-
 }
 
 
@@ -1377,26 +1106,20 @@ function hideFocusRerollButton() {
         "visible"
     );
 
-
     investigatorDiceResults.classList.remove(
         "selecting-reroll"
     );
 
-
     focusRerollButton.textContent =
         "Reroll One Die";
-
 }
 
 
 function clearActiveInvestigatorRoll() {
 
-    activeInvestigatorRoll =
-        null;
-
+    activeInvestigatorRoll = null;
 
     hideFocusRerollButton();
-
 }
 
 
@@ -1418,6 +1141,11 @@ focusRerollButton.addEventListener(
                 .statKey;
 
 
+        /*
+           The investigator must still
+           have focus on this stat.
+        */
+
         if (
             !investigatorState.focus[
                 statName
@@ -1427,7 +1155,6 @@ focusRerollButton.addEventListener(
             clearActiveInvestigatorRoll();
 
             return;
-
         }
 
 
@@ -1435,13 +1162,15 @@ focusRerollButton.addEventListener(
             "selecting-reroll"
         );
 
-
         focusRerollButton.textContent =
             "Select a Die";
-
     }
 );
 
+
+/* =========================================================
+   SELECT DIE TO REROLL
+========================================================= */
 
 investigatorDiceResults.addEventListener(
     "click",
@@ -1465,7 +1194,6 @@ investigatorDiceResults.addEventListener(
                 ".die-result"
             );
 
-
         if (!die) {
             return;
         }
@@ -1481,9 +1209,7 @@ investigatorDiceResults.addEventListener(
 
 
         const dieIndex =
-            dice.indexOf(
-                die
-            );
+            dice.indexOf(die);
 
 
         if (dieIndex === -1) {
@@ -1494,10 +1220,13 @@ investigatorDiceResults.addEventListener(
         rerollFocusedDie(
             dieIndex
         );
-
     }
 );
 
+
+/* =========================================================
+   REROLL FOCUSED DIE
+========================================================= */
 
 function rerollFocusedDie(
     dieIndex
@@ -1514,7 +1243,6 @@ function rerollFocusedDie(
     const activeRoll =
         activeInvestigatorRoll;
 
-
     const statName =
         activeRoll
             .rollInfo
@@ -1530,7 +1258,6 @@ function rerollFocusedDie(
         clearActiveInvestigatorRoll();
 
         return;
-
     }
 
 
@@ -1539,7 +1266,6 @@ function rerollFocusedDie(
             .querySelectorAll(
                 ".die-result"
             );
-
 
     const selectedDie =
         dice[dieIndex];
@@ -1550,17 +1276,14 @@ function rerollFocusedDie(
     }
 
 
-    isRolling =
-        true;
+    isRolling = true;
 
 
     const results =
         activeRoll.results;
 
-
     const threshold =
         activeRoll.threshold;
-
 
     const newResult =
         rollDie();
@@ -1570,17 +1293,40 @@ function rerollFocusedDie(
         newResult;
 
 
-    selectedDie.innerHTML =
-        "";
-
+    selectedDie.innerHTML = "";
 
     selectedDie.classList.remove(
         "success-die"
     );
 
-
     selectedDie.classList.add(
         "rerolling"
+    );
+
+
+    /*
+       Focus is consumed when the
+       player commits to the reroll.
+    */
+
+    investigatorState.focus[
+        statName
+    ] = false;
+
+    refreshFocusButtons();
+
+
+    /*
+       Remove reroll selection immediately
+       so another die cannot be selected.
+    */
+
+    investigatorDiceResults.classList.remove(
+        "selecting-reroll"
+    );
+
+    focusRerollButton.classList.remove(
+        "visible"
     );
 
 
@@ -1605,7 +1351,6 @@ function rerollFocusedDie(
                 selectedDie.classList.add(
                     "success-die"
                 );
-
             }
 
 
@@ -1625,21 +1370,8 @@ function rerollFocusedDie(
                 successes;
 
 
-            /*
-               Focus is consumed only
-               when the reroll is used.
-            */
-
-            investigatorState.focus[
-                statName
-            ] =
-                false;
-
-
-            refreshFocusButtons();
-
-
-            clearActiveInvestigatorRoll();
+            activeInvestigatorRoll =
+                null;
 
 
             setTimeout(
@@ -1648,19 +1380,15 @@ function rerollFocusedDie(
                     selectedDie.classList.remove(
                         "landed"
                     );
-
                 },
                 200
             );
 
 
-            isRolling =
-                false;
-
+            isRolling = false;
         },
         250
     );
-
 }
 
 
@@ -1681,7 +1409,6 @@ countButtons.forEach(
                         btn.classList.remove(
                             "selected"
                         );
-
                     }
                 );
 
@@ -1695,35 +1422,43 @@ countButtons.forEach(
                     Number(
                         button.dataset.count
                     );
-
             }
         );
-
     }
 );
 
 
 /* =========================================================
-   OVERLAYS
+   OVERLAY HELPERS
 ========================================================= */
 
 function openPanel(panel) {
 
+    if (!panel) {
+        return;
+    }
+
     panel.classList.add(
         "open"
     );
-
 }
 
 
 function closePanel(panel) {
 
+    if (!panel) {
+        return;
+    }
+
     panel.classList.remove(
         "open"
     );
-
 }
 
+
+/* =========================================================
+   MANUAL ROLL PANEL
+========================================================= */
 
 manualRollOpen.addEventListener(
     "click",
@@ -1732,7 +1467,6 @@ manualRollOpen.addEventListener(
         openPanel(
             manualRollPanel
         );
-
     }
 );
 
@@ -1744,10 +1478,13 @@ manualRollClose.addEventListener(
         closePanel(
             manualRollPanel
         );
-
     }
 );
 
+
+/* =========================================================
+   INVENTORY PANEL
+========================================================= */
 
 inventoryOpen.addEventListener(
     "click",
@@ -1756,7 +1493,6 @@ inventoryOpen.addEventListener(
         openPanel(
             inventoryPanel
         );
-
     }
 );
 
@@ -1768,10 +1504,11 @@ inventoryClose.addEventListener(
         closePanel(
             inventoryPanel
         );
-
     }
 );
 
+
+/* CLOSE OVERLAY BY TAPPING BACKGROUND */
 
 [
     manualRollPanel,
@@ -1787,15 +1524,10 @@ inventoryClose.addEventListener(
                     event.target === panel
                 ) {
 
-                    closePanel(
-                        panel
-                    );
-
+                    closePanel(panel);
                 }
-
             }
         );
-
     }
 );
 
@@ -1820,13 +1552,12 @@ manualRollButton.addEventListener(
             manualSuccesses,
             null
         );
-
     }
 );
 
 
 /* =========================================================
-   RANDOM D6
+   CRYPTOGRAPHIC D6
 ========================================================= */
 
 function rollDie() {
@@ -1834,14 +1565,11 @@ function rollDie() {
     const range =
         0x100000000;
 
-
     const limit =
         range - (range % 6);
 
-
     const array =
         new Uint32Array(1);
-
 
     let randomNumber;
 
@@ -1851,7 +1579,6 @@ function rollDie() {
         crypto.getRandomValues(
             array
         );
-
 
         randomNumber =
             array[0];
@@ -1864,12 +1591,11 @@ function rollDie() {
     return (
         randomNumber % 6
     ) + 1;
-
 }
 
 
 /* =========================================================
-   SHARED ROLL
+   SHARED ROLL FUNCTION
 ========================================================= */
 
 function rollDice(
@@ -1885,21 +1611,22 @@ function rollDice(
     }
 
 
-    isRolling =
-        true;
+    isRolling = true;
 
 
     /*
-       Snapshot Blessed/Cursed threshold
-       for this specific roll.
+       Snapshot the success threshold.
+
+       This means changing Blessed/Cursed
+       while a roll is animating cannot
+       change that roll's result.
     */
 
     const threshold =
         successThreshold;
 
 
-    const finalResults =
-        [];
+    const finalResults = [];
 
 
     for (
@@ -1911,12 +1638,14 @@ function rollDice(
         finalResults.push(
             rollDie()
         );
-
     }
 
 
-    diceContainer.innerHTML =
-        "";
+    /*
+       Show blank dice during animation.
+    */
+
+    diceContainer.innerHTML = "";
 
 
     for (
@@ -1930,17 +1659,14 @@ function rollDice(
                 "div"
             );
 
-
         die.classList.add(
             "die-result",
             "pip-die"
         );
 
-
         diceContainer.appendChild(
             die
         );
-
     }
 
 
@@ -1965,33 +1691,34 @@ function rollDice(
             );
 
 
+            /*
+               Focus reroll is available only
+               for investigator stat rolls
+               that were focused.
+            */
+
             if (
                 rollInfo &&
                 rollInfo.rerollAvailable
             ) {
 
                 activeInvestigatorRoll = {
-
-                    results:
-                        [...finalResults],
-
-                    rollInfo:
-                        rollInfo,
-
-                    threshold:
-                        threshold
-
+                    results: [...finalResults],
+                    rollInfo: rollInfo,
+                    threshold: threshold
                 };
-
 
                 showFocusRerollButton();
 
             } else if (rollInfo) {
 
                 clearActiveInvestigatorRoll();
-
             }
 
+
+            /*
+               Landing animation.
+            */
 
             const diceElements =
                 diceContainer.querySelectorAll(
@@ -2013,22 +1740,17 @@ function rollDice(
                             die.classList.remove(
                                 "landed"
                             );
-
                         },
                         200
                     );
-
                 }
             );
 
 
-            isRolling =
-                false;
-
+            isRolling = false;
         },
         350
     );
-
 }
 
 
@@ -2043,8 +1765,7 @@ function displayResults(
     threshold
 ) {
 
-    diceContainer.innerHTML =
-        "";
+    diceContainer.innerHTML = "";
 
 
     results.forEach(
@@ -2075,14 +1796,12 @@ function displayResults(
                 die.classList.add(
                     "success-die"
                 );
-
             }
 
 
             diceContainer.appendChild(
                 die
             );
-
         }
     );
 
@@ -2096,12 +1815,11 @@ function displayResults(
 
     successDisplay.textContent =
         successes;
-
 }
 
 
 /* =========================================================
-   PIPS
+   CREATE DICE PIPS
 ========================================================= */
 
 function createPips(
@@ -2120,37 +1838,26 @@ function createPips(
                 "span"
             );
 
-
         pip.classList.add(
             "pip"
         );
 
-
         pip.dataset.position =
             position;
-
 
         die.appendChild(
             pip
         );
-
     }
 
 
     const pipPositions = {
-
         1: [5],
-
         2: [1, 9],
-
         3: [1, 5, 9],
-
         4: [1, 3, 7, 9],
-
         5: [1, 3, 5, 7, 9],
-
         6: [1, 3, 4, 6, 7, 9]
-
     };
 
 
@@ -2163,19 +1870,16 @@ function createPips(
                         `[data-position="${position}"]`
                     );
 
-
                 pip.classList.add(
                     "visible"
                 );
-
             }
         );
-
 }
 
 
 /* =========================================================
-   CLEAR DICE
+   CLEAR INVESTIGATOR DICE
 ========================================================= */
 
 function clearInvestigatorDice() {
@@ -2183,18 +1887,15 @@ function clearInvestigatorDice() {
     investigatorDiceResults.innerHTML =
         "";
 
-
     investigatorSuccesses.textContent =
         "—";
 
-
     clearActiveInvestigatorRoll();
-
 }
 
 
 /* =========================================================
-   INITIALIZE
+   INITIALIZE APP
 ========================================================= */
 
 updateModifierButtons();
@@ -2226,7 +1927,6 @@ if (
                         console.log(
                             "Service Worker registered"
                         );
-
                     }
                 )
                 .catch(
@@ -2236,11 +1936,8 @@ if (
                             "Service Worker registration failed:",
                             error
                         );
-
                     }
                 );
-
         }
     );
-
 }

@@ -168,6 +168,13 @@ button.selected {
     margin-bottom: 8px;
 }
 
+.investigator-title-group {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
 .investigator-header h1 {
     min-width: 0;
     margin: 0;
@@ -179,10 +186,25 @@ button.selected {
     white-space: nowrap;
 }
 
-.header-actions {
+.change-investigator-icon {
+    width: 27px;
+    height: 27px;
+    flex: 0 0 27px;
     display: flex;
-    flex-shrink: 0;
-    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    border: 1px solid #333;
+    border-radius: 6px;
+    background: #181818;
+    color: #999;
+    font-size: 16px;
+    line-height: 1;
+}
+
+.change-investigator-icon:active {
+    transform: scale(0.94);
+    color: white;
 }
 
 .header-button {
@@ -194,6 +216,14 @@ button.selected {
     text-transform: uppercase;
 }
 
+.header-button.manual-roll-icon {
+    width: 34px;
+    min-width: 34px;
+    padding: 0;
+    font-size: 18px;
+    line-height: 1;
+    text-transform: none;
+}
 
 /* =========================================================
    DASHBOARD
@@ -805,6 +835,13 @@ button.selected {
     font-weight: bold;
 }
 
+.manual-roll-icon {
+    width: 34px;
+    padding: 0;
+    font-size: 18px;
+    line-height: 1;
+}
+
 
 /* =========================================================
    INVENTORY
@@ -874,6 +911,17 @@ button.selected {
         font-size: 15px;
     }
 
+    .investigator-title-group {
+        gap: 5px;
+    }
+
+    .change-investigator-icon {
+        width: 26px;
+        height: 26px;
+        flex-basis: 26px;
+        font-size: 15px;
+    }
+
     .header-button {
         padding: 0 6px;
         font-size: 8px;
@@ -930,4 +978,17 @@ button.selected {
         min-height: 120px;
     }
 
+}
+
+/* =========================================================
+   MANUAL ROLL HEADER ICON
+========================================================= */
+
+.header-button.manual-roll-icon {
+    width: 34px;
+    min-width: 34px;
+    padding: 0;
+    font-size: 18px;
+    line-height: 1;
+    text-transform: none;
 }

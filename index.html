@@ -27,7 +27,6 @@
     >
 </head>
 
-
 <body>
 
 
@@ -71,7 +70,6 @@
 </section>
 
 
-
 <!-- =====================================================
      INVESTIGATOR GAME SCREEN
 ===================================================== -->
@@ -86,35 +84,39 @@
 
     <header class="investigator-header">
 
-        <h1 id="investigator-name">
-            Investigator
-        </h1>
+        <div class="investigator-title-group">
 
-
-        <div class="header-actions">
-
-            <button
-                id="manual-roll-open"
-                class="header-button"
-            >
-                Manual Roll
-            </button>
-
+            <h1 id="investigator-name">
+                Investigator
+            </h1>
 
             <button
                 id="change-investigator"
-                class="header-button"
+                class="change-investigator-icon"
+                aria-label="Change Investigator"
+                title="Change Investigator"
             >
-                Change
+                ⇄
             </button>
 
         </div>
 
+
+        <button
+            id="manual-roll-open"
+            class="header-button manual-roll-icon"
+            aria-label="Manual Roll"
+            title="Manual Roll"
+        >
+            ⚄
+        </button>
+
     </header>
 
 
-
-    <!-- MAIN DASHBOARD -->
+    <!-- =====================================================
+         MAIN DASHBOARD
+    ===================================================== -->
 
     <section class="investigator-dashboard">
 
@@ -128,6 +130,8 @@
 
             <div class="vitals">
 
+
+                <!-- HEALTH -->
 
                 <div class="vital">
 
@@ -155,11 +159,17 @@
 
                     <div class="mini-counter">
 
-                        <button id="health-minus">
+                        <button
+                            id="health-minus"
+                            aria-label="Decrease Health"
+                        >
                             −
                         </button>
 
-                        <button id="health-plus">
+                        <button
+                            id="health-plus"
+                            aria-label="Increase Health"
+                        >
                             +
                         </button>
 
@@ -168,6 +178,7 @@
                 </div>
 
 
+                <!-- SANITY -->
 
                 <div class="vital">
 
@@ -195,11 +206,17 @@
 
                     <div class="mini-counter">
 
-                        <button id="sanity-minus">
+                        <button
+                            id="sanity-minus"
+                            aria-label="Decrease Sanity"
+                        >
                             −
                         </button>
 
-                        <button id="sanity-plus">
+                        <button
+                            id="sanity-plus"
+                            aria-label="Increase Sanity"
+                        >
                             +
                         </button>
 
@@ -207,9 +224,7 @@
 
                 </div>
 
-
             </div>
-
 
 
             <!-- STATS -->
@@ -221,7 +236,6 @@
             </div>
 
 
-
             <!-- TEST MODIFIER -->
 
             <div class="compact-counter-row">
@@ -230,11 +244,12 @@
                     Test Mod
                 </span>
 
-
-                <button id="modifier-minus">
+                <button
+                    id="modifier-minus"
+                    aria-label="Decrease Test Modifier"
+                >
                     −
                 </button>
-
 
                 <span
                     id="test-modifier-value"
@@ -243,13 +258,14 @@
                     0
                 </span>
 
-
-                <button id="modifier-plus">
+                <button
+                    id="modifier-plus"
+                    aria-label="Increase Test Modifier"
+                >
                     +
                 </button>
 
             </div>
-
 
 
             <!-- INVENTORY -->
@@ -261,12 +277,12 @@
                 Inventory
             </button>
 
-
         </div>
 
 
-
-        <!-- RIGHT SIDE -->
+        <!-- =================================================
+             RIGHT SIDE
+        ================================================= -->
 
         <div class="investigator-roll-panel">
 
@@ -286,14 +302,12 @@
             </div>
 
 
-
             <!-- DICE AREA -->
 
             <div
                 id="investigator-roll-area"
                 class="investigator-roll-area"
             >
-
 
                 <div
                     id="investigator-dice-results"
@@ -302,9 +316,7 @@
                 </div>
 
 
-
                 <div class="investigator-result-footer">
-
 
                     <div class="investigator-total">
 
@@ -319,7 +331,6 @@
                     </div>
 
 
-
                     <button
                         id="focus-reroll-button"
                         class="focus-reroll-button"
@@ -327,28 +338,25 @@
                         Reroll One Die
                     </button>
 
-
                 </div>
-
 
             </div>
 
-
         </div>
-
 
     </section>
 
 
-
-    <!-- FUTURE CARD AREA -->
+    <!-- =====================================================
+         FUTURE CARDS / ITEMS AREA
+    ===================================================== -->
 
     <section class="card-area">
 
         <div class="card-area-placeholder">
 
             <span>
-                Investigator Cards & Items
+                Investigator Cards &amp; Items
             </span>
 
         </div>
@@ -356,8 +364,9 @@
     </section>
 
 
-
-    <!-- MANUAL ROLL PANEL -->
+    <!-- =====================================================
+         MANUAL ROLL PANEL
+    ===================================================== -->
 
     <div
         id="manual-roll-panel"
@@ -380,11 +389,9 @@
             </div>
 
 
-
             <span class="small-label">
                 Number of Dice
             </span>
-
 
 
             <div
@@ -392,17 +399,42 @@
                 class="manual-dice-count"
             >
 
-                <button data-count="1" class="selected">1</button>
-                <button data-count="2">2</button>
-                <button data-count="3">3</button>
-                <button data-count="4">4</button>
-                <button data-count="5">5</button>
-                <button data-count="6">6</button>
-                <button data-count="7">7</button>
-                <button data-count="8">8</button>
+                <button
+                    data-count="1"
+                    class="selected"
+                >
+                    1
+                </button>
+
+                <button data-count="2">
+                    2
+                </button>
+
+                <button data-count="3">
+                    3
+                </button>
+
+                <button data-count="4">
+                    4
+                </button>
+
+                <button data-count="5">
+                    5
+                </button>
+
+                <button data-count="6">
+                    6
+                </button>
+
+                <button data-count="7">
+                    7
+                </button>
+
+                <button data-count="8">
+                    8
+                </button>
 
             </div>
-
 
 
             <div class="manual-status">
@@ -416,7 +448,6 @@
             </div>
 
 
-
             <button
                 id="manual-roll-button"
                 class="manual-roll-button"
@@ -425,19 +456,16 @@
             </button>
 
 
-
             <div
                 id="manual-roll-area"
                 class="manual-result-area"
             >
-
 
                 <div
                     id="manual-dice-results"
                     class="manual-dice-results"
                 >
                 </div>
-
 
 
                 <div class="manual-total">
@@ -452,17 +480,16 @@
 
                 </div>
 
-
             </div>
-
 
         </div>
 
     </div>
 
 
-
-    <!-- INVENTORY PANEL -->
+    <!-- =====================================================
+         INVENTORY PANEL
+    ===================================================== -->
 
     <div
         id="inventory-panel"
@@ -485,9 +512,10 @@
             </div>
 
 
-
             <div class="inventory-grid">
 
+
+                <!-- MONEY -->
 
                 <div class="inventory-item">
 
@@ -504,11 +532,17 @@
 
                     <div class="inventory-buttons">
 
-                        <button id="money-minus">
+                        <button
+                            id="money-minus"
+                            aria-label="Decrease Money"
+                        >
                             −
                         </button>
 
-                        <button id="money-plus">
+                        <button
+                            id="money-plus"
+                            aria-label="Increase Money"
+                        >
                             +
                         </button>
 
@@ -517,6 +551,7 @@
                 </div>
 
 
+                <!-- REMNANTS -->
 
                 <div class="inventory-item">
 
@@ -533,11 +568,17 @@
 
                     <div class="inventory-buttons">
 
-                        <button id="remnants-minus">
+                        <button
+                            id="remnants-minus"
+                            aria-label="Decrease Remnants"
+                        >
                             −
                         </button>
 
-                        <button id="remnants-plus">
+                        <button
+                            id="remnants-plus"
+                            aria-label="Increase Remnants"
+                        >
                             +
                         </button>
 
@@ -546,6 +587,7 @@
                 </div>
 
 
+                <!-- CLUES -->
 
                 <div class="inventory-item">
 
@@ -562,11 +604,17 @@
 
                     <div class="inventory-buttons">
 
-                        <button id="clues-minus">
+                        <button
+                            id="clues-minus"
+                            aria-label="Decrease Clues"
+                        >
                             −
                         </button>
 
-                        <button id="clues-plus">
+                        <button
+                            id="clues-plus"
+                            aria-label="Increase Clues"
+                        >
                             +
                         </button>
 
@@ -574,14 +622,11 @@
 
                 </div>
 
-
             </div>
-
 
         </div>
 
     </div>
-
 
 </main>
 
