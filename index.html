@@ -121,157 +121,160 @@
     <section class="investigator-dashboard">
 
 
-        <!-- =================================================
-             INVESTIGATOR CONTROLS
-        ================================================= -->
+    <!-- =================================================
+         INVESTIGATOR CONTROLS
+    ================================================= -->
 
-        <div class="investigator-controls">
-
-
-            <!-- HEALTH / SANITY -->
-
-            <div class="vitals">
+    <div class="investigator-controls">
 
 
-                <div class="vital health-vital">
+        <!-- HEALTH / SANITY -->
 
-                    <span class="small-label">
-                        Health
+        <div class="vitals">
+
+
+            <div class="vital health-vital">
+
+                <span class="small-label">
+                    Health
+                </span>
+
+                <div class="vital-value">
+
+                    <span id="health-current">
+                        —
                     </span>
 
-                    <div class="vital-value">
+                    <span class="vital-divider">
+                        /
+                    </span>
 
-                        <span id="health-current">
-                            —
-                        </span>
-
-                        <span class="vital-divider">
-                            /
-                        </span>
-
-                        <span id="health-max">
-                            —
-                        </span>
-
-                    </div>
-
-                    <div class="mini-counter">
-
-                        <button
-                            id="health-minus"
-                            aria-label="Decrease Health"
-                        >
-                            −
-                        </button>
-
-                        <button
-                            id="health-plus"
-                            aria-label="Increase Health"
-                        >
-                            +
-                        </button>
-
-                    </div>
+                    <span id="health-max">
+                        —
+                    </span>
 
                 </div>
 
+                <div class="mini-counter">
 
-                <div class="vital sanity-vital">
+                    <button
+                        id="health-minus"
+                        aria-label="Decrease Health"
+                    >
+                        −
+                    </button>
 
-                    <span class="small-label">
-                        Sanity
-                    </span>
-
-                    <div class="vital-value">
-
-                        <span id="sanity-current">
-                            —
-                        </span>
-
-                        <span class="vital-divider">
-                            /
-                        </span>
-
-                        <span id="sanity-max">
-                            —
-                        </span>
-
-                    </div>
-
-                    <div class="mini-counter">
-
-                        <button
-                            id="sanity-minus"
-                            aria-label="Decrease Sanity"
-                        >
-                            −
-                        </button>
-
-                        <button
-                            id="sanity-plus"
-                            aria-label="Increase Sanity"
-                        >
-                            +
-                        </button>
-
-                    </div>
+                    <button
+                        id="health-plus"
+                        aria-label="Increase Health"
+                    >
+                        +
+                    </button>
 
                 </div>
 
             </div>
 
 
-            <!-- STATS -->
+            <div class="vital sanity-vital">
 
-            <div
-                id="investigator-stats"
-                class="investigator-stats"
-            >
-            </div>
-
-
-            <!-- TEST MODIFIER -->
-
-            <div class="compact-counter-row">
-
-                <span class="compact-counter-label">
-                    Test Mod
+                <span class="small-label">
+                    Sanity
                 </span>
 
-                <button
-                    id="modifier-minus"
-                    aria-label="Decrease Test Modifier"
-                >
-                    −
-                </button>
+                <div class="vital-value">
 
-                <span
-                    id="test-modifier-value"
-                    class="compact-counter-value"
-                >
-                    0
-                </span>
+                    <span id="sanity-current">
+                        —
+                    </span>
 
-                <button
-                    id="modifier-plus"
-                    aria-label="Increase Test Modifier"
-                >
-                    +
-                </button>
+                    <span class="vital-divider">
+                        /
+                    </span>
+
+                    <span id="sanity-max">
+                        —
+                    </span>
+
+                </div>
+
+                <div class="mini-counter">
+
+                    <button
+                        id="sanity-minus"
+                        aria-label="Decrease Sanity"
+                    >
+                        −
+                    </button>
+
+                    <button
+                        id="sanity-plus"
+                        aria-label="Increase Sanity"
+                    >
+                        +
+                    </button>
+
+                </div>
 
             </div>
 
         </div>
 
 
-        <!-- =================================================
-             DICE
-        ================================================= -->
+        <!-- STATS -->
+
+        <div
+            id="investigator-stats"
+            class="investigator-stats"
+        >
+        </div>
+
+
+        <!-- TEST MODIFIER -->
+
+        <div class="compact-counter-row">
+
+            <span class="compact-counter-label">
+                Test Mod
+            </span>
+
+            <button
+                id="modifier-minus"
+                aria-label="Decrease Test Modifier"
+            >
+                −
+            </button>
+
+            <span
+                id="test-modifier-value"
+                class="compact-counter-value"
+            >
+                0
+            </span>
+
+            <button
+                id="modifier-plus"
+                aria-label="Increase Test Modifier"
+            >
+                +
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         RIGHT SIDE
+    ================================================= -->
+
+    <div class="investigator-right-column">
+
+
+        <!-- DICE -->
 
         <div class="investigator-roll-panel">
 
-
-            <!-- BLESSED / CURSED -->
 
             <div class="investigator-modifiers">
 
@@ -285,8 +288,6 @@
 
             </div>
 
-
-            <!-- ROLL AREA -->
 
             <div
                 id="investigator-roll-area"
@@ -330,14 +331,10 @@
 
 
         <!-- =================================================
-             INVENTORY
+             INVENTORY COUNTERS
         ================================================= -->
 
         <div class="dashboard-inventory">
-
-            <span class="dashboard-inventory-title">
-                Inventory
-            </span>
 
 
             <!-- MONEY -->
@@ -449,7 +446,9 @@
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
     <!-- =====================================================

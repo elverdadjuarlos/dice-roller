@@ -6,8 +6,23 @@ const FILES_TO_CACHE = [
     "./style.css",
     "./script.js",
     "./manifest.json",
+
     "./icons/icon-192.png",
     "./icons/icon-512.png",
+
+    "./icons/money.svg",
+    "./icons/remnant.svg",
+    "./icons/clue.svg",
+
+    "./icons/lore.svg",
+    "./icons/influence.svg",
+    "./icons/observation.svg",
+    "./icons/strength.svg",
+    "./icons/will.svg",
+
+    "./icons/health.svg",
+    "./icons/sanity.svg",
+
     "./data/investigators.json"
 ];
 

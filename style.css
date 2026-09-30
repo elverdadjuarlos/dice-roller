@@ -234,16 +234,185 @@ button.selected {
     display: grid;
     grid-template-columns:
         180px
-        minmax(0, 1fr)
-        120px;
+        minmax(0, 1fr);
     gap: 10px;
     align-items: stretch;
 }
 
 .investigator-controls,
-.investigator-roll-panel,
-.dashboard-inventory {
+.investigator-right-column {
     min-width: 0;
+}
+
+.investigator-right-column {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+
+/* =========================================================
+   ROLL PANEL
+========================================================= */
+
+.investigator-roll-panel {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.investigator-modifiers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+}
+
+.investigator-modifiers button {
+    height: 30px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   SMALLER DICE AREA
+========================================================= */
+
+.investigator-roll-area {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    padding: 7px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    background: #141414;
+}
+
+.investigator-dice-results {
+    width: 100%;
+    flex: 1;
+    min-height: 55px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+
+/* =========================================================
+   RESULT FOOTER
+========================================================= */
+
+.investigator-result-footer {
+    min-height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    margin-top: 2px;
+}
+
+.investigator-total {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+}
+
+#investigator-successes {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.success-label {
+    color: #888;
+    font-size: 8px;
+    text-transform: uppercase;
+}
+
+.focus-reroll-button {
+    display: none;
+    height: 25px;
+    padding: 0 7px;
+    border-radius: 5px;
+    font-size: 7px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.focus-reroll-button.visible {
+    display: block;
+}
+
+
+/* =========================================================
+   INVENTORY ROW
+========================================================= */
+
+.dashboard-inventory {
+    display: grid;
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+    gap: 5px;
+    padding: 7px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    background: #141414;
+}
+
+.dashboard-inventory-item {
+    min-width: 0;
+    margin: 0;
+}
+
+.dashboard-inventory-label {
+    display: block;
+    margin-bottom: 4px;
+    overflow: hidden;
+    color: #999;
+    font-size: 7px;
+    font-weight: bold;
+    text-align: center;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.dashboard-inventory-counter {
+    display: grid;
+    grid-template-columns:
+        23px
+        minmax(18px, 1fr)
+        23px;
+    gap: 2px;
+    align-items: center;
+}
+
+.dashboard-inventory-counter button {
+    width: 23px;
+    height: 23px;
+    padding: 0;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.dashboard-inventory-value {
+    height: 23px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: bold;
 }
 
 
@@ -914,9 +1083,8 @@ button.selected {
     .investigator-dashboard {
         grid-template-columns:
             150px
-            minmax(0, 1fr)
-            105px;
-        gap: 6px;
+            minmax(0, 1fr);
+        gap: 8px;
     }
 
     .investigator-header h1 {
@@ -941,11 +1109,6 @@ button.selected {
         font-size: 18px;
     }
 
-    .investigator-roll-area {
-        min-height: 220px;
-        padding: 7px;
-    }
-
     .die-result {
         width: 38px;
         height: 38px;
@@ -955,66 +1118,6 @@ button.selected {
     .pip {
         width: 5px;
         height: 5px;
-    }
-
-    .investigator-dice-results {
-        gap: 6px;
-    }
-
-    .dashboard-inventory {
-        padding-left: 5px;
-        padding-right: 5px;
-    }
-
-    .dashboard-inventory-counter {
-        grid-template-columns:
-            24px
-            minmax(18px, 1fr)
-            24px;
-        gap: 2px;
-    }
-
-    .dashboard-inventory-counter button {
-        width: 24px;
-        height: 25px;
-    }
-}
-
-
-/* =========================================================
-   VERY NARROW PHONES
-========================================================= */
-
-@media (max-width: 410px) and (orientation: portrait) {
-
-    .app {
-        padding-left: 8px;
-        padding-right: 8px;
-    }
-
-    .investigator-dashboard {
-        grid-template-columns:
-            140px
-            minmax(0, 1fr)
-            96px;
-        gap: 5px;
-    }
-
-    .dashboard-inventory-counter {
-        grid-template-columns:
-            22px
-            minmax(16px, 1fr)
-            22px;
-    }
-
-    .dashboard-inventory-counter button {
-        width: 22px;
-    }
-
-    .die-result {
-        width: 36px;
-        height: 36px;
-        flex-basis: 36px;
     }
 }
 
