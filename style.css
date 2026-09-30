@@ -245,179 +245,14 @@ button.selected {
 }
 
 .investigator-right-column {
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-}
-
-
-/* =========================================================
-   ROLL PANEL
-========================================================= */
-
-.investigator-roll-panel {
-    flex: 1;
-    min-height: 0;
     display: flex;
     flex-direction: column;
     gap: 6px;
 }
 
-.investigator-modifiers {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6px;
-}
-
-.investigator-modifiers button {
-    height: 30px;
-    border-radius: 6px;
-    font-size: 10px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
 
 /* =========================================================
-   SMALLER DICE AREA
-========================================================= */
-
-.investigator-roll-area {
-    flex: 1;
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: stretch;
-    padding: 7px;
-    border: 1px solid #333;
-    border-radius: 10px;
-    background: #141414;
-}
-
-.investigator-dice-results {
-    width: 100%;
-    flex: 1;
-    min-height: 55px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    gap: 6px;
-}
-
-
-/* =========================================================
-   RESULT FOOTER
-========================================================= */
-
-.investigator-result-footer {
-    min-height: 28px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 7px;
-    margin-top: 2px;
-}
-
-.investigator-total {
-    display: flex;
-    align-items: baseline;
-    gap: 5px;
-}
-
-#investigator-successes {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.success-label {
-    color: #888;
-    font-size: 8px;
-    text-transform: uppercase;
-}
-
-.focus-reroll-button {
-    display: none;
-    height: 25px;
-    padding: 0 7px;
-    border-radius: 5px;
-    font-size: 7px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.focus-reroll-button.visible {
-    display: block;
-}
-
-
-/* =========================================================
-   INVENTORY ROW
-========================================================= */
-
-.dashboard-inventory {
-    display: grid;
-    grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-    gap: 5px;
-    padding: 7px;
-    border: 1px solid #333;
-    border-radius: 10px;
-    background: #141414;
-}
-
-.dashboard-inventory-item {
-    min-width: 0;
-    margin: 0;
-}
-
-.dashboard-inventory-label {
-    display: block;
-    margin-bottom: 4px;
-    overflow: hidden;
-    color: #999;
-    font-size: 7px;
-    font-weight: bold;
-    text-align: center;
-    text-overflow: ellipsis;
-    text-transform: uppercase;
-    white-space: nowrap;
-}
-
-.dashboard-inventory-counter {
-    display: grid;
-    grid-template-columns:
-        23px
-        minmax(18px, 1fr)
-        23px;
-    gap: 2px;
-    align-items: center;
-}
-
-.dashboard-inventory-counter button {
-    width: 23px;
-    height: 23px;
-    padding: 0;
-    border-radius: 5px;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-.dashboard-inventory-value {
-    height: 23px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-
-/* =========================================================
-   HEALTH / SANITY
+   VITALS
 ========================================================= */
 
 .vitals {
@@ -455,24 +290,15 @@ button.selected {
     color: #666;
 }
 
-
-/* HEALTH TEXT */
-
 .health-vital .small-label,
 .health-vital .vital-value {
     color: #ef4444;
 }
 
-
-/* SANITY TEXT */
-
 .sanity-vital .small-label,
 .sanity-vital .vital-value {
     color: #3b82f6;
 }
-
-
-/* Keep slash gray */
 
 .health-vital .vital-divider,
 .sanity-vital .vital-divider {
@@ -638,14 +464,8 @@ button.selected {
 
 
 /* =========================================================
-   ROLL PANEL
+   BLESSED / CURSED
 ========================================================= */
-
-.investigator-roll-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
 
 .investigator-modifiers {
     display: grid;
@@ -661,14 +481,19 @@ button.selected {
     text-transform: uppercase;
 }
 
+
+/* =========================================================
+   DICE AREA
+========================================================= */
+
 .investigator-roll-area {
     flex: 1;
-    min-height: 205px;
+    min-height: 115px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
-    padding: 10px;
+    padding: 7px;
     border: 1px solid #333;
     border-radius: 10px;
     background: #141414;
@@ -677,24 +502,19 @@ button.selected {
 .investigator-dice-results {
     width: 100%;
     flex: 1;
-    min-height: 125px;
+    min-height: 55px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
     align-items: center;
-    gap: 7px;
+    gap: 6px;
 }
 
-
-/* =========================================================
-   DICE
-========================================================= */
-
 .die-result {
-    width: 42px;
-    height: 42px;
-    flex: 0 0 42px;
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
     background: white;
     border-radius: 8px;
 }
@@ -711,8 +531,8 @@ button.selected {
 }
 
 .pip {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     justify-self: center;
     align-self: center;
     border-radius: 50%;
@@ -726,17 +546,17 @@ button.selected {
 
 
 /* =========================================================
-   RESULTS
+   DICE RESULT
 ========================================================= */
 
 .investigator-result-footer {
-    min-height: 32px;
+    min-height: 28px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     gap: 7px;
-    margin-top: 4px;
+    margin-top: 2px;
 }
 
 .investigator-total {
@@ -746,7 +566,7 @@ button.selected {
 }
 
 #investigator-successes {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
 }
 
@@ -756,17 +576,12 @@ button.selected {
     text-transform: uppercase;
 }
 
-
-/* =========================================================
-   FOCUS REROLL
-========================================================= */
-
 .focus-reroll-button {
     display: none;
-    height: 27px;
-    padding: 0 8px;
+    height: 25px;
+    padding: 0 7px;
     border-radius: 5px;
-    font-size: 8px;
+    font-size: 7px;
     font-weight: bold;
     text-transform: uppercase;
 }
@@ -775,135 +590,173 @@ button.selected {
     display: block;
 }
 
-.investigator-dice-results.selecting-reroll
-.die-result {
+.investigator-dice-results.selecting-reroll .die-result {
     cursor: pointer;
     outline: 2px solid #888;
     outline-offset: 2px;
 }
 
-.investigator-dice-results.selecting-reroll
-.die-result:active {
+.investigator-dice-results.selecting-reroll .die-result:active {
     transform: scale(0.9);
 }
 
 
 /* =========================================================
-   DASHBOARD INVENTORY
+   INVENTORY SUMMARY
 ========================================================= */
 
-.dashboard-inventory {
-    padding: 9px 7px;
-    border: 1px solid #333;
-    border-radius: 10px;
-    background: #141414;
-}
-
-.dashboard-inventory-title {
-    display: block;
-    margin-bottom: 14px;
-    color: #888;
-    font-size: 8px;
-    font-weight: bold;
-    letter-spacing: 0.7px;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.dashboard-inventory-item {
-    margin-bottom: 14px;
-}
-
-.dashboard-inventory-item:last-child {
-    margin-bottom: 0;
-}
-
-.dashboard-inventory-label {
-    display: block;
-    margin-bottom: 5px;
-    color: #999;
-    font-size: 8px;
-    font-weight: bold;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.dashboard-inventory-counter {
-    display: grid;
-    grid-template-columns:
-        25px
-        minmax(22px, 1fr)
-        25px;
-    gap: 3px;
+.inventory-bar {
+    display: flex;
     align-items: center;
+    gap: 8px;
+    min-height: 31px;
 }
 
-.dashboard-inventory-counter button {
-    width: 25px;
-    height: 25px;
-    padding: 0;
-    border-radius: 5px;
-    font-size: 13px;
-    font-weight: bold;
-}
-
-.dashboard-inventory-value {
+.inventory-summary {
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 25px;
-    font-size: 13px;
+    gap: 14px;
+}
+
+.inventory-marker {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: opacity 0.15s ease;
+}
+
+.inventory-marker.empty {
+    opacity: 0.25;
+}
+
+.resource-dot {
+    width: 9px;
+    height: 9px;
+    flex: 0 0 9px;
+    border-radius: 50%;
+}
+
+.money-dot {
+    background: #eab308;
+}
+
+.remnant-dot {
+    background: #7f1d4e;
+}
+
+.clue-dot {
+    background: #22c55e;
+}
+
+.resource-count {
+    min-width: 8px;
+    color: #bbb;
+    font-size: 10px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.inventory-open-button {
+    height: 27px;
+    padding: 0 10px;
+    border-radius: 6px;
+    color: #aaa;
+    font-size: 8px;
+    font-weight: bold;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   INVENTORY OVERLAY
+========================================================= */
+
+.inventory-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.inventory-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    background: #181818;
+}
+
+.inventory-item-heading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.inventory-counter {
+    display: grid;
+    grid-template-columns:
+        32px
+        38px
+        32px;
+    gap: 4px;
+    align-items: center;
+}
+
+.inventory-counter button {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.inventory-value {
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
     font-weight: bold;
 }
 
 
 /* =========================================================
-   ANIMATIONS
+   DICE ANIMATIONS
 ========================================================= */
 
-.investigator-roll-area.rolling
-.die-result,
-.manual-result-area.rolling
-.die-result {
-    animation:
-        diceShake
-        0.1s
-        infinite
-        alternate;
+.investigator-roll-area.rolling .die-result,
+.manual-result-area.rolling .die-result {
+    animation: diceShake 0.1s infinite alternate;
 }
 
 .die-result.rerolling {
-    animation:
-        diceShake
-        0.1s
-        infinite
-        alternate;
+    animation: diceShake 0.1s infinite alternate;
 }
 
 @keyframes diceShake {
-
     from {
-        transform:
-            translateY(-2px)
-            rotate(-2deg);
+        transform: translateY(-2px) rotate(-2deg);
     }
 
     to {
-        transform:
-            translateY(2px)
-            rotate(2deg);
+        transform: translateY(2px) rotate(2deg);
     }
 }
 
 .die-result.landed {
-    animation:
-        diceLand
-        0.2s
-        ease;
+    animation: diceLand 0.2s ease;
 }
 
 @keyframes diceLand {
-
     0% {
         transform: scale(0.85);
     }
@@ -919,7 +772,7 @@ button.selected {
 
 
 /* =========================================================
-   CARDS / ITEMS AREA
+   CARD AREA
 ========================================================= */
 
 .card-area {
@@ -1109,15 +962,13 @@ button.selected {
         font-size: 18px;
     }
 
-    .die-result {
-        width: 38px;
-        height: 38px;
-        flex-basis: 38px;
+    .inventory-summary {
+        gap: 10px;
     }
 
-    .pip {
-        width: 5px;
-        height: 5px;
+    .inventory-open-button {
+        padding: 0 7px;
+        font-size: 7px;
     }
 }
 
@@ -1143,13 +994,8 @@ button.selected {
     .investigator-dashboard {
         grid-template-columns:
             180px
-            minmax(0, 1fr)
-            120px;
+            minmax(0, 1fr);
         gap: 10px;
-    }
-
-    .investigator-roll-area {
-        min-height: 205px;
     }
 
     .card-area-placeholder {

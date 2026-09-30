@@ -29,16 +29,14 @@
 
 <body>
 
-
 <!-- =====================================================
-     INVESTIGATOR SELECTION SCREEN
+     INVESTIGATOR SELECTION
 ===================================================== -->
 
 <section
     id="selection-screen"
     class="selection-screen"
 >
-
     <div class="selection-content">
 
         <div class="selection-heading">
@@ -53,20 +51,16 @@
 
         </div>
 
-
         <div
             id="investigator-list"
             class="investigator-list"
         >
-
             <div class="selection-loading">
                 Loading investigators...
             </div>
-
         </div>
 
     </div>
-
 </section>
 
 
@@ -78,7 +72,6 @@
     id="game-screen"
     class="app game-screen hidden"
 >
-
 
     <!-- HEADER -->
 
@@ -114,167 +107,162 @@
     </header>
 
 
-    <!-- =====================================================
+    <!-- =================================================
          DASHBOARD
-    ===================================================== -->
+    ================================================= -->
 
     <section class="investigator-dashboard">
 
 
-    <!-- =================================================
-         INVESTIGATOR CONTROLS
-    ================================================= -->
+        <!-- =============================================
+             LEFT COLUMN
+        ============================================== -->
 
-    <div class="investigator-controls">
-
-
-        <!-- HEALTH / SANITY -->
-
-        <div class="vitals">
+        <div class="investigator-controls">
 
 
-            <div class="vital health-vital">
+            <!-- HEALTH / SANITY -->
 
-                <span class="small-label">
-                    Health
-                </span>
+            <div class="vitals">
 
-                <div class="vital-value">
+                <div class="vital health-vital">
 
-                    <span id="health-current">
-                        —
+                    <span class="small-label">
+                        Health
                     </span>
 
-                    <span class="vital-divider">
-                        /
-                    </span>
+                    <div class="vital-value">
 
-                    <span id="health-max">
-                        —
-                    </span>
+                        <span id="health-current">
+                            —
+                        </span>
+
+                        <span class="vital-divider">
+                            /
+                        </span>
+
+                        <span id="health-max">
+                            —
+                        </span>
+
+                    </div>
+
+                    <div class="mini-counter">
+
+                        <button
+                            id="health-minus"
+                            aria-label="Decrease Health"
+                        >
+                            −
+                        </button>
+
+                        <button
+                            id="health-plus"
+                            aria-label="Increase Health"
+                        >
+                            +
+                        </button>
+
+                    </div>
 
                 </div>
 
-                <div class="mini-counter">
 
-                    <button
-                        id="health-minus"
-                        aria-label="Decrease Health"
-                    >
-                        −
-                    </button>
+                <div class="vital sanity-vital">
 
-                    <button
-                        id="health-plus"
-                        aria-label="Increase Health"
-                    >
-                        +
-                    </button>
+                    <span class="small-label">
+                        Sanity
+                    </span>
+
+                    <div class="vital-value">
+
+                        <span id="sanity-current">
+                            —
+                        </span>
+
+                        <span class="vital-divider">
+                            /
+                        </span>
+
+                        <span id="sanity-max">
+                            —
+                        </span>
+
+                    </div>
+
+                    <div class="mini-counter">
+
+                        <button
+                            id="sanity-minus"
+                            aria-label="Decrease Sanity"
+                        >
+                            −
+                        </button>
+
+                        <button
+                            id="sanity-plus"
+                            aria-label="Increase Sanity"
+                        >
+                            +
+                        </button>
+
+                    </div>
 
                 </div>
 
             </div>
 
 
-            <div class="vital sanity-vital">
+            <!-- STATS -->
 
-                <span class="small-label">
-                    Sanity
+            <div
+                id="investigator-stats"
+                class="investigator-stats"
+            ></div>
+
+
+            <!-- TEST MODIFIER -->
+
+            <div class="compact-counter-row">
+
+                <span class="compact-counter-label">
+                    Test Mod
                 </span>
 
-                <div class="vital-value">
+                <button
+                    id="modifier-minus"
+                    aria-label="Decrease Test Modifier"
+                >
+                    −
+                </button>
 
-                    <span id="sanity-current">
-                        —
-                    </span>
+                <span
+                    id="test-modifier-value"
+                    class="compact-counter-value"
+                >
+                    0
+                </span>
 
-                    <span class="vital-divider">
-                        /
-                    </span>
-
-                    <span id="sanity-max">
-                        —
-                    </span>
-
-                </div>
-
-                <div class="mini-counter">
-
-                    <button
-                        id="sanity-minus"
-                        aria-label="Decrease Sanity"
-                    >
-                        −
-                    </button>
-
-                    <button
-                        id="sanity-plus"
-                        aria-label="Increase Sanity"
-                    >
-                        +
-                    </button>
-
-                </div>
+                <button
+                    id="modifier-plus"
+                    aria-label="Increase Test Modifier"
+                >
+                    +
+                </button>
 
             </div>
 
         </div>
 
 
-        <!-- STATS -->
+        <!-- =============================================
+             RIGHT COLUMN
+        ============================================== -->
 
-        <div
-            id="investigator-stats"
-            class="investigator-stats"
-        >
-        </div>
+        <div class="investigator-right-column">
 
 
-        <!-- TEST MODIFIER -->
-
-        <div class="compact-counter-row">
-
-            <span class="compact-counter-label">
-                Test Mod
-            </span>
-
-            <button
-                id="modifier-minus"
-                aria-label="Decrease Test Modifier"
-            >
-                −
-            </button>
-
-            <span
-                id="test-modifier-value"
-                class="compact-counter-value"
-            >
-                0
-            </span>
-
-            <button
-                id="modifier-plus"
-                aria-label="Increase Test Modifier"
-            >
-                +
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- =================================================
-         RIGHT SIDE
-    ================================================= -->
-
-    <div class="investigator-right-column">
-
-
-        <!-- DICE -->
-
-        <div class="investigator-roll-panel">
-
+            <!-- BLESSED / CURSED -->
 
             <div class="investigator-modifiers">
 
@@ -289,6 +277,8 @@
             </div>
 
 
+            <!-- DICE AREA -->
+
             <div
                 id="investigator-roll-area"
                 class="investigator-roll-area"
@@ -297,8 +287,7 @@
                 <div
                     id="investigator-dice-results"
                     class="investigator-dice-results"
-                >
-                </div>
+                ></div>
 
 
                 <div class="investigator-result-footer">
@@ -327,133 +316,100 @@
 
             </div>
 
-        </div>
 
+            <!-- =========================================
+                 INVENTORY SUMMARY
+            ========================================== -->
 
-        <!-- =================================================
-             INVENTORY COUNTERS
-        ================================================= -->
+            <div class="inventory-bar">
 
-        <div class="dashboard-inventory">
+                <div class="inventory-summary">
 
+                    <!-- MONEY -->
 
-            <!-- MONEY -->
-
-            <div class="dashboard-inventory-item">
-
-                <span class="dashboard-inventory-label">
-                    Money
-                </span>
-
-                <div class="dashboard-inventory-counter">
-
-                    <button
-                        id="money-minus"
-                        aria-label="Decrease Money"
+                    <div
+                        id="money-marker"
+                        class="inventory-marker empty"
+                        title="Money"
                     >
-                        −
-                    </button>
 
-                    <span
-                        id="money-value"
-                        class="dashboard-inventory-value"
-                    >
-                        0
-                    </span>
+                        <span
+                            class="resource-dot money-dot"
+                        ></span>
 
-                    <button
-                        id="money-plus"
-                        aria-label="Increase Money"
+                        <span
+                            id="money-summary"
+                            class="resource-count"
+                        >
+                            0
+                        </span>
+
+                    </div>
+
+
+                    <!-- REMNANTS -->
+
+                    <div
+                        id="remnants-marker"
+                        class="inventory-marker empty"
+                        title="Remnants"
                     >
-                        +
-                    </button>
+
+                        <span
+                            class="resource-dot remnant-dot"
+                        ></span>
+
+                        <span
+                            id="remnants-summary"
+                            class="resource-count"
+                        >
+                            0
+                        </span>
+
+                    </div>
+
+
+                    <!-- CLUES -->
+
+                    <div
+                        id="clues-marker"
+                        class="inventory-marker empty"
+                        title="Clues"
+                    >
+
+                        <span
+                            class="resource-dot clue-dot"
+                        ></span>
+
+                        <span
+                            id="clues-summary"
+                            class="resource-count"
+                        >
+                            0
+                        </span>
+
+                    </div>
 
                 </div>
 
-            </div>
 
-
-            <!-- REMNANTS -->
-
-            <div class="dashboard-inventory-item">
-
-                <span class="dashboard-inventory-label">
-                    Remnants
-                </span>
-
-                <div class="dashboard-inventory-counter">
-
-                    <button
-                        id="remnants-minus"
-                        aria-label="Decrease Remnants"
-                    >
-                        −
-                    </button>
-
-                    <span
-                        id="remnants-value"
-                        class="dashboard-inventory-value"
-                    >
-                        0
-                    </span>
-
-                    <button
-                        id="remnants-plus"
-                        aria-label="Increase Remnants"
-                    >
-                        +
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- CLUES -->
-
-            <div class="dashboard-inventory-item">
-
-                <span class="dashboard-inventory-label">
-                    Clues
-                </span>
-
-                <div class="dashboard-inventory-counter">
-
-                    <button
-                        id="clues-minus"
-                        aria-label="Decrease Clues"
-                    >
-                        −
-                    </button>
-
-                    <span
-                        id="clues-value"
-                        class="dashboard-inventory-value"
-                    >
-                        0
-                    </span>
-
-                    <button
-                        id="clues-plus"
-                        aria-label="Increase Clues"
-                    >
-                        +
-                    </button>
-
-                </div>
+                <button
+                    id="inventory-open"
+                    class="inventory-open-button"
+                >
+                    Inventory
+                </button>
 
             </div>
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
-    <!-- =====================================================
+    <!-- =================================================
          FUTURE CARDS / ITEMS
-    ===================================================== -->
+    ================================================= -->
 
     <section class="card-area">
 
@@ -468,9 +424,177 @@
     </section>
 
 
-    <!-- =====================================================
-         MANUAL ROLL PANEL
-    ===================================================== -->
+    <!-- =================================================
+         INVENTORY OVERLAY
+    ================================================= -->
+
+    <div
+        id="inventory-panel"
+        class="overlay-panel"
+    >
+
+        <div class="overlay-content inventory-content">
+
+            <div class="overlay-header">
+
+                <h2>
+                    Inventory
+                </h2>
+
+                <button id="inventory-close">
+                    Close
+                </button>
+
+            </div>
+
+
+            <div class="inventory-list">
+
+
+                <!-- MONEY -->
+
+                <div class="inventory-item">
+
+                    <div class="inventory-item-heading">
+
+                        <span
+                            class="resource-dot money-dot"
+                        ></span>
+
+                        <span>
+                            Money
+                        </span>
+
+                    </div>
+
+
+                    <div class="inventory-counter">
+
+                        <button
+                            id="money-minus"
+                            aria-label="Decrease Money"
+                        >
+                            −
+                        </button>
+
+                        <span
+                            id="money-value"
+                            class="inventory-value"
+                        >
+                            0
+                        </span>
+
+                        <button
+                            id="money-plus"
+                            aria-label="Increase Money"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- REMNANTS -->
+
+                <div class="inventory-item">
+
+                    <div class="inventory-item-heading">
+
+                        <span
+                            class="resource-dot remnant-dot"
+                        ></span>
+
+                        <span>
+                            Remnants
+                        </span>
+
+                    </div>
+
+
+                    <div class="inventory-counter">
+
+                        <button
+                            id="remnants-minus"
+                            aria-label="Decrease Remnants"
+                        >
+                            −
+                        </button>
+
+                        <span
+                            id="remnants-value"
+                            class="inventory-value"
+                        >
+                            0
+                        </span>
+
+                        <button
+                            id="remnants-plus"
+                            aria-label="Increase Remnants"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CLUES -->
+
+                <div class="inventory-item">
+
+                    <div class="inventory-item-heading">
+
+                        <span
+                            class="resource-dot clue-dot"
+                        ></span>
+
+                        <span>
+                            Clues
+                        </span>
+
+                    </div>
+
+
+                    <div class="inventory-counter">
+
+                        <button
+                            id="clues-minus"
+                            aria-label="Decrease Clues"
+                        >
+                            −
+                        </button>
+
+                        <span
+                            id="clues-value"
+                            class="inventory-value"
+                        >
+                            0
+                        </span>
+
+                        <button
+                            id="clues-plus"
+                            aria-label="Increase Clues"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         MANUAL ROLL OVERLAY
+    ================================================= -->
 
     <div
         id="manual-roll-panel"
@@ -478,7 +602,6 @@
     >
 
         <div class="overlay-content manual-roll-content">
-
 
             <div class="overlay-header">
 
@@ -510,13 +633,33 @@
                     1
                 </button>
 
-                <button data-count="2">2</button>
-                <button data-count="3">3</button>
-                <button data-count="4">4</button>
-                <button data-count="5">5</button>
-                <button data-count="6">6</button>
-                <button data-count="7">7</button>
-                <button data-count="8">8</button>
+                <button data-count="2">
+                    2
+                </button>
+
+                <button data-count="3">
+                    3
+                </button>
+
+                <button data-count="4">
+                    4
+                </button>
+
+                <button data-count="5">
+                    5
+                </button>
+
+                <button data-count="6">
+                    6
+                </button>
+
+                <button data-count="7">
+                    7
+                </button>
+
+                <button data-count="8">
+                    8
+                </button>
 
             </div>
 
@@ -548,8 +691,7 @@
                 <div
                     id="manual-dice-results"
                     class="manual-dice-results"
-                >
-                </div>
+                ></div>
 
 
                 <div class="manual-total">
