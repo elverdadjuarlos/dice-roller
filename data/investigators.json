@@ -1,41 +1,114 @@
 [
     {
         "name": "Test Investigator 1",
-        "expansion": "Base Game",
+        "occupation": "The Example",
+        "expansion": "Core",
+
         "health": 7,
         "sanity": 5,
+
         "stats": {
             "lore": 4,
             "influence": 3,
             "observation": 2,
             "strength": 1,
             "will": 5
-        }
+        },
+
+        "focusLimit": 2,
+        "startingMoney": 3,
+        "startingRemnants": 0,
+
+        "roles": {
+            "primary": "Mystic",
+            "secondary": "Support"
+        },
+
+        "abilities": [
+            {
+                "name": "Ability Name",
+                "text": "Description of the investigator's ability."
+            }
+        ],
+
+        "startingItems": [
+            "Starting Item 1",
+            "Starting Item 2"
+        ]
     },
+
     {
         "name": "Test Investigator 2",
-        "expansion": "Base Game",
+        "occupation": "The Example",
+        "expansion": "Core",
+
         "health": 6,
         "sanity": 6,
+
         "stats": {
             "lore": 2,
             "influence": 4,
             "observation": 3,
             "strength": 5,
             "will": 1
-        }
+        },
+
+        "focusLimit": 2,
+        "startingMoney": 2,
+        "startingRemnants": 1,
+
+        "roles": {
+            "primary": "Guardian",
+            "secondary": "Survivor"
+        },
+
+        "abilities": [
+            {
+                "name": "Test Ability",
+                "text": "This is another example investigator ability."
+            }
+        ],
+
+        "startingItems": [
+            "Starting Item 1"
+        ]
     },
+
     {
         "name": "Test Investigator 3",
-        "expansion": "Base Game",
+        "occupation": "The Example",
+        "expansion": "Core",
+
         "health": 5,
         "sanity": 7,
+
         "stats": {
             "lore": 3,
             "influence": 1,
             "observation": 5,
             "strength": 4,
             "will": 2
-        }
+        },
+
+        "focusLimit": 3,
+        "startingMoney": 4,
+        "startingRemnants": 0,
+
+        "roles": {
+            "primary": "Seeker",
+            "secondary": "Mystic"
+        },
+
+        "abilities": [
+            {
+                "name": "Test Ability",
+                "text": "This is an example ability."
+            }
+        ],
+
+        "startingItems": [
+            "Starting Item 1",
+            "Starting Item 2"
+        ]
     }
 ]

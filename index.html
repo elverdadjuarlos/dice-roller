@@ -255,66 +255,309 @@
         </div>
 
 
-        <!-- =============================================
-             RIGHT COLUMN
-        ============================================== -->
+        <!-- RIGHT SIDE -->
 
         <div class="investigator-right-column">
 
-
-            <!-- BLESSED / CURSED -->
-
-            <div class="investigator-modifiers">
-
-                <button id="blessed-button">
-                    Blessed
-                </button>
-
-                <button id="cursed-button">
-                    Cursed
-                </button>
-
-            </div>
-
-
-            <!-- DICE AREA -->
+            <!-- =========================================
+                ROLL SIDE
+            ========================================== -->
 
             <div
-                id="investigator-roll-area"
-                class="investigator-roll-area"
+                id="investigator-roll-side"
+                class="investigator-side active"
             >
 
+                <button
+                    id="show-investigator-info"
+                    class="side-flip-button"
+                    aria-label="Show Investigator Information"
+                    title="Investigator Information"
+                >
+                    ↻
+                </button>
+
+
+                <!-- BLESSED / CURSED -->
+
+                <div class="investigator-modifiers">
+
+                    <button id="blessed-button">
+                        Blessed
+                    </button>
+
+                    <button id="cursed-button">
+                        Cursed
+                    </button>
+
+                </div>
+
+
+                <!-- DICE -->
+
                 <div
-                    id="investigator-dice-results"
-                    class="investigator-dice-results"
-                ></div>
+                    id="investigator-roll-area"
+                    class="investigator-roll-area"
+                >
+
+                    <div
+                        id="investigator-dice-results"
+                        class="investigator-dice-results"
+                    ></div>
 
 
-                <div class="investigator-result-footer">
+                    <div class="investigator-result-footer">
 
-                    <div class="investigator-total">
+                        <div class="investigator-total">
 
-                        <span id="investigator-successes">
-                            —
-                        </span>
+                            <span id="investigator-successes">
+                                —
+                            </span>
 
-                        <span class="success-label">
-                            Successes
-                        </span>
+                            <span class="success-label">
+                                Successes
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            id="focus-reroll-button"
+                            class="focus-reroll-button"
+                        >
+                            Reroll One Die
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- INVENTORY SUMMARY -->
+
+                <div class="inventory-bar">
+
+                    <div class="inventory-summary">
+
+                        <!-- MONEY -->
+
+                        <div
+                            id="money-marker"
+                            class="inventory-marker empty"
+                            title="Money"
+                        >
+
+                            <span
+                                class="resource-dot money-dot"
+                            ></span>
+
+                            <span
+                                id="money-summary"
+                                class="resource-count"
+                            >
+                                0
+                            </span>
+
+                        </div>
+
+
+                        <!-- REMNANTS -->
+
+                        <div
+                            id="remnants-marker"
+                            class="inventory-marker empty"
+                            title="Remnants"
+                        >
+
+                            <span
+                                class="resource-dot remnant-dot"
+                            ></span>
+
+                            <span
+                                id="remnants-summary"
+                                class="resource-count"
+                            >
+                                0
+                            </span>
+
+                        </div>
+
+
+                        <!-- CLUES -->
+
+                        <div
+                            id="clues-marker"
+                            class="inventory-marker empty"
+                            title="Clues"
+                        >
+
+                            <span
+                                class="resource-dot clue-dot"
+                            ></span>
+
+                            <span
+                                id="clues-summary"
+                                class="resource-count"
+                            >
+                                0
+                            </span>
+
+                        </div>
 
                     </div>
 
 
                     <button
-                        id="focus-reroll-button"
-                        class="focus-reroll-button"
+                        id="inventory-open"
+                        class="inventory-open-button"
                     >
-                        Reroll One Die
+                        Inventory
                     </button>
 
                 </div>
 
             </div>
+
+
+            <!-- =========================================
+                INVESTIGATOR INFO SIDE
+            ========================================== -->
+
+            <div
+                id="investigator-info-side"
+                class="investigator-side"
+            >
+
+                <div class="info-side-header">
+
+                    <span class="info-side-title">
+                        Investigator Info
+                    </span>
+
+                    <button
+                        id="show-investigator-roll"
+                        class="side-flip-button info-flip-button"
+                        aria-label="Return to Dice Roller"
+                        title="Return to Dice Roller"
+                    >
+                        ↻
+                    </button>
+
+                </div>
+
+
+                <!-- OCCUPATION -->
+
+                <div class="info-occupation-block">
+
+                    <span class="info-label">
+                        Occupation
+                    </span>
+
+                    <span
+                        id="investigator-occupation"
+                        class="info-occupation"
+                    >
+                        —
+                    </span>
+
+                </div>
+
+
+                <!-- ROLES -->
+
+                <div class="info-role-grid">
+
+                    <div class="info-field">
+
+                        <span class="info-label">
+                            Primary Role
+                        </span>
+
+                        <span
+                            id="investigator-primary-role"
+                            class="info-value"
+                        >
+                            —
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-field">
+
+                        <span class="info-label">
+                            Secondary Role
+                        </span>
+
+                        <span
+                            id="investigator-secondary-role"
+                            class="info-value"
+                        >
+                            —
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STARTING INFORMATION -->
+
+                <div class="info-starting-grid">
+
+                    <div class="info-field">
+
+                        <span class="info-label">
+                            Focus Limit
+                        </span>
+
+                        <span
+                            id="investigator-focus-limit"
+                            class="info-number"
+                        >
+                            —
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-field">
+
+                        <span class="info-label">
+                            Starting $
+                        </span>
+
+                        <span
+                            id="investigator-starting-money"
+                            class="info-number"
+                        >
+                            —
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-field">
+
+                        <span class="info-label">
+                            Remnants
+                        </span>
+
+                        <span
+                            id="investigator-starting-remnants"
+                            class="info-number"
+                        >
+                            —
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
 
 
             <!-- =========================================
@@ -411,17 +654,120 @@
          FUTURE CARDS / ITEMS
     ================================================= -->
 
-    <section class="card-area">
+    <section class="investigator-info">
 
-        <div class="card-area-placeholder">
+            <div class="info-section-heading">
+                Investigator Information
+            </div>
 
-            <span>
-                Investigator Cards &amp; Items
-            </span>
 
-        </div>
+            <!-- OCCUPATION / ROLES -->
 
-    </section>
+            <div class="investigator-identity">
+
+                <div
+                    id="investigator-occupation"
+                    class="investigator-occupation"
+                >
+                    —
+                </div>
+
+                <div
+                    id="investigator-roles"
+                    class="investigator-roles"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+            <!-- STARTING INFORMATION -->
+
+            <div class="starting-info-grid">
+
+                <div class="starting-info-item">
+
+                    <span class="starting-info-label">
+                        Focus Limit
+                    </span>
+
+                    <span
+                        id="info-focus-limit"
+                        class="starting-info-value"
+                    >
+                        —
+                    </span>
+
+                </div>
+
+
+                <div class="starting-info-item">
+
+                    <span class="starting-info-label">
+                        Starting $
+                    </span>
+
+                    <span
+                        id="info-starting-money"
+                        class="starting-info-value"
+                    >
+                        —
+                    </span>
+
+                </div>
+
+
+                <div class="starting-info-item">
+
+                    <span class="starting-info-label">
+                        Remnants
+                    </span>
+
+                    <span
+                        id="info-starting-remnants"
+                        class="starting-info-value"
+                    >
+                        —
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- ABILITIES -->
+
+            <div class="investigator-info-block">
+
+                <div class="investigator-info-label">
+                    Abilities
+                </div>
+
+                <div
+                    id="investigator-abilities"
+                    class="investigator-abilities"
+                ></div>
+
+            </div>
+
+
+            <!-- STARTING ITEMS -->
+
+            <div class="investigator-info-block">
+
+                <div class="investigator-info-label">
+                    Starting Items
+                </div>
+
+                <div
+                    id="investigator-starting-items"
+                    class="starting-items"
+                ></div>
+
+            </div>
+
+        </section>
 
 
     <!-- =================================================

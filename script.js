@@ -78,6 +78,42 @@ const focusRerollButton =
     document.getElementById("focus-reroll-button");
 
 
+/* INVESTIGATOR PANEL SIDES */
+
+const investigatorRollSide =
+    document.getElementById("investigator-roll-side");
+
+const investigatorInfoSide =
+    document.getElementById("investigator-info-side");
+
+const showInvestigatorInfo =
+    document.getElementById("show-investigator-info");
+
+const showInvestigatorRoll =
+    document.getElementById("show-investigator-roll");
+
+
+/* INVESTIGATOR INFORMATION */
+
+const investigatorOccupation =
+    document.getElementById("investigator-occupation");
+
+const investigatorPrimaryRole =
+    document.getElementById("investigator-primary-role");
+
+const investigatorSecondaryRole =
+    document.getElementById("investigator-secondary-role");
+
+const investigatorFocusLimit =
+    document.getElementById("investigator-focus-limit");
+
+const investigatorStartingMoney =
+    document.getElementById("investigator-starting-money");
+
+const investigatorStartingRemnants =
+    document.getElementById("investigator-starting-remnants");
+
+
 /* MANUAL ROLL */
 
 const manualRollOpen =
@@ -220,6 +256,12 @@ function createInvestigatorState(
         sanity:
             investigator.sanity,
 
+        /*
+           These remain gameplay counters and intentionally
+           start at 0. The investigator's startingMoney and
+           startingRemnants fields are informational only.
+        */
+
         money:
             0,
 
@@ -228,6 +270,11 @@ function createInvestigatorState(
 
         clues:
             0,
+
+        /*
+           focusLimit is also informational only for now.
+           Focus is NOT restricted by that value.
+        */
 
         focus: {
 
@@ -478,6 +525,13 @@ function selectInvestigator(
 
     resetInvestigatorRollDisplay();
 
+    /*
+       Always start a newly selected investigator
+       on the dice-roll side.
+    */
+
+    showRollSide();
+
     renderInvestigator();
 
     showGameScreen();
@@ -494,6 +548,7 @@ function showSelectionScreen() {
     closePanel(
         manualRollPanel
     );
+
 
     closePanel(
         inventoryPanel
@@ -542,6 +597,58 @@ function showGameScreen() {
 
 
 /* =========================================================
+   INVESTIGATOR PANEL SIDES
+========================================================= */
+
+function showRollSide() {
+
+    investigatorInfoSide.classList.remove(
+        "active"
+    );
+
+
+    investigatorRollSide.classList.add(
+        "active"
+    );
+
+}
+
+
+function showInfoSide() {
+
+    investigatorRollSide.classList.remove(
+        "active"
+    );
+
+
+    investigatorInfoSide.classList.add(
+        "active"
+    );
+
+}
+
+
+showInvestigatorInfo.addEventListener(
+    "click",
+    () => {
+
+        showInfoSide();
+
+    }
+);
+
+
+showInvestigatorRoll.addEventListener(
+    "click",
+    () => {
+
+        showRollSide();
+
+    }
+);
+
+
+/* =========================================================
    RENDER INVESTIGATOR
 ========================================================= */
 
@@ -569,7 +676,60 @@ function renderInvestigator() {
 
     renderInventory();
 
+    renderInvestigatorInfo();
+
     updateModifierButtons();
+
+}
+
+
+/* =========================================================
+   INVESTIGATOR INFORMATION
+========================================================= */
+
+function renderInvestigatorInfo() {
+
+    if (!currentInvestigator) {
+
+        return;
+
+    }
+
+
+    /* OCCUPATION */
+
+    investigatorOccupation.textContent =
+        currentInvestigator.occupation ||
+        "—";
+
+
+    /* ROLES */
+
+    investigatorPrimaryRole.textContent =
+        currentInvestigator.roles?.primary ||
+        "—";
+
+
+    investigatorSecondaryRole.textContent =
+        currentInvestigator.roles?.secondary ||
+        "—";
+
+
+    /* INFORMATIONAL STARTING VALUES */
+
+    investigatorFocusLimit.textContent =
+        currentInvestigator.focusLimit ??
+        "—";
+
+
+    investigatorStartingMoney.textContent =
+        currentInvestigator.startingMoney ??
+        "—";
+
+
+    investigatorStartingRemnants.textContent =
+        currentInvestigator.startingRemnants ??
+        "—";
 
 }
 
@@ -603,7 +763,9 @@ healthMinus.addEventListener(
     () => {
 
         if (!state) {
+
             return;
+
         }
 
 
@@ -625,7 +787,9 @@ healthPlus.addEventListener(
     () => {
 
         if (!state) {
+
             return;
+
         }
 
 
@@ -647,7 +811,9 @@ sanityMinus.addEventListener(
     () => {
 
         if (!state) {
+
             return;
+
         }
 
 
@@ -669,7 +835,9 @@ sanityPlus.addEventListener(
     () => {
 
         if (!state) {
+
             return;
+
         }
 
 
@@ -866,9 +1034,15 @@ function toggleFocus(
 ) {
 
     if (!state) {
+
         return;
+
     }
 
+
+    /*
+       focusLimit is intentionally NOT enforced yet.
+    */
 
     state.focus[stat] =
         !state.focus[stat];
@@ -919,6 +1093,7 @@ modifierMinus.addEventListener(
 
         testModifier--;
 
+
         renderTestModifier();
 
     }
@@ -930,6 +1105,7 @@ modifierPlus.addEventListener(
     () => {
 
         testModifier++;
+
 
         renderTestModifier();
 
@@ -1422,7 +1598,9 @@ function rerollFocusedDie(
 function renderInventory() {
 
     if (!state) {
+
         return;
+
     }
 
 
@@ -1483,7 +1661,9 @@ moneyMinus.addEventListener(
     () => {
 
         if (!state) {
+
             return;
+
         }
 
 
@@ -1505,7 +1685,9 @@ moneyPlus.addEventListener(
     () => {
 
         if (!state) {
+
             return;
+
         }
 
 
@@ -1525,7 +1707,9 @@ remnantsMinus.addEventListener(
     () => {
 
         if (!state) {
+
             return;
+
         }
 
 
@@ -1547,7 +1731,9 @@ remnantsPlus.addEventListener(
     () => {
 
         if (!state) {
+
             return;
+
         }
 
 
@@ -1567,7 +1753,9 @@ cluesMinus.addEventListener(
     () => {
 
         if (!state) {
+
             return;
+
         }
 
 
@@ -1589,7 +1777,9 @@ cluesPlus.addEventListener(
     () => {
 
         if (!state) {
+
             return;
+
         }
 
 
@@ -2168,7 +2358,9 @@ function openPanel(
 ) {
 
     if (!panel) {
+
         return;
+
     }
 
 
@@ -2184,7 +2376,9 @@ function closePanel(
 ) {
 
     if (!panel) {
+
         return;
+
     }
 
 
